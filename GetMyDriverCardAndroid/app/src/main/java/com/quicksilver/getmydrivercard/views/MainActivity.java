@@ -1,7 +1,9 @@
-package com.quicksilver.getmydrivercard;
+package com.quicksilver.getmydrivercard.views;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.quicksilver.getmydrivercard.R;
 
 public class MainActivity extends Activity {
 
