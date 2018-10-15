@@ -1,4 +1,4 @@
-package com.quicksilver.getmydrivercard.models;
+package com.quicksilver.getmydrivercard.entities;
 
 import javax.persistence.*;
 import java.util.Date;
