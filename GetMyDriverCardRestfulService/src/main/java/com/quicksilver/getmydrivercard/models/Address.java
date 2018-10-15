@@ -1,10 +1,22 @@
 package com.quicksilver.getmydrivercard.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "addresses")
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "address_id")
+    private Long address_id;
+
+    @Column(name = "district")
     private String district;
 
+    @Column(name = "city")
     private String city;
 
+    @Column(name = "address")
     private String address;
 
     public Address() {

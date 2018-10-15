@@ -1,23 +1,33 @@
 package com.quicksilver.getmydrivercard.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "persons")
 public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "person_id")
+    private Long person_id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "identity_card_number")
     private IdentityCard identityCard;
 
+    @Column(name = "phone_number")
     private Long phoneNumber;
 
+    @Column(name = "email")
     private String email;
-
-    private Address address;
 
     public Person() {
 
     }
 
-    public Person(IdentityCard identityCard, Long phoneNumber, String email, Address address) {
+    public Person(IdentityCard identityCard, Long phoneNumber, String email) {
         this.setIdentityCard(identityCard);
         this.setPhoneNumber(phoneNumber);
         this.setEmail(email);
-        this.setAddress(address);
     }
 
     public IdentityCard getIdentityCard() {
@@ -42,13 +52,5 @@ public class Person {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
     }
 }

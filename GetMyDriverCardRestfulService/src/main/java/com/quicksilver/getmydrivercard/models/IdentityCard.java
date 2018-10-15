@@ -1,24 +1,38 @@
 package com.quicksilver.getmydrivercard.models;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "identity_cards")
 public class IdentityCard {
+    @Id
+    @Column(name = "identity_card_number")
     private Long identityCardNumber;
 
+    @Column(name = "personal_number")
     private Long personalNumber;
 
+    @Column(name = "issued_on")
     private Date issuedOn;
 
+    @Column(name = "issued_by")
     private String issuedBy;
 
+    @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "fathers_name")
     private String fathersName;
 
+    @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "date_of_birth")
     private Date dateOfBirth;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address address;
 
     public IdentityCard() {
