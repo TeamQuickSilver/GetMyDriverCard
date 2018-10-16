@@ -9,16 +9,18 @@ import android.view.ViewGroup;
 
 import com.quicksilver.getmydrivercard.R;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class LoginFragment extends Fragment implements LoginContracts.View {
-
     private LoginContracts.Presenter mPresenter;
     private LoginContracts.Navigator mNavigator;
 
+    @Inject
     public LoginFragment() {
         // Required empty public constructor
     }

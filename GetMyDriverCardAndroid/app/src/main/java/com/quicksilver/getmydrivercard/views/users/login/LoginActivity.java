@@ -9,19 +9,16 @@ import javax.inject.Inject;
 import dagger.android.support.DaggerAppCompatActivity;
 
 public class LoginActivity extends DaggerAppCompatActivity implements LoginContracts.Navigator {
-    private  LoginContracts.Presenter mPresenter;
+    @Inject
+    LoginContracts.Presenter mPresenter;
 
-    private  LoginFragment mView;
+    @Inject
+    LoginFragment mView;
 
     public LoginActivity() {
 
     }
 
-    @Inject
-    public LoginActivity(LoginContracts.Presenter mPresenter, LoginFragment loginFragment) {
-        this.mPresenter = mPresenter;
-        this.mView = loginFragment;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
