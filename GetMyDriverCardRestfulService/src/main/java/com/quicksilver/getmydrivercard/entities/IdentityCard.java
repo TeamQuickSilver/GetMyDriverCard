@@ -19,14 +19,23 @@ public class IdentityCard {
     @Column(name = "issued_by")
     private String issuedBy;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "first_name_cyrillic")
+    private String firstNameCyrillic;
 
-    @Column(name = "fathers_name")
-    private String fathersName;
+    @Column(name = "fathers_name_cyrillic")
+    private String fathersNameCyrillic;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "last_name_cyrillic")
+    private String lastNameCyrillic;
+
+    @Column(name = "first_name_latin")
+    private String firstNameLatin;
+
+    @Column(name = "fathers_name_latin")
+    private String fathersNameLatin;
+
+    @Column(name = "last_name_latin")
+    private String lastNameLatin;
 
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
@@ -40,14 +49,17 @@ public class IdentityCard {
     }
 
     public IdentityCard(Long identityCardNumber, Long personalNumber, Date issuedOn, String issuedBy,
-                        String firstName, String fathersName, String lastName, Date dateOfBirth, Address address) {
+                        String firstNameCyrillic, String fathersNameCyrillic, String lastNameCyrillic, String firstNameLatin, String fathersNameLatin, String lastNameLatin, Date dateOfBirth, Address address) {
         this.setIdentityCardNumber(identityCardNumber);
         this.setPersonalNumber(personalNumber);
         this.setIssuedOn(issuedOn);
         this.setIssuedBy(issuedBy);
-        this.setFirstName(firstName);
-        this.setFathersName(fathersName);
-        this.setLastName(lastName);
+        this.setFirstNameCyrillic(firstNameCyrillic);
+        this.setFathersNameCyrillic(fathersNameCyrillic);
+        this.setLastNameCyrillic(lastNameCyrillic);
+        this.setFirstNameCyrillic(firstNameLatin);
+        this.setFathersNameLatin(fathersNameLatin);
+        this.setLastNameLatin(lastNameLatin);
         this.setDateOfBirth(dateOfBirth);
         this.setAddress(address);
     }
@@ -84,28 +96,52 @@ public class IdentityCard {
         this.issuedBy = issuedBy;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstNameCyrillic() {
+        return firstNameCyrillic;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstNameCyrillic(String firstNameCyrillic) {
+        this.firstNameCyrillic = firstNameCyrillic;
     }
 
-    public String getFathersName() {
-        return fathersName;
+    public String getFathersNameCyrillic() {
+        return fathersNameCyrillic;
     }
 
-    public void setFathersName(String fathersName) {
-        this.fathersName = fathersName;
+    public void setFathersNameCyrillic(String fathersNameCyrillic) {
+        this.fathersNameCyrillic = fathersNameCyrillic;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastNameCyrillic() {
+        return lastNameCyrillic;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastNameCyrillic(String lastNameCyrillic) {
+        this.lastNameCyrillic = lastNameCyrillic;
+    }
+
+    public String getFirstNameLatin() {
+        return firstNameLatin;
+    }
+
+    public void setFirstNameLatin(String firstNameLatin) {
+        this.firstNameLatin = firstNameLatin;
+    }
+
+    public String getFathersNameLatin() {
+        return fathersNameLatin;
+    }
+
+    public void setFathersNameLatin(String fathersNameLatin) {
+        this.fathersNameLatin = fathersNameLatin;
+    }
+
+    public String getLastNameLatin() {
+        return lastNameLatin;
+    }
+
+    public void setLastNameLatin(String lastNameLatin) {
+        this.lastNameLatin = lastNameLatin;
     }
 
     public Date getDateOfBirth() {
