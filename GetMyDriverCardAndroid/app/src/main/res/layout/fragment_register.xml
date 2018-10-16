@@ -5,10 +5,80 @@
     android:layout_height="match_parent"
     tools:context=".views.users.register.RegisterFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:id="@+id/rl_register"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/iv_register_icon"
+            android:src="@drawable/user"
+            android:layout_marginTop="150sp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="350sp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/tv_sign_up"
+            style="@style/BigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign-up"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@+id/iv_register_icon"/>
+
+        <EditText
+            android:id="@+id/et_username"
+            android:hint="Username"
+            android:textColorHint="@color/colorAccent"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@id/tv_sign_up"/>
+
+        <EditText
+            android:id="@+id/et_password"
+            android:hint="Password"
+            android:textColorHint="@color/colorAccent"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/colorAccent"
+            android:layout_below="@id/et_username"/>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/et_password"/>
+
+        <TextView
+            android:layout_marginTop="15sp"
+            android:id="@+id/tv_info_register"
+            android:text="You already have an account?"
+            android:textColor="@color/colorAccent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/btn_register"/>
+
+        <TextView
+            android:id="@+id/tv_go_to_login_form"
+            android:clickable="true"
+            android:text=" Please sign-in now."
+            android:textColor="#00ffcc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_info_register"
+            android:layout_centerHorizontal="true"
+            android:focusable="true" />
+
+    </RelativeLayout>
 
 </FrameLayout>

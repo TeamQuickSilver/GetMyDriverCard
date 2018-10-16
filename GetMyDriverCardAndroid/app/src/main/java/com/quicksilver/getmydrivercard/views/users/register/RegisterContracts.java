@@ -7,9 +7,11 @@ public interface RegisterContracts {
     interface View {
         void setPresenter(Presenter presenter);
 
+        void navigateToHome();
+
         void showError(Throwable error);
 
-        void setNavigator(LoginContracts.Navigator navigator);
+        void setNavigator(RegisterContracts.Navigator navigator);
     }
 
     interface Presenter {
@@ -18,7 +20,7 @@ public interface RegisterContracts {
         void register(User user);
     }
 
-    interface Navigate {
+    interface Navigator {
         void navigate();
     }
 }
