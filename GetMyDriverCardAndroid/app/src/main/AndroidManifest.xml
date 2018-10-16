@@ -19,7 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
         <activity android:name=".views.step1.Step1Activity"></activity>
+=======
+        <activity android:name=".views.users.register.RegisterActivity"></activity>
+>>>>>>> 55863918b66a55de7788ba1a70ee52e8b70be93c
     </application>
 
 </manifest>
