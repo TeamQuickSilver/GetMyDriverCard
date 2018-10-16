@@ -6,6 +6,23 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="don_t_you_have_an_account">Don\'t you have an account?</string>
-    <string name="please_make_it_now">Please make it now.</string>
+    <string name="no_account">Don\'t you have an account?</string>
+    <string name="make_account">Please make it now.</string>
+    <string name="title_request">Reason for which you request driver card:</string>
+    <string name="new_card">I don\'t own driver card and I wish to be issue</string>
+    <string name="change_card">I own driver card and I wish to change it because of:</string>
+    <string name="lost_card">Lost</string>
+    <string name="exchange_card">I own driver card issued by another country and I wish to change it to another one issued by Republic of Bulgaria</string>
+    <string name="reason">Choose reason</string>
+    <string name="renew_card">I wish to renew my driver card</string>
+    <string name="withdrawn_card">I wish new driver card because previous was withdrawn</string>
+    <string-array name="spinner_card_change_reason">
+        <item>Lost</item>
+        <item>Stolen</item>
+        <item>Malfunction/Broken</item>
+        <item>Address change</item>
+        <item>Name change</item>
+        <item>Photo change</item>
+        <item>Driving license change</item>
+    </string-array>
 </resources>

@@ -1,8 +1,10 @@
 package com.quicksilver.getmydrivercard.views.users.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
 
 import javax.inject.Inject;
 
@@ -32,5 +34,15 @@ public class LoginActivity extends DaggerAppCompatActivity implements LoginContr
                 .beginTransaction()
                 .replace(R.id.content, mView)
                 .commit();
+    }
+
+    @Override
+    public void navigateToStep1() {
+        Intent intentToStep1 = new Intent(
+                this,
+                Step1Activity.class
+        );
+
+        startActivity(intentToStep1);
     }
 }

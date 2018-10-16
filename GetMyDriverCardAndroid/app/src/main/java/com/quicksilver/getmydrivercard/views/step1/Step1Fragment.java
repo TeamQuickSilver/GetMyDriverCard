@@ -1,4 +1,4 @@
-package com.quicksilver.getmydrivercard.views.users.login;
+package com.quicksilver.getmydrivercard.views.step1;
 
 
 import android.os.Bundle;
@@ -6,36 +6,31 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.quicksilver.getmydrivercard.R;
 
 import javax.inject.Inject;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LoginFragment extends Fragment implements LoginContracts.View {
-    private LoginContracts.Presenter mPresenter;
-    private LoginContracts.Navigator mNavigator;
-
-    @BindView(R.id.btn_login)
-    Button mLoginButton;
+public class Step1Fragment extends Fragment implements Step1Contracts.View {
+    private Step1Contracts.Presenter mPresenter;
+    private Step1Contracts.Navigator mNavigator;
 
     @Inject
-    public LoginFragment() {
+    public Step1Fragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_login, container, false);
+        View view =  inflater.inflate(R.layout.fragment_step1, container, false);
 
         ButterKnife.bind(this, view);
 
@@ -49,17 +44,12 @@ public class LoginFragment extends Fragment implements LoginContracts.View {
     }
 
     @Override
-    public void setPresenter(LoginContracts.Presenter presenter) {
+    public void setPresenter(Step1Contracts.Presenter presenter) {
         mPresenter = presenter;
     }
 
     @Override
-    public void setNavigator(LoginContracts.Navigator navigator) {
+    public void setNavigator(Step1Contracts.Navigator navigator) {
         mNavigator = navigator;
-    }
-
-    @OnClick(R.id.btn_login)
-    public void onClick(View view) {
-       mNavigator.navigateToStep1();
     }
 }

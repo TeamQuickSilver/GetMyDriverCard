@@ -1,6 +1,6 @@
-package com.quicksilver.getmydrivercard.views.users.login;
+package com.quicksilver.getmydrivercard.views.step1;
 
-public interface LoginContracts {
+public interface Step1Contracts {
     interface View {
         void setPresenter(Presenter presenter);
 
@@ -13,6 +13,5 @@ public interface LoginContracts {
 
     interface Navigator {
 
-        void navigateToStep1();
     }
 }
