@@ -15,12 +15,10 @@ public abstract class ActivityBindingModule {
     abstract LoginActivity loginActivity();
 
     @ActivityScoped
-<<<<<<< HEAD
     @ContributesAndroidInjector(modules = Step1Module.class)
     abstract Step1Activity step1Activity();
 
-=======
+    @ActivityScoped
     @ContributesAndroidInjector(modules = RegisterModule.class)
     abstract RegisterActivity registerActivity();
->>>>>>> 55863918b66a55de7788ba1a70ee52e8b70be93c
 }

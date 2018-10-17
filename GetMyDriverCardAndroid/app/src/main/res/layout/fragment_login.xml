@@ -79,6 +79,14 @@
             android:layout_centerHorizontal="true"
             android:focusable="true" />
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_go_to_register_form"/>
+
+        
+
     </RelativeLayout>
 
 </FrameLayout>
