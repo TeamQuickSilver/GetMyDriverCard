@@ -3,6 +3,8 @@ package com.quicksilver.getmydrivercard.entities;
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "driver_licenses")
 public class DrivingLicense {
 
     @Id
