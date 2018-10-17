@@ -10,6 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -41,7 +48,13 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
     @BindView(R.id.google_sign_in_button)
     SignInButton mGoogleSignInButton;
 
+    @BindView(R.id.facebook_sign_in_button)
+    LoginButton mFacebookLoginButton;
+
+    private AccessToken mAccessToken;
+    private CallbackManager mCallBackManager;
     private GoogleApiClient mGoogleApiClient;
+
 
     @Inject
     public LoginFragment() {
@@ -65,8 +78,39 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
                 .enableAutoManage(Objects.requireNonNull(getActivity()), this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build();
+        
+        mFacebookLoginButton.setFragment(this);
+        String email = "email";
+        mFacebookLoginButton.setReadPermissions(email);
+
+        mCallBackManager = CallbackManager.Factory.create();
+
+        configFacebookLogin();
 
         return view;
+    }
+
+    private void configFacebookLogin() {
+        LoginManager.getInstance().registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                mAccessToken = loginResult.getAccessToken();
+                if(mAccessToken != null && !mAccessToken.isExpired()) {
+                    handleResult(true);
+                }
+            }
+
+            @Override
+            public void onCancel() {
+
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+
+            }
+        });
+
     }
 
     @Override
@@ -101,29 +145,31 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-
+        // Required for google login functionality
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        mCallBackManager.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == REQ_CODE) {
+        if (requestCode == REQ_CODE) {
             GoogleSignInResult googleSignInResult = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             handleResult(googleSignInResult);
         }
     }
 
     private void handleResult(GoogleSignInResult googleSignInResult) {
-        if(googleSignInResult.isSuccess()) {
+        if (googleSignInResult.isSuccess()) {
             Intent intent = new Intent(getContext(), Step1Activity.class);
             startActivity(intent);
         }
     }
 
     private void handleResult(boolean signInResult) {
-        if(signInResult) {
+        if (signInResult) {
             Intent intent = new Intent(getContext(), Step1Activity.class);
-            startActivity(intent);        }
+            startActivity(intent);
+        }
     }
 }

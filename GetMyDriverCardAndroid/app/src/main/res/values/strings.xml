@@ -25,4 +25,5 @@
         <item>Photo change</item>
         <item>Driving license change</item>
     </string-array>
+    <string name="facebook_app_id">326463701266666</string>
 </resources>
