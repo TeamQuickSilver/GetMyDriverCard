@@ -4,8 +4,12 @@ import com.quicksilver.getmydrivercard.entities.User;
 import com.quicksilver.getmydrivercard.repositories.UserRepository;
 import com.quicksilver.getmydrivercard.utils.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -22,11 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean login(User user) {
-        User userToLogin = userRepository.findFirstByUsername(user.getUsername());
+        UserDetails userDetails = loadUserByUsername(user.getUsername());
 
-        String cryptedPassword = passwordEncoder.encode(user.getPassword());
-
-        return userToLogin != null && userToLogin.getPassword().equals(cryptedPassword);
+        return userDetails != null && passwordEncoder.matches(user.getPassword(), userDetails.getPassword());
     }
 
     @Override
@@ -34,5 +36,18 @@ public class UserServiceImpl implements UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(UserRole.USER);
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User user = userRepository.findFirstByUsername(username);
+
+        UserDetails userDetails = new org.springframework.security.core.userdetails.User(
+                user.getUsername(),
+                user.getPassword(),
+                new HashSet<>()
+        );
+
+        return userDetails;
     }
 }
