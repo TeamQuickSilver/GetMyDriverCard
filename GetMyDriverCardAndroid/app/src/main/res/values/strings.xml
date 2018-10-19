@@ -26,4 +26,8 @@
         <item>Driving license change</item>
     </string-array>
     <string name="facebook_app_id">326463701266666</string>
+
+    <string name="agreement">I agree the terms and conditions.</string>
+    <string name="clear_pad">Clear Pad</string>
+    <string name="save_signature">Save Signature</string>
 </resources>
