@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -25,6 +26,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
+import com.quicksilver.getmydrivercard.views.users.register.RegisterActivity;
 
 import java.util.Objects;
 
@@ -50,6 +52,9 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
 
     @BindView(R.id.facebook_sign_in_button)
     LoginButton mFacebookLoginButton;
+
+    @BindView(R.id.tv_go_to_register_form)
+    TextView mGoToRegisterTextView;
 
     private AccessToken mAccessToken;
     private CallbackManager mCallBackManager;
@@ -129,7 +134,7 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
         mNavigator = navigator;
     }
 
-    @OnClick({R.id.btn_login, R.id.google_sign_in_button})
+    @OnClick({R.id.btn_login, R.id.google_sign_in_button, R.id.tv_go_to_register_form})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
@@ -139,6 +144,10 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
             case R.id.google_sign_in_button:
                 Intent googleSignInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                 startActivityForResult(googleSignInIntent, REQ_CODE);
+                break;
+            case R.id.tv_go_to_register_form:
+                Intent goToRegisterIntent = new Intent(getContext(), RegisterActivity.class);
+                startActivity(goToRegisterIntent);
                 break;
         }
     }

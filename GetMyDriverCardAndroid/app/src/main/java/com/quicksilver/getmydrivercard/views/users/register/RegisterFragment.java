@@ -1,7 +1,6 @@
 package com.quicksilver.getmydrivercard.views.users.register;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,8 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.R;
-import com.quicksilver.getmydrivercard.models.User;
-import com.quicksilver.getmydrivercard.views.users.login.LoginActivity;
 
 import javax.inject.Inject;
 
@@ -80,8 +77,6 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
-
-
     @Override
     public void setNavigator(RegisterContracts.Navigator navigator) {
         mNavigator = navigator;
@@ -89,5 +84,6 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
 
     @OnClick({R.id.tv_go_to_login_form, R.id.btn_register})
     public void onClick(View view) {
+
     }
 }
