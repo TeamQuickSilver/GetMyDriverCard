@@ -78,7 +78,7 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
                 .enableAutoManage(Objects.requireNonNull(getActivity()), this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
                 .build();
-        
+
         mFacebookLoginButton.setFragment(this);
         String email = "email";
         mFacebookLoginButton.setReadPermissions(email);
