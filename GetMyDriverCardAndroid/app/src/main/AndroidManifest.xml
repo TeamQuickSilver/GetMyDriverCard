@@ -40,7 +40,8 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
-        <activity android:name=".views.step4.Step4Activity"></activity>
+        <activity android:name=".views.step4.Step4Activity" />
+        <activity android:name=".views.step3.ProvidePhotoActivity"></activity>
     </application>
 
 </manifest>

@@ -51,6 +51,5 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.0'
 
     // SignaturePad
-
     implementation 'com.github.gcacace:signature-pad:1.2.1'
 }
