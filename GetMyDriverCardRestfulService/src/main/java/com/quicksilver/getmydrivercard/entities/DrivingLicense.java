@@ -20,18 +20,14 @@ public class DrivingLicense {
     @Column(name = "issued_by")
     private String issuedBy;
 
-    @Column(name = "motor_vehicles_categories")
-    private String motorVehiclesCategories;
-
     public DrivingLicense() {
     }
 
-    public DrivingLicense(Long id_card, Long identityCardNumber, Date issuedOn, String issuedBy, String motorVehiclesCategories) {
+    public DrivingLicense(Long id_card, Long identityCardNumber, Date issuedOn, String issuedBy) {
         this.setId_card(id_card);
         this.setIdentityCardNumber(identityCardNumber);
         this.setIssuedOn(issuedOn);
         this.setIssuedBy(issuedBy);
-        this.setMotorVehiclesCategories(motorVehiclesCategories);
     }
 
     public Long getId_card() {
@@ -64,13 +60,5 @@ public class DrivingLicense {
 
     public void setIssuedBy(String issuedBy) {
         this.issuedBy = issuedBy;
-    }
-
-    public String getMotorVehiclesCategories() {
-        return motorVehiclesCategories;
-    }
-
-    public void setMotorVehiclesCategories(String motorVehiclesCategories) {
-        this.motorVehiclesCategories = motorVehiclesCategories;
     }
 }
