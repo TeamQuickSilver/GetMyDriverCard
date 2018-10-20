@@ -10,5 +10,5 @@ public abstract class Step4Module {
 //
 //    @ActivityScoped
 //    @Binds
-//    abstract Step1Contracts.Presenter presenter(Step4Presenter step4Presenter);
+//    abstract Step4Contracts.Presenter presenter(Step4Presenter step4Presenter);
 }

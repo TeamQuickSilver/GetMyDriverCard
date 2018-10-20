@@ -1,6 +1,7 @@
 package com.quicksilver.getmydrivercard.diconfig;
 
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
+import com.quicksilver.getmydrivercard.views.step4.Step4Activity;
 import com.quicksilver.getmydrivercard.views.users.login.LoginActivity;
 import com.quicksilver.getmydrivercard.views.users.register.RegisterActivity;
 
@@ -17,6 +18,10 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = Step1Module.class)
     abstract Step1Activity step1Activity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = Step1Module.class)
+    abstract Step4Activity step4Activity();
 
     @ActivityScoped
     @ContributesAndroidInjector(modules = RegisterModule.class)
