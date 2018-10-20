@@ -30,7 +30,7 @@ public class HttpUsersRepository implements UserRepository {
     @Override
     public User register(User user) throws IOException {
         String requestBody = mJsonParser.toJson(user);
-        String responseBody = mHttpRequester.post(mLoginUrl, requestBody);
+        String responseBody = mHttpRequester.post(mRegisterUrl, requestBody);
 
         return mJsonParser.fromJson(responseBody);
     }

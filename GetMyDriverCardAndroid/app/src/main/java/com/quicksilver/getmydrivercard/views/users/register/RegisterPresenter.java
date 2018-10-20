@@ -32,8 +32,13 @@ public class RegisterPresenter implements RegisterContracts.Presenter {
     @Override
     public void register(User user) {
         Disposable disposable = Observable.create((ObservableOnSubscribe<User>) emitter -> {
-            mUserService.register(user);
-            emitter.onNext(user);
+            User returnedUser = mUserService.register(user);
+            // Validator can be applied here
+            if (returnedUser == null) {
+                mView.showRegisterError();
+                return;
+            }
+            emitter.onNext(returnedUser);
             emitter.onComplete();
         }).subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())

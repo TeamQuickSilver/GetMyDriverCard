@@ -42,6 +42,7 @@
 
         <EditText
             android:id="@+id/et_password"
+            android:inputType="textPassword"
             android:layout_width="250sp"
             android:layout_height="wrap_content"
             android:layout_below="@id/et_username"

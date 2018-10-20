@@ -25,6 +25,7 @@ import butterknife.OnClick;
  */
 
 public class RegisterFragment extends Fragment implements RegisterContracts.View {
+    private static final String REGISTER_ERROR = "User with this username already exists";
     private RegisterContracts.Presenter mPresenter;
 
     @BindView(R.id.tv_go_to_login_form)
@@ -76,6 +77,13 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
     @Override
     public void setNavigator(RegisterContracts.Navigator navigator) {
         mNavigator = navigator;
+    }
+
+    @Override
+    public void showRegisterError() {
+        getActivity().runOnUiThread(() -> {
+            Toast.makeText(getContext(), REGISTER_ERROR, Toast.LENGTH_SHORT).show();
+        });
     }
 
     @OnClick({R.id.tv_go_to_login_form, R.id.btn_register})

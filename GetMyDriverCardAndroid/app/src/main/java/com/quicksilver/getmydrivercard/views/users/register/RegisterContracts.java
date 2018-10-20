@@ -11,6 +11,8 @@ public interface RegisterContracts {
         void showError(Throwable error);
 
         void setNavigator(RegisterContracts.Navigator navigator);
+
+        void showRegisterError();
     }
 
     interface Presenter {

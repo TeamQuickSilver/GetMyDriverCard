@@ -33,6 +33,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User register(User user) {
+        if(loadUserByUsername(user.getUsername()) != null) {
+            return null;
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(UserRole.USER);
         return userRepository.save(user);
