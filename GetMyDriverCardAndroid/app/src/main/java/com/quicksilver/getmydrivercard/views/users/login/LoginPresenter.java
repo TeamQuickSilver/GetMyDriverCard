@@ -1,17 +1,47 @@
 package com.quicksilver.getmydrivercard.views.users.login;
 
+import com.quicksilver.getmydrivercard.async.base.SchedulerProvider;
+import com.quicksilver.getmydrivercard.models.User;
+import com.quicksilver.getmydrivercard.services.UserService;
+
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.disposables.Disposable;
 
 public class LoginPresenter implements LoginContracts.Presenter {
     private LoginContracts.View mView;
+    private final UserService mUserService;
+    private final SchedulerProvider mSchedulerProvider;
 
     @Inject
-    public LoginPresenter() {
-
+    public LoginPresenter(UserService mUserService, SchedulerProvider mSchedulerProvider) {
+        this.mUserService = mUserService;
+        this.mSchedulerProvider = mSchedulerProvider;
     }
 
     @Override
     public void subscribe(LoginContracts.View view) {
         mView = view;
     }
+
+    @Override
+    public void login(boolean isLoginSucceeded) {
+        if(isLoginSucceeded) {
+            mView.navigateToStep1();
+        }
+    }
+
+    @Override
+    public void login(User user) {
+        Disposable disposable = Observable.create((ObservableOnSubscribe<User>) emitter -> {
+            mUserService.login(user);
+            emitter.onNext(user);
+            emitter.onComplete();
+        }).subscribeOn(mSchedulerProvider.background())
+                .observeOn(mSchedulerProvider.ui())
+                .subscribe(v -> mView.navigateToStep1(), error -> mView.showError(error));
+    }
 }
+

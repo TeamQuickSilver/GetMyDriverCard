@@ -31,7 +31,12 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     }
 
     @Override
-    public void navigate() {
+    public void navigateToStep1() {
+
+    }
+
+    @Override
+    public void navigateToLogin() {
 
     }
 }

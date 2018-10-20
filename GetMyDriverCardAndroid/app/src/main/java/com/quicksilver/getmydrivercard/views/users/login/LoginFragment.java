@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -25,8 +27,7 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.quicksilver.getmydrivercard.R;
-import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
-import com.quicksilver.getmydrivercard.views.users.register.RegisterActivity;
+import com.quicksilver.getmydrivercard.models.User;
 
 import java.util.Objects;
 
@@ -55,6 +56,12 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
 
     @BindView(R.id.tv_go_to_register_form)
     TextView mGoToRegisterTextView;
+
+    @BindView(R.id.et_username)
+    EditText mUsernameEditText;
+
+    @BindView(R.id.et_password)
+    EditText mPasswordEditText;
 
     private AccessToken mAccessToken;
     private CallbackManager mCallBackManager;
@@ -100,9 +107,10 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
             @Override
             public void onSuccess(LoginResult loginResult) {
                 mAccessToken = loginResult.getAccessToken();
-                if(mAccessToken != null && !mAccessToken.isExpired()) {
-                    handleResult(true);
-                }
+
+                boolean isFacebookLoginSucceeded = mAccessToken != null && !mAccessToken.isExpired();
+
+                mPresenter.login(isFacebookLoginSucceeded);
             }
 
             @Override
@@ -134,20 +142,31 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
         mNavigator = navigator;
     }
 
+    @Override
+    public void navigateToStep1() {
+        mNavigator.navigateToStep1();
+    }
+
+    @Override
+    public void showError(Throwable error) {
+        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
     @OnClick({R.id.btn_login, R.id.google_sign_in_button, R.id.tv_go_to_register_form})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
-                // Handle boolean result from login and replace true value below with it
-                handleResult(true);
+                String username = mUsernameEditText.getText().toString();
+                String password = mPasswordEditText.getText().toString();
+                User user = new User(username, password);
+                mPresenter.login(user);
                 break;
             case R.id.google_sign_in_button:
                 Intent googleSignInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
                 startActivityForResult(googleSignInIntent, REQ_CODE);
                 break;
             case R.id.tv_go_to_register_form:
-                Intent goToRegisterIntent = new Intent(getContext(), RegisterActivity.class);
-                startActivity(goToRegisterIntent);
+                mNavigator.navigateToRegister();
                 break;
         }
     }
@@ -169,16 +188,8 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
     }
 
     private void handleResult(GoogleSignInResult googleSignInResult) {
-        if (googleSignInResult.isSuccess()) {
-            Intent intent = new Intent(getContext(), Step1Activity.class);
-            startActivity(intent);
-        }
-    }
+        boolean isGoogleLoginSucceeded = googleSignInResult.isSuccess();
 
-    private void handleResult(boolean signInResult) {
-        if (signInResult) {
-            Intent intent = new Intent(getContext(), Step1Activity.class);
-            startActivity(intent);
-        }
+        mPresenter.login(isGoogleLoginSucceeded);
     }
 }

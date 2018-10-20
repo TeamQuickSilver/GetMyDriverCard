@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
+import com.quicksilver.getmydrivercard.views.users.register.RegisterActivity;
 
 import javax.inject.Inject;
 
@@ -38,11 +39,13 @@ public class LoginActivity extends DaggerAppCompatActivity implements LoginContr
 
     @Override
     public void navigateToStep1() {
-        Intent intentToStep1 = new Intent(
-                this,
-                Step1Activity.class
-        );
-
+        Intent intentToStep1 = new Intent(this, Step1Activity.class);
         startActivity(intentToStep1);
+    }
+
+    @Override
+    public void navigateToRegister() {
+        Intent goToRegisterIntent = new Intent(this, RegisterActivity.class);
+        startActivity(goToRegisterIntent);
     }
 }

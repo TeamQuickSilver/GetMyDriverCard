@@ -1,13 +1,12 @@
 package com.quicksilver.getmydrivercard.views.users.register;
 
 import com.quicksilver.getmydrivercard.models.User;
-import com.quicksilver.getmydrivercard.views.users.login.LoginContracts;
 
 public interface RegisterContracts {
     interface View {
         void setPresenter(Presenter presenter);
 
-        void navigateToHome();
+        void navigateToStep1();
 
         void showError(Throwable error);
 
@@ -21,6 +20,8 @@ public interface RegisterContracts {
     }
 
     interface Navigator {
-        void navigate();
+        void navigateToStep1();
+
+        void navigateToLogin();
     }
 }
