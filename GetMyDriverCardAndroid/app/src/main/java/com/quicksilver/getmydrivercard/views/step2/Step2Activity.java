@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import com.quicksilver.getmydrivercard.R;
 
 public class Step2Activity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
