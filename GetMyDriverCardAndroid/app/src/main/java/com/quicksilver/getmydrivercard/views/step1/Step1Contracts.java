@@ -13,5 +13,6 @@ public interface Step1Contracts {
 
     interface Navigator {
 
+        void navigateToStep2(String reason);
     }
 }

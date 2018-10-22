@@ -16,9 +16,11 @@ public interface LoginContracts {
     interface Presenter {
         void subscribe(View view);
 
-        void login(boolean isFacebookLoginSucceeded);
+        void login(boolean isFacebookLoginSucceeded, User user);
 
-        void login(User user);
+//        void login(User user);
+
+        void registerGoogleOrFacebookUser(User user);
     }
 
     interface Navigator {

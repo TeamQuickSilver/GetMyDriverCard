@@ -37,7 +37,12 @@ public class UserServiceImpl implements UserService {
             return null;
         }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // Only with custom register
+        if(user.getPassword() != null) {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
+
+        // Applied also with Facebook or Google login
         user.setRole(UserRole.USER);
         return userRepository.save(user);
     }

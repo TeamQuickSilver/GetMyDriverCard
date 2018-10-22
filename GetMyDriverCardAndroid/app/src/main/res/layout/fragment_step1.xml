@@ -21,14 +21,6 @@
         style="@style/MediumText"
         android:layout_below="@id/tv_title"/>
 
-    <!--<TextView-->
-        <!--android:id="@+id/tv_change_card"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerHorizontal="true"-->
-        <!--android:text="@string/change_card"-->
-        <!--android:layout_below="@id/cb_new_card"/>-->
-
     <CheckBox
         android:id="@+id/cb_change_card"
         android:layout_width="wrap_content"
@@ -77,5 +69,13 @@
         android:text="@string/withdrawn_card"
         style="@style/MediumText"
         android:layout_below="@id/cb_renew_card"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:layout_below="@+id/cb_withdrawn_card"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

@@ -27,14 +27,11 @@ public class LoginPresenter implements LoginContracts.Presenter {
     }
 
     @Override
-    public void login(boolean isLoginSucceeded) {
-        if(isLoginSucceeded) {
-            mView.navigateToStep1();
+    public void login(boolean isLoginSucceeded, User user) {
+        if (!isLoginSucceeded) {
+            return;
         }
-    }
 
-    @Override
-    public void login(User user) {
         Disposable disposable = Observable.create((ObservableOnSubscribe<User>) emitter -> {
             mUserService.login(user);
             emitter.onNext(user);
@@ -43,5 +40,21 @@ public class LoginPresenter implements LoginContracts.Presenter {
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe(v -> mView.navigateToStep1(), error -> mView.showError(error));
     }
+
+    @Override
+    public void registerGoogleOrFacebookUser(User user) {
+
+    }
+
+//    @Override
+//    public void login(User user) {
+//        Disposable disposable = Observable.create((ObservableOnSubscribe<User>) emitter -> {
+//            mUserService.login(user);
+//            emitter.onNext(user);
+//            emitter.onComplete();
+//        }).subscribeOn(mSchedulerProvider.background())
+//                .observeOn(mSchedulerProvider.ui())
+//                .subscribe(v -> mView.navigateToStep1(), error -> mView.showError(error));
+//    }
 }
 

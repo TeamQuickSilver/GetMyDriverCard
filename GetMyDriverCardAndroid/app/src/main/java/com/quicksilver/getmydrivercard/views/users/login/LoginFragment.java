@@ -118,8 +118,9 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
                     try {
                         if(object.has(EMAIL)) {
                             String facebookProfileEmail = object.getString(EMAIL);
+                            User facebookUser = new User(facebookProfileEmail);
 
-                            mPresenter.login(isFacebookLoginSucceeded);
+                            mPresenter.login(isFacebookLoginSucceeded, facebookUser);
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -178,7 +179,7 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
                 String username = mEmailEditText.getText().toString();
                 String password = mPasswordEditText.getText().toString();
                 User user = new User(username, password);
-                mPresenter.login(user);
+                mPresenter.login(true, user);
                 break;
             case R.id.google_sign_in_button:
                 Intent googleSignInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -210,6 +211,8 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
         boolean isGoogleLoginSucceeded = googleSignInResult.isSuccess();
         String googleProfileEmail = googleSignInResult.getSignInAccount().getEmail();
 
-        mPresenter.login(isGoogleLoginSucceeded);
+        User googleUser = new User(googleProfileEmail);
+
+        mPresenter.registerGoogleOrFacebookUser(googleUser);
     }
 }
