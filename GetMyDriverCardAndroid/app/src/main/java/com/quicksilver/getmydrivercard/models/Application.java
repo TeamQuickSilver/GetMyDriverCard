@@ -4,6 +4,7 @@ public class Application {
 
     private Person person;
     private ApplicationImages applicationImages;
+    private ApplicationStatus applicationStatus;
 
     public Application() {
 
@@ -28,5 +29,13 @@ public class Application {
 
     public void setApplicationImages(ApplicationImages applicationImages) {
         this.applicationImages = applicationImages;
+    }
+
+    public ApplicationStatus getApplicationStatus() {
+        return applicationStatus;
+    }
+
+    public void setApplicationStatus(ApplicationStatus applicationStatus) {
+        this.applicationStatus = applicationStatus;
     }
 }
