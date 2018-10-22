@@ -17,7 +17,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
+import com.facebook.GraphRequest;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -28,6 +28,8 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.User;
+
+import org.json.JSONException;
 
 import java.util.Objects;
 
@@ -42,6 +44,9 @@ import butterknife.OnClick;
  */
 public class LoginFragment extends Fragment implements LoginContracts.View, GoogleApiClient.OnConnectionFailedListener {
     private static final int REQ_CODE = 7444;
+    private static final String PUBLIC_PROFILE_EMAIL = "public_profile email";
+    private static final String EMAIL = "email";
+    private static final String FIELDS = "fields";
     private LoginContracts.Presenter mPresenter;
     private LoginContracts.Navigator mNavigator;
 
@@ -57,8 +62,8 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
     @BindView(R.id.tv_go_to_register_form)
     TextView mGoToRegisterTextView;
 
-    @BindView(R.id.et_username)
-    EditText mUsernameEditText;
+    @BindView(R.id.et_email)
+    EditText mEmailEditText;
 
     @BindView(R.id.et_password)
     EditText mPasswordEditText;
@@ -92,9 +97,7 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
                 .build();
 
         mFacebookLoginButton.setFragment(this);
-        String email = "email";
-        mFacebookLoginButton.setReadPermissions(email);
-
+        mFacebookLoginButton.setReadPermissions(PUBLIC_PROFILE_EMAIL);
         mCallBackManager = CallbackManager.Factory.create();
 
         configFacebookLogin();
@@ -103,14 +106,30 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
     }
 
     private void configFacebookLogin() {
-        LoginManager.getInstance().registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
+        mFacebookLoginButton.registerCallback(mCallBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
+                mFacebookLoginButton.setReadPermissions(PUBLIC_PROFILE_EMAIL);
                 mAccessToken = loginResult.getAccessToken();
 
                 boolean isFacebookLoginSucceeded = mAccessToken != null && !mAccessToken.isExpired();
 
-                mPresenter.login(isFacebookLoginSucceeded);
+                GraphRequest request = GraphRequest.newMeRequest(mAccessToken, (object, response) -> {
+                    try {
+                        if(object.has(EMAIL)) {
+                            String facebookProfileEmail = object.getString(EMAIL);
+
+                            mPresenter.login(isFacebookLoginSucceeded);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+                Bundle params = new Bundle();
+                params.putString(FIELDS, EMAIL);
+                request.setParameters(params);
+                request.executeAsync();
             }
 
             @Override
@@ -156,7 +175,7 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
-                String username = mUsernameEditText.getText().toString();
+                String username = mEmailEditText.getText().toString();
                 String password = mPasswordEditText.getText().toString();
                 User user = new User(username, password);
                 mPresenter.login(user);
@@ -189,6 +208,7 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
 
     private void handleResult(GoogleSignInResult googleSignInResult) {
         boolean isGoogleLoginSucceeded = googleSignInResult.isSuccess();
+        String googleProfileEmail = googleSignInResult.getSignInAccount().getEmail();
 
         mPresenter.login(isGoogleLoginSucceeded);
     }

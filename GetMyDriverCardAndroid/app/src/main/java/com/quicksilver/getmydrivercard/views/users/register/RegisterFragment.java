@@ -34,8 +34,8 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
     @BindView(R.id.btn_register)
     Button mRegisterButton;
 
-    @BindView(R.id.et_username)
-    EditText mEditTextUsername;
+    @BindView(R.id.et_email)
+    EditText mEmailEdiText;
 
     @BindView(R.id.et_password)
     EditText mEditTextPassword;
@@ -93,7 +93,7 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
                 mNavigator.navigateToLogin();
                 break;
             case R.id.btn_register:
-                String username = mEditTextUsername.getText().toString();
+                String username = mEmailEdiText.getText().toString();
                 String password = mEditTextPassword.getText().toString();
                 User user = new User(username, password);
                 mPresenter.register(user);

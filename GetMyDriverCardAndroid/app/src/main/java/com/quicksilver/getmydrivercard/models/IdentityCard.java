@@ -8,12 +8,9 @@ public class IdentityCard {
     private Long personalNumber;
     private Date issuedOn;
     private String issuedBy;
-    private String firstNameCyrillic;
-    private String fathersNameCyrillic;
-    private String lastNameCyrillic;
-    private String firstNameLatin;
-    private String fathersNameLatin;
-    private String lastNameLatin;
+    private String firstName;
+    private String fathersName;
+    private String lastName;
     private Date dateOfBirth;
     private Address address;
 
@@ -21,17 +18,14 @@ public class IdentityCard {
 
     }
 
-    public IdentityCard(Long identityCardNumber, Long personalNumber, Date issuedOn, String issuedBy, String firstNameCyrillic, String fathersNameCyrillic, String lastNameCyrillic, String firstNameLatin, String fathersNameLatin, String lastNameLatin, Date dateOfBirth, Address address) {
+    public IdentityCard(Long identityCardNumber, Long personalNumber, Date issuedOn, String issuedBy, String firstName, String fathersName, String lastName, Date dateOfBirth, Address address) {
         this.identityCardNumber = identityCardNumber;
         this.personalNumber = personalNumber;
         this.issuedOn = issuedOn;
         this.issuedBy = issuedBy;
-        this.firstNameCyrillic = firstNameCyrillic;
-        this.fathersNameCyrillic = fathersNameCyrillic;
-        this.lastNameCyrillic = lastNameCyrillic;
-        this.firstNameLatin = firstNameLatin;
-        this.fathersNameLatin = fathersNameLatin;
-        this.lastNameLatin = lastNameLatin;
+        this.firstName = firstName;
+        this.fathersName = fathersName;
+        this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
     }
@@ -68,52 +62,28 @@ public class IdentityCard {
         this.issuedBy = issuedBy;
     }
 
-    public String getFirstNameCyrillic() {
-        return firstNameCyrillic;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstNameCyrillic(String firstNameCyrillic) {
-        this.firstNameCyrillic = firstNameCyrillic;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getFathersNameCyrillic() {
-        return fathersNameCyrillic;
+    public String getFathersName() {
+        return fathersName;
     }
 
-    public void setFathersNameCyrillic(String fathersNameCyrillic) {
-        this.fathersNameCyrillic = fathersNameCyrillic;
+    public void setFathersName(String fathersName) {
+        this.fathersName = fathersName;
     }
 
-    public String getLastNameCyrillic() {
-        return lastNameCyrillic;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastNameCyrillic(String lastNameCyrillic) {
-        this.lastNameCyrillic = lastNameCyrillic;
-    }
-
-    public String getFirstNameLatin() {
-        return firstNameLatin;
-    }
-
-    public void setFirstNameLatin(String firstNameLatin) {
-        this.firstNameLatin = firstNameLatin;
-    }
-
-    public String getFathersNameLatin() {
-        return fathersNameLatin;
-    }
-
-    public void setFathersNameLatin(String fathersNameLatin) {
-        this.fathersNameLatin = fathersNameLatin;
-    }
-
-    public String getLastNameLatin() {
-        return lastNameLatin;
-    }
-
-    public void setLastNameLatin(String lastNameLatin) {
-        this.lastNameLatin = lastNameLatin;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Date getDateOfBirth() {

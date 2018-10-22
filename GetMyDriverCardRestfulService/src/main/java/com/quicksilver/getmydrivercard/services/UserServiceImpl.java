@@ -26,14 +26,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean login(User user) {
-        UserDetails userDetails = loadUserByUsername(user.getUsername());
+        UserDetails userDetails = loadUserByUsername(user.getEmail());
 
         return userDetails != null && passwordEncoder.matches(user.getPassword(), userDetails.getPassword());
     }
 
     @Override
     public User register(User user) {
-        if(loadUserByUsername(user.getUsername()) != null) {
+        if(loadUserByEmail(user.getEmail()) != null) {
             return null;
         }
 
@@ -42,16 +42,20 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findFirstByUsername(username);
+    public UserDetails loadUserByEmail(String username) throws UsernameNotFoundException {
+        User user = userRepository.findFirstByEmail(username);
 
         UserDetails userDetails = new org.springframework.security.core.userdetails.User(
-                user.getUsername(),
+                user.getEmail(),
                 user.getPassword(),
                 new HashSet<>()
         );
 
         return userDetails;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
