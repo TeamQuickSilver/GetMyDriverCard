@@ -16,6 +16,10 @@ public class Application {
     @JoinColumn(name = "person_id")
     private Person person;
 
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "application_images_id")
     private ApplicationImages applicationImages;

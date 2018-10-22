@@ -3,6 +3,7 @@ package com.quicksilver.getmydrivercard.entities;
 import com.quicksilver.getmydrivercard.utils.UserRole;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,6 +22,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private UserRole role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Application> applications;
 
     public Long getUserId() {
         return userId;
