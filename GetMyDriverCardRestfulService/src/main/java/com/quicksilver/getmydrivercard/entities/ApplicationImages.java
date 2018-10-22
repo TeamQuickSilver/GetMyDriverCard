@@ -24,4 +24,7 @@ public class ApplicationImages {
 
     @Column(name = "euro_card_image")
     private byte[] euroCardImage;
+
+    @Column(name = "signature_image")
+    private byte[] signatureImage;
 }
