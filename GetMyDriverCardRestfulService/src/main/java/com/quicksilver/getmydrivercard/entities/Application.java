@@ -44,6 +44,14 @@ public class Application {
         this.person = person;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public ApplicationImages getApplicationImages() {
         return applicationImages;
     }
