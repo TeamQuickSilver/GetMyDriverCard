@@ -8,4 +8,6 @@ public interface UserService {
     boolean login(User user) throws IOException;
 
     User register(User user) throws IOException;
+
+    User getByEmail(String email) throws IOException;
 }

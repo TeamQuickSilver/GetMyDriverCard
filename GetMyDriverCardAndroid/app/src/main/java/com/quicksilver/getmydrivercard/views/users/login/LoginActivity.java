@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
 import com.quicksilver.getmydrivercard.views.users.register.RegisterActivity;
 
@@ -45,7 +46,13 @@ public class LoginActivity extends DaggerAppCompatActivity implements LoginContr
 
     @Override
     public void navigateToRegister() {
-        Intent goToRegisterIntent = new Intent(this, RegisterActivity.class);
-        startActivity(goToRegisterIntent);
+        Intent intentToRegister = new Intent(this, RegisterActivity.class);
+        startActivity(intentToRegister);
+    }
+
+    @Override
+    public void navigateToRequests() {
+        Intent intentToRequest = new Intent(this, RequestsActivity.class);
+        startActivity(intentToRequest);
     }
 }

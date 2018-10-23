@@ -11,6 +11,8 @@ public interface LoginContracts {
         void navigateToStep1();
 
         void showError(Throwable error);
+
+        void navigateToRequests();
     }
 
     interface Presenter {
@@ -28,5 +30,7 @@ public interface LoginContracts {
         void navigateToStep1();
 
         void navigateToRegister();
+
+        void navigateToRequests();
     }
 }

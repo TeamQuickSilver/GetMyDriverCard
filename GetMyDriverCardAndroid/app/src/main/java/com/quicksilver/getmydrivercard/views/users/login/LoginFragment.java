@@ -172,6 +172,11 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void navigateToRequests() {
+        mNavigator.navigateToRequests();
+    }
+
     @OnClick({R.id.btn_login, R.id.google_sign_in_button, R.id.tv_go_to_register_form})
     public void onClick(View view) {
         switch (view.getId()) {

@@ -11,12 +11,14 @@ public class HttpUsersRepository implements UserRepository {
     private final JsonParser<User> mJsonParser;
     private final String mLoginUrl;
     private final String mRegisterUrl;
+    private final String mBaseUserUrl;
 
     public HttpUsersRepository(HttpRequester httpRequester, JsonParser<User> jsonParser, String serverUrl) {
         mHttpRequester = httpRequester;
         mJsonParser = jsonParser;
-        mLoginUrl = serverUrl + "/users/login";
-        mRegisterUrl = serverUrl + "/users/register";
+        mBaseUserUrl = serverUrl + "/users";
+        mLoginUrl = mBaseUserUrl + "/login";
+        mRegisterUrl = mBaseUserUrl + "/register";
     }
 
     @Override
@@ -31,6 +33,15 @@ public class HttpUsersRepository implements UserRepository {
     public User register(User user) throws IOException {
         String requestBody = mJsonParser.toJson(user);
         String responseBody = mHttpRequester.post(mRegisterUrl, requestBody);
+
+        return mJsonParser.fromJson(responseBody);
+    }
+
+    @Override
+    public User getByEmail(String email) throws IOException {
+        String url = mBaseUserUrl + "/" + email;
+
+        String responseBody = mHttpRequester.get(url);
 
         return mJsonParser.fromJson(responseBody);
     }

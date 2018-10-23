@@ -4,6 +4,7 @@ public class User {
 
     private String email;
     private String password;
+    private UserRole role;
 
     public User() {
 
@@ -32,5 +33,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public UserRole getRole() {
+        return role;
     }
 }

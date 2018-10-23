@@ -1,7 +1,7 @@
 package com.quicksilver.getmydrivercard.models;
 
 public class Application {
-
+    private Long applicationId;
     private Person person;
     private ApplicationImages applicationImages;
     private ApplicationStatus applicationStatus;
@@ -37,5 +37,13 @@ public class Application {
 
     public void setApplicationStatus(ApplicationStatus applicationStatus) {
         this.applicationStatus = applicationStatus;
+    }
+
+    public Long getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(Long applicationId) {
+        this.applicationId = applicationId;
     }
 }

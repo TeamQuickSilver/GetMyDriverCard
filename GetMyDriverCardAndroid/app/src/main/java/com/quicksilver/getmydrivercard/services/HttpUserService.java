@@ -22,4 +22,9 @@ public class HttpUserService implements UserService {
     public User register(User user) throws IOException {
         return mUserRepository.register(user);
     }
+
+    @Override
+    public User getByEmail(String email) throws IOException {
+        return mUserRepository.getByEmail(email);
+    }
 }

@@ -27,16 +27,33 @@ public class Step2Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View newCardView = inflater.inflate(R.layout.fragment_new_card, container, false);
-        View otherReasonsView = inflater.inflate(R.layout.fragmen_other_reasons, container, false);
+        View view = inflater.inflate(R.layout.fragment_step2, container, false);
 
         Intent step1Intent = getActivity().getIntent();
         mReason = step1Intent.getStringExtra(INTENT_REASON);
 
-        if(mReason.equals(NEW_CARD)) {
-            return newCardView;
-        } else {
-            return otherReasonsView;
+        createViewElements();
+
+        return view;
+    }
+
+    private void createViewElements() {
+        switch (mReason) {
+            case "NEW_CARD":
+                createNewCardView();
+                break;
+            case "CHANGE_CARD":
+                break;
+            case "EXCHANGE_CARD":
+                break;
+            case "RENEW_CARD":
+                break;
+            case "WITHDRAWN_CARD":
+                break;
         }
+    }
+
+    private void createNewCardView() {
+
     }
 }
