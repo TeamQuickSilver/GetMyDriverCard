@@ -12,6 +12,12 @@ public interface ApplicationService {
 
     List<Application> getAllByStatus(ApplicationStatus status);
 
+    List<Application> getAllOrderById();
+
+    List<Application> getAllOrderByDateOfSubmission();
+
+    List<Application> getAllOrderByPersonName();
+
     Application getById(Long id);
 
 }

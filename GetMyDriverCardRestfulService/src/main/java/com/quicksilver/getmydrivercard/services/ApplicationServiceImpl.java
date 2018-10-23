@@ -30,6 +30,21 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
+    public List<Application> getAllOrderById() {
+        return applicationRepository.findAllByOrderByApplicationId();
+    }
+
+    @Override
+    public List<Application> getAllOrderByDateOfSubmission() {
+        return applicationRepository.findAllByOrderByDateOfSubmission();
+    }
+
+    @Override
+    public List<Application> getAllOrderByPersonName() {
+        return applicationRepository.findAllByPersonIdentityCard_firstNameAndPersonIdentityCard_fathersNameAndPersonIdentityCard_lastName();
+    }
+
+    @Override
     public Application getById(Long id) {
         return applicationRepository.getByApplicationId(id);
     }

@@ -3,6 +3,7 @@ package com.quicksilver.getmydrivercard.entities;
 import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "applications")
@@ -27,6 +28,21 @@ public class Application {
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ApplicationStatus status;
+
+    @Column(name = "date_of_submission")
+    private Date dateOfSubmission;
+
+    public Application() {
+
+    }
+
+    public Application(Person person, User user, ApplicationImages applicationImages, Date dateOfSubmission) {
+        this.person = person;
+        this.user = user;
+        this.applicationImages = applicationImages;
+        this.dateOfSubmission = dateOfSubmission;
+        this.status = ApplicationStatus.NEW;
+    }
 
     public Long getApplicationId() {
         return applicationId;
@@ -66,5 +82,13 @@ public class Application {
 
     public void setStatus(ApplicationStatus status) {
         this.status = status;
+    }
+
+    public Date getDateOfSubmission() {
+        return dateOfSubmission;
+    }
+
+    public void setDateOfSubmission(Date dateOfSubmission) {
+        this.dateOfSubmission = dateOfSubmission;
     }
 }

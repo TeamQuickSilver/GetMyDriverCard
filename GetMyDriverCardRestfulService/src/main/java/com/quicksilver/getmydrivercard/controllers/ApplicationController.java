@@ -19,14 +19,29 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @GetMapping
-    public List<Application> getAllByUsernameOrderById(@RequestBody User user) {
+    @GetMapping("/user")
+    public List<Application> getAllByUserOrderById(@RequestBody User user) {
         return applicationService.getAllByUserOrderById(user);
     }
 
     @GetMapping("/status")
     public List<Application> getAllByStatus(@RequestBody ApplicationStatus status) {
         return applicationService.getAllByStatus(status);
+    }
+
+    @GetMapping("/id")
+    public List<Application> getAllOrderById() {
+        return applicationService.getAllOrderById();
+    }
+
+    @GetMapping("/name")
+    public List<Application> getAllOrderByPersonName() {
+        return applicationService.getAllOrderByPersonName();
+    }
+
+    @GetMapping("/date")
+    public List<Application> getAllOrderByDateOfSubmission() {
+        return applicationService.getAllOrderByDateOfSubmission();
     }
 
     @GetMapping("/{id}")

@@ -13,6 +13,12 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
     List<Application> findAllByUserOrderByApplicationId(User user);
 
+    List<Application> findAllByOrderByApplicationId();
+
+    List<Application> findAllByOrderByDateOfSubmission();
+
+    List<Application> findAllByPersonIdentityCard_firstNameAndPersonIdentityCard_fathersNameAndPersonIdentityCard_lastName();
+
     List<Application> findAllByStatus(ApplicationStatus status);
 
     Application getByApplicationId(Long id);
