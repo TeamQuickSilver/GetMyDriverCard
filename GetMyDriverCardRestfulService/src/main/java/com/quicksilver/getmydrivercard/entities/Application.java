@@ -25,7 +25,7 @@ public class Application {
     private ApplicationImages applicationImages;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "role")
+    @Column(name = "status")
     private ApplicationStatus status;
 
     public Long getApplicationId() {
