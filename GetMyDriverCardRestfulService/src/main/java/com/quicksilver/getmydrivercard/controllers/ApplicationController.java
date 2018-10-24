@@ -19,14 +19,14 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @GetMapping("/user")
-    public List<Application> getAllByUserOrderById(@RequestBody User user) {
-        return applicationService.getAllByUserOrderById(user);
+    @GetMapping("/user/{email}")
+    public List<Application> getAllByUserOrderById(@PathVariable String email) {
+        return applicationService.getAllByUserEmailOrderById(email);
     }
 
-    @GetMapping("/status")
-    public List<Application> getAllByStatus(@RequestBody ApplicationStatus status) {
-        return applicationService.getAllByStatus(status);
+    @GetMapping("/request/{status}")
+    public List<Application> getAllByStatus(@PathVariable String status) {
+        return applicationService.getAllByStatus(Enum.valueOf(ApplicationStatus.class, status));
     }
 
     @GetMapping("/id")
@@ -49,4 +49,8 @@ public class ApplicationController {
         return applicationService.getById(id);
     }
 
+    @PostMapping
+    public Application save(@RequestBody Application application) {
+        return applicationService.save(application);
+    }
 }

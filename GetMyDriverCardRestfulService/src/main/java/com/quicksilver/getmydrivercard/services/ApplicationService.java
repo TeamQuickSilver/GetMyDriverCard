@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ApplicationService {
 
-    List<Application> getAllByUserOrderById(User user);
+    List<Application> getAllByUserEmailOrderById(String email);
 
     List<Application> getAllByStatus(ApplicationStatus status);
 
@@ -20,4 +20,5 @@ public interface ApplicationService {
 
     Application getById(Long id);
 
+    Application save(Application application);
 }

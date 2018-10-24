@@ -26,6 +26,19 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Application> applications;
 
+    public User() {
+
+    }
+
+    public User(String email) {
+        this.email = email;
+    }
+
+    public User(String email, String password, UserRole role) {
+        this.email = email;
+        this.password = password;
+    }
+
     public Long getUserId() {
         return userId;
     }

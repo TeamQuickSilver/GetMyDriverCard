@@ -1,18 +1,22 @@
 package com.quicksilver.getmydrivercard.models;
 
+import java.util.Date;
+
 public class Application {
     private Long applicationId;
     private Person person;
     private ApplicationImages applicationImages;
     private ApplicationStatus applicationStatus;
+    private Date dateOfSubmission;
 
     public Application() {
 
     }
 
-    public Application(Person person, ApplicationImages applicationImages) {
+    public Application(Person person, ApplicationImages applicationImages, Date dateOfSubmission) {
         this.person = person;
         this.applicationImages = applicationImages;
+        this.dateOfSubmission = dateOfSubmission;
     }
 
     public Person getPerson() {
@@ -45,5 +49,13 @@ public class Application {
 
     public void setApplicationId(Long applicationId) {
         this.applicationId = applicationId;
+    }
+
+    public Date getDateOfSubmission() {
+        return dateOfSubmission;
+    }
+
+    public void setDateOfSubmission(Date dateOfSubmission) {
+        this.dateOfSubmission = dateOfSubmission;
     }
 }

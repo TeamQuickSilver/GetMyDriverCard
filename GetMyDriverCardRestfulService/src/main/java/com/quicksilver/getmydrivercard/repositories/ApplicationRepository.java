@@ -11,13 +11,13 @@ import java.util.List;
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
-    List<Application> findAllByUserOrderByApplicationId(User user);
+    List<Application> findAllByUserEmailOrderByApplicationId(String email);
 
     List<Application> findAllByOrderByApplicationId();
 
     List<Application> findAllByOrderByDateOfSubmission();
 
-    List<Application> findAllByPersonIdentityCard_firstNameAndPersonIdentityCard_fathersNameAndPersonIdentityCard_lastName();
+    List<Application> findAllByOrderByPersonIdentityCardFirstNameAscPersonIdentityCardFathersNameAscPersonIdentityCardLastNameAsc();
 
     List<Application> findAllByStatus(ApplicationStatus status);
 

@@ -9,5 +9,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findFirstByEmail(String email);
 
-    User save(User user);
 }

@@ -20,8 +20,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<Application> getAllByUserOrderById(User user) {
-        return applicationRepository.findAllByUserOrderByApplicationId(user);
+    public List<Application> getAllByUserEmailOrderById(String email) {
+        return applicationRepository.findAllByUserEmailOrderByApplicationId(email);
     }
 
     @Override
@@ -41,11 +41,16 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public List<Application> getAllOrderByPersonName() {
-        return applicationRepository.findAllByPersonIdentityCard_firstNameAndPersonIdentityCard_fathersNameAndPersonIdentityCard_lastName();
+        return applicationRepository.findAllByOrderByPersonIdentityCardFirstNameAscPersonIdentityCardFathersNameAscPersonIdentityCardLastNameAsc();
     }
 
     @Override
     public Application getById(Long id) {
         return applicationRepository.getByApplicationId(id);
+    }
+
+    @Override
+    public Application save(Application application) {
+        return applicationRepository.save(application);
     }
 }
