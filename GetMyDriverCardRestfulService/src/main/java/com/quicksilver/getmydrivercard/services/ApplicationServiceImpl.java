@@ -7,6 +7,7 @@ import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,13 +31,8 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<Application> getAllOrderById() {
-        return applicationRepository.findAllByOrderByApplicationId();
-    }
-
-    @Override
-    public List<Application> getAllOrderByDateOfSubmission() {
-        return applicationRepository.findAllByOrderByDateOfSubmission();
+    public List<Application> getAllOrderByDateOfSubmission(Date date) {
+        return applicationRepository.findAllByDateOfSubmission(date);
     }
 
     @Override

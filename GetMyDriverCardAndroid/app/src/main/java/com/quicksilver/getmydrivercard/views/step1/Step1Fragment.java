@@ -1,6 +1,7 @@
 package com.quicksilver.getmydrivercard.views.step1;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.models.User;
 
 import javax.inject.Inject;
 
@@ -21,12 +24,6 @@ import butterknife.OnClick;
  * A simple {@link Fragment} subclass.
  */
 public class Step1Fragment extends Fragment implements Step1Contracts.View {
-    private static final String NEW_CARD = "NEW_CARD";
-    private static final String CHANGE_CARD = "CHANGE_CARD";
-    private static final String EXCHANGE_CARD = "EXCHANGE_CARD";
-    private static final String RENEW_CARD = "RENEW_CARD";
-    private static final String WITHDRAWN_CARD = "WITHDRAWN_CARD";
-    private static final String MESSAGE = "Please choose a reason";
     private Step1Contracts.Presenter mPresenter;
     private Step1Contracts.Navigator mNavigator;
 
@@ -45,6 +42,7 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
     @BindView(R.id.cb_withdrawn_card)
     CheckBox mWithdrawnCard;
     private String mReason;
+    private User mUser;
 
     @Inject
     public Step1Fragment() {
@@ -59,6 +57,9 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
         View view = inflater.inflate(R.layout.fragment_step1, container, false);
 
         ButterKnife.bind(this, view);
+
+        Intent loginIntent = getActivity().getIntent();
+        mUser = (User)loginIntent.getSerializableExtra(Constants.USER_TEXT);
 
         return view;
     }
@@ -86,27 +87,27 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
         switch (view.getId()) {
             case R.id.cb_new_card:
                 mNewCard.setChecked(true);
-                mReason = NEW_CARD;
+                mReason = Constants.NEW_CARD;
                 break;
             case R.id.cb_change_card:
                 mChangeCard.setChecked(true);
-                mReason = CHANGE_CARD;
+                mReason = Constants.CHANGE_CARD;
                 break;
             case R.id.cb_exchange_card:
                 mExchangeCard.setChecked(true);
-                mReason = EXCHANGE_CARD;
+                mReason = Constants.EXCHANGE_CARD;
                 break;
             case R.id.cb_renew_card:
                 mRenewCard.setChecked(true);
-                mReason = RENEW_CARD;
+                mReason = Constants.RENEW_CARD;
                 break;
             case R.id.cb_withdrawn_card:
                 mWithdrawnCard.setChecked(true);
-                mReason = WITHDRAWN_CARD;
+                mReason = Constants.WITHDRAWN_CARD;
                 break;
             case R.id.btn_next:
                 if(mReason == null) {
-                    Toast.makeText(getContext(), MESSAGE, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), Constants.MESSAGE, Toast.LENGTH_SHORT).show();
                     return;
                 }
                 mNavigator.navigateToStep2(mReason);

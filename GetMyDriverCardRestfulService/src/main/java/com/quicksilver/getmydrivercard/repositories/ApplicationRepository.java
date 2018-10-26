@@ -6,6 +6,7 @@ import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -13,9 +14,7 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
     List<Application> findAllByUserEmailOrderByApplicationId(String email);
 
-    List<Application> findAllByOrderByApplicationId();
-
-    List<Application> findAllByOrderByDateOfSubmission();
+    List<Application> findAllByDateOfSubmission(Date date);
 
     List<Application> findAllByOrderByPersonIdentityCardFirstNameAscPersonIdentityCardFathersNameAscPersonIdentityCardLastNameAsc();
 

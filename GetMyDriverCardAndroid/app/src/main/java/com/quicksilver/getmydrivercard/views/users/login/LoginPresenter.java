@@ -8,7 +8,6 @@ import com.quicksilver.getmydrivercard.services.UserService;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.disposables.Disposable;
 
 public class LoginPresenter implements LoginContracts.Presenter {
@@ -28,43 +27,41 @@ public class LoginPresenter implements LoginContracts.Presenter {
     }
 
     @Override
-    public void login(boolean isLoginSucceeded, User user) {
-        if (!isLoginSucceeded) {
-            return;
-        }
-
-        Observable<User> observable = Observable.create((ObservableOnSubscribe<User>) emitter -> {
-//            mUserService.login(user);
+    public void login(User user) {
+        Observable<User> observable = Observable.create(emitter -> {
             User returnedUser = mUserService.getByEmail(user.getEmail());
             emitter.onNext(returnedUser);
             emitter.onComplete();
         });
 
+        loginNavigation(observable);
+    }
+
+    @Override
+    public void loginGoogleOrFacebookUser(User googleOrFacebookUser) {
+        Observable<User> observable = Observable.create(emitter -> {
+            User user = mUserService.getByEmail(googleOrFacebookUser.getEmail());
+            if (user == null) {
+                User userToRegister = new User(googleOrFacebookUser.getEmail());
+                user = mUserService.register(userToRegister);
+            }
+            emitter.onNext(user);
+            emitter.onComplete();
+        });
+
+        loginNavigation(observable);
+    }
+
+    private void loginNavigation(Observable<User> observable) {
         Disposable subscriptionUser = observable.filter(u -> u.getRole() == UserRole.USER)
-        .subscribeOn(mSchedulerProvider.background())
+                .subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe(v -> mView.navigateToStep1(), error -> mView.showError(error));
+                .subscribe(u -> mView.navigateToStep1(u), error -> mView.showError(error));
 
         Disposable subscriptionAdmin = observable.filter(u -> u.getRole() == UserRole.ADMIN)
                 .subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe(v -> mView.navigateToRequests(), error -> mView.showError(error));
+                .subscribe(u -> mView.navigateToRequests(u), error -> mView.showError(error));
     }
-
-    @Override
-    public void registerGoogleOrFacebookUser(User user) {
-
-    }
-
-//    @Override
-//    public void login(User user) {
-//        Disposable disposable = Observable.create((ObservableOnSubscribe<User>) emitter -> {
-//            mUserService.login(user);
-//            emitter.onNext(user);
-//            emitter.onComplete();
-//        }).subscribeOn(mSchedulerProvider.background())
-//                .observeOn(mSchedulerProvider.ui())
-//                .subscribe(v -> mView.navigateToStep1(), error -> mView.showError(error));
-//    }
 }
 

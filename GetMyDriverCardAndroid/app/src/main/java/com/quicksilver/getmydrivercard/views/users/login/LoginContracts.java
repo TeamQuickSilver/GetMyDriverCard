@@ -8,29 +8,27 @@ public interface LoginContracts {
 
         void setNavigator(Navigator navigator);
 
-        void navigateToStep1();
+        void navigateToStep1(User user);
 
         void showError(Throwable error);
 
-        void navigateToRequests();
+        void navigateToRequests(User user);
     }
 
     interface Presenter {
         void subscribe(View view);
 
-        void login(boolean isFacebookLoginSucceeded, User user);
+        void login(User user);
 
-//        void login(User user);
-
-        void registerGoogleOrFacebookUser(User user);
+        void loginGoogleOrFacebookUser(User googleOrFacebookUser);
     }
 
     interface Navigator {
 
-        void navigateToStep1();
+        void navigateToStep1(User user);
 
         void navigateToRegister();
 
-        void navigateToRequests();
+        void navigateToRequests(User user);
     }
 }

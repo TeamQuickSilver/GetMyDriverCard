@@ -7,6 +7,7 @@ import com.quicksilver.getmydrivercard.models.User;
 import com.quicksilver.getmydrivercard.parsers.JsonParser;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 public class HttpApplicationRepository implements ApplicationRepository {
@@ -48,21 +49,14 @@ public class HttpApplicationRepository implements ApplicationRepository {
     }
 
     @Override
-    public List<Application> getAllOrderById() throws IOException {
-        String responseBody = mHttpRequester.get(mIdUrl);
-
-        return mApplicationJsonParser.fromJsonArray(responseBody);
-    }
-
-    @Override
-    public List<Application> getAllOrderByDateOfSubmission() throws IOException {
+    public List<Application> getAllByDateOfSubmission(Date date) throws IOException {
         String responseBody = mHttpRequester.get(mDateUrl);
 
         return mApplicationJsonParser.fromJsonArray(responseBody);
     }
 
     @Override
-    public List<Application> getAllOrderByPersonName() throws IOException {
+    public List<Application> getAllByPersonName() throws IOException {
         String responseBody = mHttpRequester.get(mNameUrl);
 
         return mApplicationJsonParser.fromJsonArray(responseBody);
@@ -77,7 +71,7 @@ public class HttpApplicationRepository implements ApplicationRepository {
     }
 
     @Override
-    public Application save(Application application) throws IOException {
+    public Application create(Application application) throws IOException {
         String requestBody = mApplicationJsonParser.toJson(application);
         String responseBody = mHttpRequester.post(mBaseApplicationUrl, requestBody);
 

@@ -23,8 +23,8 @@ public class User {
     @Column(name = "role")
     private UserRole role;
 
-    @OneToMany(mappedBy = "user")
-    private List<Application> applications;
+//    @OneToMany(mappedBy = "user")
+//    private List<Application> applications;
 
     public User() {
 

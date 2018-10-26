@@ -7,6 +7,7 @@ import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -29,19 +30,14 @@ public class ApplicationController {
         return applicationService.getAllByStatus(Enum.valueOf(ApplicationStatus.class, status));
     }
 
-    @GetMapping("/id")
-    public List<Application> getAllOrderById() {
-        return applicationService.getAllOrderById();
-    }
-
     @GetMapping("/name")
     public List<Application> getAllOrderByPersonName() {
         return applicationService.getAllOrderByPersonName();
     }
 
-    @GetMapping("/date")
-    public List<Application> getAllOrderByDateOfSubmission() {
-        return applicationService.getAllOrderByDateOfSubmission();
+    @GetMapping("/filter/{date}")
+    public List<Application> getAllOrderByDateOfSubmission(@PathVariable Date date) {
+        return applicationService.getAllOrderByDateOfSubmission(date);
     }
 
     @GetMapping("/{id}")
