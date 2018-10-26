@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
 import com.quicksilver.getmydrivercard.views.users.login.LoginActivity;
 
@@ -11,7 +12,9 @@ import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class RegisterActivity extends DaggerAppCompatActivity implements RegisterContracts.Navigator{
+public class RegisterActivity extends BaseDrawerActivity implements RegisterContracts.Navigator {
+
+    public static final int IDENTIFIER = 4;
 
     @Inject
     RegisterContracts.Presenter mRegisterPresenter;
@@ -43,5 +46,10 @@ public class RegisterActivity extends DaggerAppCompatActivity implements Registe
     public void navigateToLogin() {
         Intent goToLoginIntent = new Intent(this, LoginActivity.class);
         startActivity(goToLoginIntent);
+    }
+
+    @Override
+    protected int getIdentifier() {
+        return IDENTIFIER;
     }
 }

@@ -4,15 +4,20 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
 import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
 import com.quicksilver.getmydrivercard.views.users.register.RegisterActivity;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class LoginActivity extends DaggerAppCompatActivity implements LoginContracts.Navigator {
+public class LoginActivity extends BaseDrawerActivity implements LoginContracts.Navigator {
+
+    public static final int IDENTIFIER = 3;
+
     @Inject
     LoginContracts.Presenter mPresenter;
 
@@ -23,11 +28,20 @@ public class LoginActivity extends DaggerAppCompatActivity implements LoginContr
 
     }
 
+    @Override
+    protected int getIdentifier() {
+        return IDENTIFIER;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ButterKnife.bind(this);
+
+        setSupportActionBar(getDrawerToolbar());
 
         mView.setPresenter(mPresenter);
         mView.setNavigator(this);

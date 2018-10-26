@@ -4,13 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
 import com.quicksilver.getmydrivercard.views.step2.Step2Activity;
 
 import javax.inject.Inject;
 
 import dagger.android.support.DaggerAppCompatActivity;
 
-public class Step1Activity extends DaggerAppCompatActivity implements Step1Contracts.Navigator {
+public class Step1Activity extends BaseDrawerActivity implements Step1Contracts.Navigator {
+
+    public static final int IDENTIFIER = 2;
     private static final String REASON = "REASON";
 
     @Inject
@@ -25,9 +28,16 @@ public class Step1Activity extends DaggerAppCompatActivity implements Step1Contr
     }
 
     @Override
+    protected int getIdentifier() {
+        return IDENTIFIER;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step1);
+
+        setSupportActionBar(getDrawerToolbar());
 
         mView.setPresenter(mPresenter);
         mView.setNavigator(this);
