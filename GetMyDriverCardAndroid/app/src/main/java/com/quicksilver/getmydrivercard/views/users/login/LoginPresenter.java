@@ -53,12 +53,12 @@ public class LoginPresenter implements LoginContracts.Presenter {
     }
 
     private void loginNavigation(Observable<User> observable) {
-        Disposable subscriptionUser = observable.filter(u -> u.getRole() == UserRole.USER)
+        Disposable subscriptionUser = observable.filter(u -> u.getRole().equals(UserRole.USER))
                 .subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe(u -> mView.navigateToStep1(u), error -> mView.showError(error));
 
-        Disposable subscriptionAdmin = observable.filter(u -> u.getRole() == UserRole.ADMIN)
+        Disposable subscriptionAdmin = observable.filter(u -> u.getRole().equals(UserRole.ADMIN))
                 .subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe(u -> mView.navigateToRequests(u), error -> mView.showError(error));

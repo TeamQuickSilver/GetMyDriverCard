@@ -1,14 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".views.step2.NewCardFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tv_identity_number"
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:text="@string/identity_number" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/et_identity_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/identity_number"
+        android:layout_toEndOf="@id/tv_identity_number"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tv_first_name"
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name"
+        android:layout_below="@id/tv_identity_number"/>
+
+    <EditText
+        android:id="@+id/et_first_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/first_name"
+        android:layout_below="@id/et_identity_number"
+        android:layout_toEndOf="@id/tv_first_name"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tv_fathers_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_first_name"
+        android:text="@string/fathers_name" />
+
+    <EditText
+        android:id="@+id/et_fathers_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/fathers_name"
+        android:layout_below="@id/tv_first_name"
+        android:layout_toEndOf="@id/tv_fathers_name"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tv_last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_fathers_name"
+        android:text="@string/last_name" />
+
+    <EditText
+        android:id="@+id/et_last_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/last_name"
+        android:layout_below="@id/tv_fathers_name"
+        android:layout_toEndOf="@id/tv_last_name"
+        android:inputType="text" />
+
+    <!--<TextView-->
+        <!--android:id="@+id/date_of_birth"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="@string/date_of_birth"-->
+        <!--android:layout_below="@id/tv_last_name" />-->
+
+    <!--<DatePicker-->
+        <!--android:id="@+id/date_picker"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/tv_last_name"-->
+        <!--android:layout_toEndOf="@id/date_of_birth"/>-->
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_last_name"
+        android:text="@string/address" />
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/address"
+        android:layout_below="@id/tv_last_name"
+        android:layout_toEndOf="@id/tv_address"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tv_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_address"
+        android:text="@string/phone_number" />
+
+    <EditText
+        android:id="@+id/et_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/phone_number"
+        android:layout_below="@id/tv_address"
+        android:layout_toEndOf="@id/tv_phone_number"
+        android:inputType="phone" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_phone_number"
+        android:text="@string/email" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/email"
+        android:layout_below="@id/tv_phone_number"
+        android:layout_toEndOf="@id/tv_email"
+        android:inputType="textEmailAddress" />
+
+</RelativeLayout>
