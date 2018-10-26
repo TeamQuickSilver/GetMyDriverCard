@@ -17,7 +17,14 @@
         android:layout_above="@+id/buttons_container"
         android:id="@+id/signature_pad_container">
 
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/drawer_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:background="@color/primary"/>
+
         <FrameLayout
+            android:layout_below="@+id/drawer_toolbar"
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="@android:color/darker_gray"

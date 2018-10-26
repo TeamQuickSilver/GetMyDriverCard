@@ -1,6 +1,5 @@
 package com.quicksilver.getmydrivercard.diconfig;
 
-import com.quicksilver.getmydrivercard.views.users.login.LoginFragment;
 import com.quicksilver.getmydrivercard.views.users.register.RegisterContracts;
 import com.quicksilver.getmydrivercard.views.users.register.RegisterFragment;
 import com.quicksilver.getmydrivercard.views.users.register.RegisterPresenter;
