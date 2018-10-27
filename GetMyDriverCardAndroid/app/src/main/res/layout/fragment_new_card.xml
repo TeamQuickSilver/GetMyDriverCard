@@ -3,21 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingHorizontal="10dp"
     tools:context=".views.step2.NewCardFragment">
 
     <TextView
         android:id="@+id/tv_identity_number"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:layout_alignParentTop="true"
         android:text="@string/identity_number" />
 
     <EditText
         android:id="@+id/et_identity_number"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="123dp"
         android:layout_toEndOf="@id/tv_identity_number"
         android:hint="@string/identity_number"
         android:inputType="number" />
@@ -26,15 +27,15 @@
         android:id="@+id/tv_first_name"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:text="@string/first_name"
         android:layout_below="@id/tv_identity_number"/>
 
     <EditText
         android:id="@+id/et_first_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/et_identity_number"
-        android:layout_marginStart="195dp"
         android:layout_toEndOf="@id/tv_first_name"
         android:hint="@string/first_name"
         android:inputType="text" />
@@ -43,15 +44,15 @@
         android:id="@+id/tv_fathers_name"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_first_name"
         android:text="@string/fathers_name" />
 
     <EditText
         android:id="@+id/et_fathers_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_first_name"
-        android:layout_marginStart="146dp"
         android:layout_toEndOf="@id/tv_fathers_name"
         android:hint="@string/fathers_name"
         android:inputType="text" />
@@ -60,15 +61,15 @@
         android:id="@+id/tv_last_name"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_fathers_name"
         android:text="@string/last_name" />
 
     <EditText
         android:id="@+id/et_last_name"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_fathers_name"
-        android:layout_marginStart="196dp"
         android:layout_toEndOf="@id/tv_last_name"
         android:hint="@string/last_name"
         android:inputType="text" />
@@ -91,15 +92,15 @@
         android:id="@+id/tv_address"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_last_name"
         android:text="@string/address" />
 
     <EditText
         android:id="@+id/et_address"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_last_name"
-        android:layout_marginStart="230dp"
         android:layout_toEndOf="@id/tv_address"
         android:hint="@string/address"
         android:inputType="text" />
@@ -108,15 +109,15 @@
         android:id="@+id/tv_phone_number"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_address"
         android:text="@string/phone_number" />
 
     <EditText
         android:id="@+id/et_phone_number"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_address"
-        android:layout_marginStart="137dp"
         android:layout_toEndOf="@id/tv_phone_number"
         android:hint="@string/phone_number"
         android:inputType="phone" />
@@ -125,15 +126,15 @@
         android:id="@+id/tv_email"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_phone_number"
         android:text="@string/email" />
 
     <EditText
         android:id="@+id/et_email"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_phone_number"
-        android:layout_marginStart="267dp"
         android:layout_toEndOf="@id/tv_email"
         android:hint="@string/email"
         android:inputType="textEmailAddress" />
