@@ -1,8 +1,9 @@
 package com.quicksilver.getmydrivercard.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Application {
+public class Application implements Serializable{
     private Long applicationId;
     private Person person;
     private ApplicationImages applicationImages;

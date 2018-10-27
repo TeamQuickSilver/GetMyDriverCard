@@ -41,7 +41,7 @@ public class ApplicationController {
     }
 
     @GetMapping("/{id}")
-    public Application getById(@PathVariable Long id) {
+    public List<Application> getById(@PathVariable Long id) {
         return applicationService.getById(id);
     }
 

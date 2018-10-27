@@ -3,19 +3,20 @@ package com.quicksilver.getmydrivercard.services;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.ApplicationStatus;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
 public interface ApplicationService {
-    List<Application> getAllByUserEmailOrderById(String email);
+    List<Application> getAllByUserEmailOrderById(String email) throws IOException;
 
-    List<Application> getAllByStatus(ApplicationStatus status);
+    List<Application> getAllByStatus(ApplicationStatus status) throws IOException;
 
-    List<Application> getAllOrderByDateOfSubmission(Date date);
+    List<Application> getAllByDateOfSubmission(Date date) throws IOException;
 
-    List<Application> getAllOrderByPersonName();
+    List<Application> getAllByPersonName(String name) throws IOException;
 
-    Application getById(Long id);
+    List<Application> getById(Long id) throws IOException;
 
-    Application create(Application application);
+    Application create(Application application) throws IOException;
 }

@@ -20,14 +20,14 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:text="@string/date_of_submission"
+        android:text="@string/application_status"
         android:textColor="@color/colorAccent"
         android:layout_toEndOf="@+id/tv_date_of_submission" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_applications"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/tv_date_of_submission"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_date_of_submission" />
 
 </RelativeLayout>

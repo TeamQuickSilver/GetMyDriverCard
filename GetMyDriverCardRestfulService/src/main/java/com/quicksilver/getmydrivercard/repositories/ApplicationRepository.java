@@ -20,6 +20,6 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
     List<Application> findAllByStatus(ApplicationStatus status);
 
-    Application getByApplicationId(Long id);
+    List<Application> getByPersonIdentityCardPersonalNumber(Long id);
 
 }

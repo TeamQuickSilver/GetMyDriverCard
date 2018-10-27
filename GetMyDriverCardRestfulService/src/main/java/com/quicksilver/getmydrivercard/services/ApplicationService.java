@@ -17,7 +17,7 @@ public interface ApplicationService {
 
     List<Application> getAllOrderByPersonName();
 
-    Application getById(Long id);
+    List<Application> getById(Long id);
 
     Application save(Application application);
 }

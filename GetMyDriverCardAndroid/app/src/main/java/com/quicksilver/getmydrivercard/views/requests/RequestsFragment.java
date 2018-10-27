@@ -8,9 +8,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.ApplicationStatus;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -30,6 +34,7 @@ public class RequestsFragment extends Fragment implements RequestsContracts.View
     private RequestsContracts.Presenter mPresenter;
     private RequestsContracts.Navigator mNavigator;
 
+    @Inject
     public RequestsFragment() {
         // Required empty public constructor
     }
@@ -55,12 +60,12 @@ public class RequestsFragment extends Fragment implements RequestsContracts.View
     public void onResume() {
         super.onResume();
         mPresenter.subscribe(this);
-        mPresenter.loadNewApplications();
+        mPresenter.loadApplicationsByStatus(ApplicationStatus.NEW);
     }
 
     @Override
     public void onClick(Application application) {
-
+        mNavigator.navigateToDetails(application);
     }
 
     @Override
@@ -71,5 +76,17 @@ public class RequestsFragment extends Fragment implements RequestsContracts.View
     @Override
     public void setNavigator(RequestsContracts.Navigator navigator) {
         mNavigator = navigator;
+    }
+
+    @Override
+    public void loadApplications(List<Application> newApplications) {
+        mRequestsAdapter.clear();
+        mRequestsAdapter.addAll(newApplications);
+        mRequestsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void showError(Throwable error) {
+        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

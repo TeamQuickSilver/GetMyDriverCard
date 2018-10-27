@@ -38,5 +38,6 @@
     <string name="save_signature">Save Signature</string>
     <string name="next">NEXT</string>
     <string name="date_of_submission">Date of submission</string>
+    <string name="application_status">Application status</string>
     <string name="date_of_birth">Date of birth</string>
 </resources>

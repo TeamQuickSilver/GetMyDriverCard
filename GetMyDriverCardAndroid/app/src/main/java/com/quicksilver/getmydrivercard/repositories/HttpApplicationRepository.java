@@ -32,8 +32,8 @@ public class HttpApplicationRepository implements ApplicationRepository {
     }
 
     @Override
-    public List<Application> getAllByUserOrderById(User user) throws IOException {
-        String url = mBaseApplicationUrl + "/" + user.getEmail();
+    public List<Application> getAllByUserEmailOrderById(String email) throws IOException {
+        String url = mBaseApplicationUrl + "/" + email;
         String responseBody = mHttpRequester.get(url);
 
         return mApplicationJsonParser.fromJsonArray(responseBody);
@@ -56,18 +56,18 @@ public class HttpApplicationRepository implements ApplicationRepository {
     }
 
     @Override
-    public List<Application> getAllByPersonName() throws IOException {
+    public List<Application> getAllByPersonName(String name) throws IOException {
         String responseBody = mHttpRequester.get(mNameUrl);
 
         return mApplicationJsonParser.fromJsonArray(responseBody);
     }
 
     @Override
-    public Application getById(Long id) throws IOException {
+    public List<Application> getById(Long id) throws IOException {
         String url = mBaseApplicationUrl + "/" + id;
         String responseBody = mHttpRequester.get(url);
 
-        return mApplicationJsonParser.fromJson(responseBody);
+        return mApplicationJsonParser.fromJsonArray(responseBody);
     }
 
     @Override
