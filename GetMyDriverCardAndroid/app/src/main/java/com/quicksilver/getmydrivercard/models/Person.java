@@ -5,6 +5,7 @@ public class Person {
     private IdentityCard identityCard;
     private DrivingLicense drivingLicense;
     private Long phoneNumber;
+    // Can be removed
     private String email;
 
     public Person() {
