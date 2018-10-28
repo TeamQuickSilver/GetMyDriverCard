@@ -12,7 +12,9 @@
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:layout_alignParentTop="true"
-        android:text="@string/identity_number" />
+        android:text="@string/identity_number"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_identity_number"
@@ -29,7 +31,9 @@
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:text="@string/first_name"
-        android:layout_below="@id/tv_identity_number"/>
+        android:layout_below="@id/tv_identity_number"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_first_name"
@@ -46,7 +50,9 @@
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_first_name"
-        android:text="@string/fathers_name" />
+        android:text="@string/fathers_name"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_fathers_name"
@@ -63,7 +69,9 @@
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_fathers_name"
-        android:text="@string/last_name" />
+        android:text="@string/last_name"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_last_name"
@@ -74,27 +82,15 @@
         android:hint="@string/last_name"
         android:inputType="text" />
 
-    <!--<TextView-->
-        <!--android:id="@+id/date_of_birth"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="@string/date_of_birth"-->
-        <!--android:layout_below="@id/tv_last_name" />-->
-
-    <!--<DatePicker-->
-        <!--android:id="@+id/date_picker"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/tv_last_name"-->
-        <!--android:layout_toEndOf="@id/date_of_birth"/>-->
-
     <TextView
         android:id="@+id/tv_address"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_last_name"
-        android:text="@string/address" />
+        android:text="@string/address"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_address"
@@ -111,7 +107,9 @@
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_address"
-        android:text="@string/phone_number" />
+        android:text="@string/phone_number"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_phone_number"
@@ -128,7 +126,9 @@
         android:layout_height="45dp"
         android:layout_marginEnd="10dp"
         android:layout_below="@id/tv_phone_number"
-        android:text="@string/email" />
+        android:text="@string/email"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_email"
@@ -138,5 +138,23 @@
         android:layout_toEndOf="@id/tv_email"
         android:hint="@string/email"
         android:inputType="textEmailAddress" />
+
+    <TextView
+        android:id="@+id/date_of_birth"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:layout_below="@id/et_email"
+        android:layout_alignStart="@+id/tv_identity_number"
+        android:text="@string/date_of_birth"
+        android:textSize="16sp"
+        android:paddingTop="10sp" />
+
+    <DatePicker
+        android:id="@+id/date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_email"
+        android:layout_toEndOf="@id/date_of_birth" />
 
 </RelativeLayout>
