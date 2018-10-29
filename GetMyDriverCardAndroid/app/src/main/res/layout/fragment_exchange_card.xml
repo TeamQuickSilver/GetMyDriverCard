@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.step2.ExchangeCardFragment">
+
+    <TextView
+        android:id="@+id/tv_country"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        android:paddingTop="10sp"
+        android:text="@string/country_which_issued_card" />
+
+    <EditText
+        android:id="@+id/et_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/tv_country"
+        android:hint="@string/country_which_issued_card" />
+
+    <TextView
+        android:id="@+id/tv_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        android:paddingTop="10sp"
+        android:layout_below="@+id/tv_country"
+        android:text="@string/tachograph_card_number" />
+
+    <EditText
+        android:id="@+id/et_card_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/tv_card_number"
+        android:layout_below="@+id/tv_country"
+        android:hint="@string/tachograph_card_number" />
+
+    <TextView
+        android:id="@+id/tv_country_driving_license"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        android:paddingTop="10sp"
+        android:layout_below="@+id/tv_card_number"
+        android:text="@string/country_which_issued_driving_license" />
+
+    <EditText
+        android:id="@+id/et_country_driving_license"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/tv_country_driving_license"
+        android:layout_below="@+id/tv_card_number"
+        android:hint="@string/country_which_issued_driving_license" />
+
+    <TextView
+        android:id="@+id/tv_driving_license_number"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        android:paddingTop="10sp"
+        android:layout_below="@+id/tv_country_driving_license"
+        android:text="@string/driving_license_number" />
+
+    <EditText
+        android:id="@+id/et_driving_license_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/tv_driving_license_number"
+        android:layout_below="@+id/tv_country_driving_license"
+        android:hint="@string/driving_license_number" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_driving_license_number"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class DrivingLicense {
 
-    private Long identityCardNumber;
+    private Long drivingLicenseNumber;
     private Date issuedOn;
     private String issuedBy;
     private String motorVehiclesCategories;
@@ -13,19 +13,19 @@ public class DrivingLicense {
 
     }
 
-    public DrivingLicense(Long identityCardNumber, Date issuedOn, String issuedBy, String motorVehiclesCategories) {
-        this.identityCardNumber = identityCardNumber;
+    public DrivingLicense(Long drivingLicenseNumber, Date issuedOn, String issuedBy, String motorVehiclesCategories) {
+        this.drivingLicenseNumber = drivingLicenseNumber;
         this.issuedOn = issuedOn;
         this.issuedBy = issuedBy;
         this.motorVehiclesCategories = motorVehiclesCategories;
     }
 
-    public Long getIdentityCardNumber() {
-        return identityCardNumber;
+    public Long getDrivingLicenseNumber() {
+        return drivingLicenseNumber;
     }
 
-    public void setIdentityCardNumber(Long identityCardNumber) {
-        this.identityCardNumber = identityCardNumber;
+    public void setDrivingLicenseNumber(Long drivingLicenseNumber) {
+        this.drivingLicenseNumber = drivingLicenseNumber;
     }
 
     public Date getIssuedOn() {

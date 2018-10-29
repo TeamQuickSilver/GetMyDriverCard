@@ -1,5 +1,6 @@
 package com.quicksilver.getmydrivercard.entities;
 
+import com.quicksilver.getmydrivercard.utils.ApplicationReason;
 import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 
 import javax.persistence.*;
@@ -26,6 +27,10 @@ public class Application {
     private ApplicationImages applicationImages;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "reason")
+    private ApplicationReason reason;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "status")
     private ApplicationStatus status;
 
@@ -42,6 +47,7 @@ public class Application {
         this.applicationImages = applicationImages;
         this.dateOfSubmission = dateOfSubmission;
         this.status = ApplicationStatus.NEW;
+        this.reason = ApplicationReason.NEW;
     }
 
     public Long getApplicationId() {
@@ -90,5 +96,13 @@ public class Application {
 
     public void setDateOfSubmission(Date dateOfSubmission) {
         this.dateOfSubmission = dateOfSubmission;
+    }
+
+    public ApplicationReason getReason() {
+        return reason;
+    }
+
+    public void setReason(ApplicationReason reason) {
+        this.reason = reason;
     }
 }

@@ -7,18 +7,24 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.User;
 
+import java.util.Objects;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemSelected;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,8 +47,13 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
 
     @BindView(R.id.cb_withdrawn_card)
     CheckBox mWithdrawnCard;
+
+    @BindView(R.id.spinner_change_card_reason)
+    Spinner mSpinner;
     private String mReason;
     private User mUser;
+    private ArrayAdapter<String> mArrayAdapter;
+    private int mSpinnerItemId;
 
     @Inject
     public Step1Fragment() {
@@ -57,9 +68,13 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
         View view = inflater.inflate(R.layout.fragment_step1, container, false);
 
         ButterKnife.bind(this, view);
+        String[] reasons = getResources().getStringArray(R.array.spinner_card_change_reason);
+        mArrayAdapter = new ArrayAdapter<>(
+                Objects.requireNonNull(getContext()), android.R.layout.simple_spinner_dropdown_item, reasons);
+        mSpinner.setAdapter(mArrayAdapter);
 
         Intent loginIntent = getActivity().getIntent();
-        mUser = (User)loginIntent.getSerializableExtra(Constants.USER_TEXT);
+        mUser = (User) loginIntent.getSerializableExtra(Constants.USER_TEXT);
 
         return view;
     }
@@ -83,36 +98,69 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
     @OnClick({R.id.cb_new_card, R.id.cb_change_card, R.id.cb_exchange_card,
             R.id.cb_renew_card, R.id.cb_withdrawn_card, R.id.btn_next})
     public void onClick(View view) {
-        uncheckedAll();
         switch (view.getId()) {
             case R.id.cb_new_card:
+                uncheckedAll();
                 mNewCard.setChecked(true);
                 mReason = Constants.NEW_CARD;
                 break;
             case R.id.cb_change_card:
+                uncheckedAll();
                 mChangeCard.setChecked(true);
-                mReason = Constants.CHANGE_CARD;
+                // Default value
+                if(mReason == null || mReason.equals(Constants.NEW_CARD) ||
+                        mReason.equals(Constants.EXCHANGE_CARD) || mReason.equals(Constants.RENEW_CARD)
+                        || mReason.equals(Constants.WITHDRAWN_CARD)) {
+
+                    mReason = Constants.LOST_TEXT;
+                } else {
+                    mReason = Constants.CHANGE_CARD;
+                }
                 break;
             case R.id.cb_exchange_card:
+                uncheckedAll();
                 mExchangeCard.setChecked(true);
                 mReason = Constants.EXCHANGE_CARD;
                 break;
             case R.id.cb_renew_card:
+                uncheckedAll();
                 mRenewCard.setChecked(true);
                 mReason = Constants.RENEW_CARD;
                 break;
             case R.id.cb_withdrawn_card:
+                uncheckedAll();
                 mWithdrawnCard.setChecked(true);
                 mReason = Constants.WITHDRAWN_CARD;
                 break;
             case R.id.btn_next:
-                if(mReason == null) {
+                boolean hasReason = checkReasons();
+
+                if(!hasReason) {
                     Toast.makeText(getContext(), Constants.MESSAGE, Toast.LENGTH_SHORT).show();
                     return;
                 }
+
                 mNavigator.navigateToStep2(mReason);
                 break;
         }
+    }
+
+    private boolean checkReasons() {
+        return mNewCard.isChecked() || mChangeCard.isChecked() || mExchangeCard.isChecked()
+                || mRenewCard.isChecked() || mWithdrawnCard.isChecked();
+    }
+
+    @OnItemSelected(R.id.spinner_change_card_reason)
+    public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+        if(mReason == null) {
+            return;
+        }
+
+        if(!mReason.equals(Constants.CHANGE_CARD)) {
+            return;
+        }
+
+        mReason = Objects.requireNonNull(mArrayAdapter.getItem(position)).toUpperCase();
     }
 
     private void uncheckedAll() {
