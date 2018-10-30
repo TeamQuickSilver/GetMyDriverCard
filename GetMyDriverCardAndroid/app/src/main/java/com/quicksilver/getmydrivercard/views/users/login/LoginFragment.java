@@ -28,6 +28,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.User;
+import com.quicksilver.getmydrivercard.views.OnSwipeTouchListener;
 
 import org.json.JSONException;
 
@@ -72,7 +73,6 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
     private CallbackManager mCallBackManager;
     private GoogleApiClient mGoogleApiClient;
 
-
     @Inject
     public LoginFragment() {
         // Required empty public constructor
@@ -101,6 +101,14 @@ public class LoginFragment extends Fragment implements LoginContracts.View, Goog
         mCallBackManager = CallbackManager.Factory.create();
 
         configFacebookLogin();
+
+        view.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
+            @Override
+            public void onSwipeLeft() {
+                super.onSwipeLeft();
+                mNavigator.navigateToRegister();
+            }
+        });
 
         return view;
     }
