@@ -40,4 +40,8 @@
     <string name="date_of_submission">Date of submission</string>
     <string name="application_status">Application status</string>
     <string name="date_of_birth">Date of birth</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="preview_description">Image preview will appear here</string>
+    <string name="btn_take_picture">Take Picture</string>
 </resources>
