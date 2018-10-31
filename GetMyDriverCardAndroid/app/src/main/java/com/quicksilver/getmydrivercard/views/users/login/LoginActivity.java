@@ -2,6 +2,7 @@ package com.quicksilver.getmydrivercard.views.users.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GestureDetectorCompat;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
@@ -24,6 +25,7 @@ public class LoginActivity extends BaseDrawerActivity implements LoginContracts.
 
     @Inject
     LoginFragment mView;
+    private GestureDetectorCompat mGestureDetector;
 
     public LoginActivity() {
 
@@ -33,7 +35,6 @@ public class LoginActivity extends BaseDrawerActivity implements LoginContracts.
     protected int getIdentifier() {
         return IDENTIFIER;
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class LoginActivity extends BaseDrawerActivity implements LoginContracts.
     public void navigateToRegister() {
         Intent intentToRegister = new Intent(this, RegisterActivity.class);
         startActivity(intentToRegister);
+        finish();
     }
 
     @Override

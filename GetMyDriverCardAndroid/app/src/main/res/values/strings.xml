@@ -22,7 +22,7 @@
     <string name="reason">Choose reason</string>
     <string name="renew_card">I wish to renew my driver card</string>
     <string name="withdrawn_card">I wish new driver card because previous was withdrawn</string>
-    <string-array name="spinner_card_change_reason">
+    <array name="spinner_card_change_reason">
         <item>Lost</item>
         <item>Stolen</item>
         <item>Malfunction/Broken</item>
@@ -30,7 +30,7 @@
         <item>Name change</item>
         <item>Photo change</item>
         <item>Driving license change</item>
-    </string-array>
+    </array>
     <string name="facebook_app_id">326463701266666</string>
 
     <string name="agreement">I agree the terms and conditions.</string>
@@ -40,8 +40,19 @@
     <string name="date_of_submission">Date of submission</string>
     <string name="application_status">Application status</string>
     <string name="date_of_birth">Date of birth</string>
-
     <string name="action_settings">Settings</string>
     <string name="preview_description">Image preview will appear here</string>
     <string name="btn_take_picture">Take Picture</string>
+    <string name="malfunction_broken_card_message">Malfunction or broken situation the previous card must be returned</string>
+    <string name="lost_card_title">Lost situation please specify the date and the place</string>
+    <string name="date">Date</string>
+    <string name="place">Place</string>
+    <string name="photo">Photo</string>
+    <string name="upload">Upload</string>
+    <string name="driving_license">Driving license</string>
+    <string name="country_which_issued_card">Country which issued card</string>
+    <string name="tachograph_card_number">Tachograph card number</string>
+    <string name="country_which_issued_driving_license">Country which issued driving license</string>
+    <string name="driving_license_number">Driving license number</string>
+    <string name="date_of_expire">Date of expire</string>
 </resources>

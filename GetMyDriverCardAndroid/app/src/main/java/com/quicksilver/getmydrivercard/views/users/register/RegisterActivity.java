@@ -10,8 +10,6 @@ import com.quicksilver.getmydrivercard.views.users.login.LoginActivity;
 
 import javax.inject.Inject;
 
-import dagger.android.support.DaggerAppCompatActivity;
-
 public class RegisterActivity extends BaseDrawerActivity implements RegisterContracts.Navigator {
 
     public static final int IDENTIFIER = 4;
@@ -46,6 +44,7 @@ public class RegisterActivity extends BaseDrawerActivity implements RegisterCont
     public void navigateToLogin() {
         Intent goToLoginIntent = new Intent(this, LoginActivity.class);
         startActivity(goToLoginIntent);
+        finish();
     }
 
     @Override

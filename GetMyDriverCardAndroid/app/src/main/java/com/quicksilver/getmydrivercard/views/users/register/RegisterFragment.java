@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.User;
+import com.quicksilver.getmydrivercard.views.OnSwipeTouchListener;
 
 import javax.inject.Inject;
 
@@ -54,6 +55,14 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
         View view = inflater.inflate(R.layout.fragment_register, container, false);
 
         ButterKnife.bind(this, view);
+
+        view.setOnTouchListener(new OnSwipeTouchListener(getContext()) {
+            @Override
+            public void onSwipeRight() {
+                super.onSwipeRight();
+                mNavigator.navigateToLogin();
+            }
+        });
 
         return view;
     }
