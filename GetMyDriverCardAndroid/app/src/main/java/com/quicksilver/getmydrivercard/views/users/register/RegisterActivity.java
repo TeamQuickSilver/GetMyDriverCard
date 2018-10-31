@@ -44,7 +44,6 @@ public class RegisterActivity extends BaseDrawerActivity implements RegisterCont
     public void navigateToLogin() {
         Intent goToLoginIntent = new Intent(this, LoginActivity.class);
         startActivity(goToLoginIntent);
-        finish();
     }
 
     @Override

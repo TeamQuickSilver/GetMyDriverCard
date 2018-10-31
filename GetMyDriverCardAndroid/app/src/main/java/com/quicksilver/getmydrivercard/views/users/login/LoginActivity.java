@@ -64,8 +64,9 @@ public class LoginActivity extends BaseDrawerActivity implements LoginContracts.
     @Override
     public void navigateToRegister() {
         Intent intentToRegister = new Intent(this, RegisterActivity.class);
+        intentToRegister.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intentToRegister);
-        finish();
+//        finish();
     }
 
     @Override
