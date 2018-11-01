@@ -21,10 +21,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class CameraUtils {
+class CameraUtils {
 
     // Gallery directory name to store the images or videos
-    private static final String GALLERY_DIRECTORY_NAME = "Camera Front";
+    private static final String GALLERY_DIRECTORY_NAME = "Provide Photo";
 
     // key to store image path in savedInstance state
     static final String KEY_IMAGE_STORAGE_PATH = "image_path";
@@ -73,7 +73,7 @@ public class CameraUtils {
      * android:required="true" is used in manifest file
      */
     static boolean isDeviceSupportCamera(Context context) {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
     }
 
     /**
