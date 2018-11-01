@@ -3,158 +3,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingHorizontal="10dp"
     tools:context=".views.step2.NewCardFragment">
 
     <TextView
         android:id="@+id/tv_identity_number"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:text="@string/identity_number"
+        android:layout_centerHorizontal="true"
         android:textSize="16sp"
         android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_identity_number"
-        android:layout_width="match_parent"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@id/tv_identity_number"
-        android:hint="@string/identity_number"
+        android:layout_below="@id/tv_identity_number"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
         android:inputType="number" />
 
     <TextView
         android:id="@+id/tv_first_name"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginEnd="10dp"
+        android:layout_height="wrap_content"
         android:text="@string/first_name"
-        android:layout_below="@id/tv_identity_number"
+        android:layout_below="@id/et_identity_number"
+        android:layout_centerHorizontal="true"
         android:textSize="16sp"
         android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_first_name"
-        android:layout_width="match_parent"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_identity_number"
-        android:layout_toEndOf="@id/tv_first_name"
-        android:hint="@string/first_name"
+        android:layout_below="@id/tv_first_name"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
         android:inputType="text" />
 
     <TextView
         android:id="@+id/tv_fathers_name"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:layout_below="@id/tv_first_name"
+        android:layout_below="@id/et_first_name"
+        android:layout_centerHorizontal="true"
         android:text="@string/fathers_name"
         android:textSize="16sp"
         android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_fathers_name"
-        android:layout_width="match_parent"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_first_name"
-        android:layout_toEndOf="@id/tv_fathers_name"
-        android:hint="@string/fathers_name"
+        android:layout_below="@id/tv_fathers_name"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
         android:inputType="text" />
 
     <TextView
         android:id="@+id/tv_last_name"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:layout_below="@id/tv_fathers_name"
+        android:layout_below="@id/et_fathers_name"
+        android:layout_centerHorizontal="true"
         android:text="@string/last_name"
         android:textSize="16sp"
         android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_last_name"
-        android:layout_width="match_parent"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_fathers_name"
-        android:layout_toEndOf="@id/tv_last_name"
-        android:hint="@string/last_name"
+        android:layout_below="@id/tv_last_name"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
         android:inputType="text" />
 
     <TextView
         android:id="@+id/tv_address"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:layout_below="@id/tv_last_name"
+        android:layout_below="@id/et_last_name"
+        android:layout_centerHorizontal="true"
         android:text="@string/address"
         android:textSize="16sp"
         android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_address"
-        android:layout_width="match_parent"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_last_name"
-        android:layout_toEndOf="@id/tv_address"
-        android:hint="@string/address"
+        android:layout_below="@id/tv_address"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
         android:inputType="text" />
 
     <TextView
         android:id="@+id/tv_phone_number"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:layout_below="@id/tv_address"
+        android:layout_below="@id/et_address"
+        android:layout_centerHorizontal="true"
         android:text="@string/phone_number"
         android:textSize="16sp"
         android:paddingTop="10sp"/>
 
     <EditText
         android:id="@+id/et_phone_number"
-        android:layout_width="match_parent"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_address"
-        android:layout_toEndOf="@id/tv_phone_number"
-        android:hint="@string/phone_number"
+        android:layout_below="@id/tv_phone_number"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
         android:inputType="phone" />
 
-    <TextView
-        android:id="@+id/tv_email"
+    <Button
+        android:id="@+id/btn_next"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_marginEnd="10dp"
-        android:layout_below="@id/tv_phone_number"
-        android:text="@string/email"
-        android:textSize="16sp"
-        android:paddingTop="10sp"/>
-
-    <EditText
-        android:id="@+id/et_email"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_phone_number"
-        android:layout_toEndOf="@id/tv_email"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
+        android:layout_below="@+id/et_phone_number"
+        android:layout_centerHorizontal="true"
+        android:text="@string/next" />
 
     <!--<TextView-->
-        <!--android:id="@+id/date_of_birth"-->
+        <!--android:id="@+id/tv_email"-->
         <!--android:layout_width="wrap_content"-->
         <!--android:layout_height="45dp"-->
         <!--android:layout_marginEnd="10dp"-->
-        <!--android:layout_below="@id/et_email"-->
-        <!--android:layout_alignStart="@+id/tv_identity_number"-->
-        <!--android:text="@string/date_of_birth"-->
+        <!--android:layout_below="@id/tv_phone_number"-->
+        <!--android:text="@string/email"-->
         <!--android:textSize="16sp"-->
-        <!--android:paddingTop="10sp" />-->
+        <!--android:paddingTop="10sp"/>-->
 
-    <!--<DatePicker-->
-        <!--android:id="@+id/date_picker"-->
+    <!--<EditText-->
+        <!--android:id="@+id/et_email"-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@id/et_email"-->
-        <!--android:layout_toEndOf="@id/date_of_birth" />-->
+        <!--android:layout_below="@id/tv_phone_number"-->
+        <!--android:layout_toEndOf="@id/tv_email"-->
+        <!--android:hint="@string/email"-->
+        <!--android:inputType="textEmailAddress" />-->
 
 </RelativeLayout>

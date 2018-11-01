@@ -52,7 +52,7 @@
     <string name="driving_license">Driving license</string>
     <string name="country_which_issued_card">Country which issued card</string>
     <string name="tachograph_card_number">Tachograph card number</string>
-    <string name="country_which_issued_driving_license">Country which issued driving license</string>
+    <string name="country_which_issued_driving_license">Country which issued\ndriving license</string>
     <string name="driving_license_number">Driving license number</string>
     <string name="date_of_expire">Date of expire</string>
 </resources>

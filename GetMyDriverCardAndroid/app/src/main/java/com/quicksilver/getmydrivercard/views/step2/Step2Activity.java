@@ -27,6 +27,8 @@ public class Step2Activity extends BaseDrawerActivity {
     @Inject
     RenewCardFragment mRenewCardFragment;
 
+    @Inject
+    ExchangeCardFragment mExchangeCardFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,9 @@ public class Step2Activity extends BaseDrawerActivity {
             case Constants.PHOTO_CHANGE:
             case Constants.DRIVING_LICENSE_CHANGE:
                 mTransaction.replace(R.id.content, mChangeCardFragment).commit();
+                break;
+            case Constants.EXCHANGE_CARD:
+                mTransaction.replace(R.id.content, mExchangeCardFragment).commit();
                 break;
             case Constants.RENEW_CARD:
                 mTransaction.replace(R.id.content, mRenewCardFragment).commit();

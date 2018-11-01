@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.quicksilver.getmydrivercard.Constants;
@@ -24,17 +25,14 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class LostStolenMalfunctionCardFragment extends Fragment {
-    @BindView(R.id.tv_lost_card_title)
-    TextView mLostCardTitle;
-
-    @BindView(R.id.tv_malfunction_broken_card)
-    TextView mMalfunctionBrokenCard;
-
     @BindView(R.id.tv_date)
     TextView mDate;
 
     @BindView(R.id.tv_place)
     TextView mPlace;
+
+    @BindView(R.id.et_place)
+    EditText mPlaceEditText;
 
     @BindView(R.id.date_picker)
     DatePicker mDatePicker;
@@ -62,34 +60,17 @@ public class LostStolenMalfunctionCardFragment extends Fragment {
     private void arrangeViews(String reason) {
         switch (reason) {
             case Constants.LOST_TEXT:
-                showLostView();
+
                 break;
             case Constants.STOLEN_TEXT:
-                showStolenView();
+
                 break;
             case Constants.MALFUNCTION_BROKEN_TEXT:
-                showMalfunctionBrokenView();
+
                 break;
         }
     }
 
-    private void showLostView() {
-        mMalfunctionBrokenCard.setVisibility(View.GONE);
-        mLostCardTitle.setVisibility(View.VISIBLE);
-        mDate.setVisibility(View.VISIBLE);
-        mDatePicker.setVisibility(View.VISIBLE);
-        mPlace.setVisibility(View.VISIBLE);
-    }
 
-    private void showStolenView() {
-       // Navigate to Step3
-    }
 
-    private void showMalfunctionBrokenView() {
-        mMalfunctionBrokenCard.setVisibility(View.VISIBLE);
-//        mLostCardTitle.setVisibility(View.GONE);
-//        mDate.setVisibility(View.GONE);
-//        mDatePicker.setVisibility(View.GONE);
-//        mPlace.setVisibility(View.GONE);
-    }
 }

@@ -108,14 +108,14 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
                 uncheckedAll();
                 mChangeCard.setChecked(true);
                 // Default value
-                if(mReason == null || mReason.equals(Constants.NEW_CARD) ||
-                        mReason.equals(Constants.EXCHANGE_CARD) || mReason.equals(Constants.RENEW_CARD)
-                        || mReason.equals(Constants.WITHDRAWN_CARD)) {
-
-                    mReason = Constants.LOST_TEXT;
-                } else {
-                    mReason = Constants.CHANGE_CARD;
-                }
+//                if(mReason == null || mReason.equals(Constants.NEW_CARD) ||
+//                        mReason.equals(Constants.EXCHANGE_CARD) || mReason.equals(Constants.RENEW_CARD)
+//                        || mReason.equals(Constants.WITHDRAWN_CARD)) {
+//
+//                    mReason = Constants.LOST_TEXT;
+//                } else {
+//                    mReason = Constants.CHANGE_CARD;
+//                }
                 break;
             case R.id.cb_exchange_card:
                 uncheckedAll();
@@ -136,7 +136,6 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
                 boolean hasReason = checkReasons();
 
                 if(!hasReason) {
-                    Toast.makeText(getContext(), Constants.MESSAGE, Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -146,20 +145,32 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
     }
 
     private boolean checkReasons() {
-        return mNewCard.isChecked() || mChangeCard.isChecked() || mExchangeCard.isChecked()
-                || mRenewCard.isChecked() || mWithdrawnCard.isChecked();
+        if(mNewCard.isChecked()) {
+            mReason = Constants.NEW_CARD;
+        } else if(mChangeCard.isChecked()) {
+            if(mReason == null || mReason.equals(Constants.NEW_CARD) ||
+                    mReason.equals(Constants.EXCHANGE_CARD) || mReason.equals(Constants.RENEW_CARD)
+                    || mReason.equals(Constants.WITHDRAWN_CARD)) {
+
+                mReason = Constants.LOST_TEXT;
+            }
+            //We have true reason
+        } else if(mExchangeCard.isChecked()) {
+            mReason = Constants.EXCHANGE_CARD;
+        } else if(mRenewCard.isChecked()) {
+            mReason = Constants.RENEW_CARD;
+        } else if (mWithdrawnCard.isChecked()) {
+            mReason = Constants.WITHDRAWN_CARD;
+        } else {
+            Toast.makeText(getContext(), Constants.MESSAGE, Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        return true;
     }
 
     @OnItemSelected(R.id.spinner_change_card_reason)
     public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-        if(mReason == null) {
-            return;
-        }
-
-        if(!mReason.equals(Constants.CHANGE_CARD)) {
-            return;
-        }
-
         mReason = Objects.requireNonNull(mArrayAdapter.getItem(position)).toUpperCase();
     }
 
@@ -169,5 +180,6 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
         mExchangeCard.setChecked(false);
         mRenewCard.setChecked(false);
         mWithdrawnCard.setChecked(false);
+
     }
 }

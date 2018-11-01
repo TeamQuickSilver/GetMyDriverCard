@@ -6,43 +6,43 @@
     tools:context=".views.step2.LostStolenMalfunctionCardFragment">
 
     <TextView
-        android:id="@+id/tv_malfunction_broken_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/malfunction_broken_card_message"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/tv_lost_card_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/MediumText"
-        android:text="@string/lost_card_title"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone" />
-
-    <TextView
         android:id="@+id/tv_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/place"
-        android:layout_below="@id/tv_date"
-        android:visibility="gone" />
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"/>
+
+    <EditText
+        android:id="@+id/et_place"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_place"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp" />
 
     <TextView
         android:id="@+id/tv_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/et_place"
         android:text="@string/date"
-        android:layout_below="@+id/tv_lost_card_title"
-        android:visibility="gone" />
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp"/>
 
     <DatePicker
         android:id="@+id/date_picker"
         android:layout_width="match_parent"
+        android:layout_height="395sp"
+        android:layout_below="@id/tv_date" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_lost_card_title"
-        android:layout_toEndOf="@id/tv_date"
-        android:visibility="gone"/>
+        android:layout_centerHorizontal="true"
+        android:text="@string/next"
+        android:layout_below="@id/date_picker"/>
 
 </RelativeLayout>

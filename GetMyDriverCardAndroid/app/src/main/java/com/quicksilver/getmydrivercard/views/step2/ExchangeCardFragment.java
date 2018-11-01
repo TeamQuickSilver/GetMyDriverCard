@@ -49,6 +49,7 @@ public class ExchangeCardFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_exchange_card, container, false);
 
         ButterKnife.bind(this, view);
+        mCountry.setSelection(0);
 
         return view;
     }
