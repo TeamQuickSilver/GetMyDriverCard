@@ -27,29 +27,35 @@ import java.util.List;
 
 public class ProvidePhotoActivity extends AppCompatActivity {
 
+    // Camera activity request code
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
-    private static String storagePath;
+    private static String imageStoragePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provide_photo);
 
+        // Checking availability of the camera
         if (!CameraUtils.isDeviceSupportCamera(getApplicationContext())) {
             Toast.makeText(getApplicationContext(),
-                    "Sorry! Your divex=ce doesn't support camera",
+                    "Sorry! Your device doesn't support camera",
                     Toast.LENGTH_LONG).show();
+            // will close the app if the device doesn't have camera
             finish();
         }
 
-        Button btnTakePicture = findViewById(R.id.btnCapturePicture);
-        btnTakePicture.setOnClickListener(v -> {
+        Button btnCapturePicture = findViewById(R.id.btnCapturePicture);
+        btnCapturePicture.setOnClickListener(v -> {
             if (CameraUtils.checkPermissions(getApplicationContext())) {
                 captureImage();
             } else {
                 requestCameraPermission();
             }
         });
+
+        // restoring storage image path from saved instance state
+        // otherwise the path will be null on device rotation
         restoreFromBundle(savedInstanceState);
     }
 
@@ -59,9 +65,9 @@ public class ProvidePhotoActivity extends AppCompatActivity {
     private void restoreFromBundle(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             if (savedInstanceState.containsKey(CameraUtils.KEY_IMAGE_STORAGE_PATH)) {
-                storagePath = savedInstanceState.getString(CameraUtils.KEY_IMAGE_STORAGE_PATH);
-                if (!TextUtils.isEmpty(storagePath)) {
-                    if (storagePath.substring(storagePath.lastIndexOf(".")).equals("." + CameraUtils.IMAGE_EXTENSION)) {
+                imageStoragePath = savedInstanceState.getString(CameraUtils.KEY_IMAGE_STORAGE_PATH);
+                if (!TextUtils.isEmpty(imageStoragePath)) {
+                    if (imageStoragePath.substring(imageStoragePath.lastIndexOf(".")).equals("." + CameraUtils.IMAGE_EXTENSION)) {
                         previewCapturedImage();
                     }
                 }
@@ -102,7 +108,7 @@ public class ProvidePhotoActivity extends AppCompatActivity {
 
         File file = CameraUtils.getOutputMediaFile();
         if (file != null) {
-            storagePath = file.getAbsolutePath();
+            imageStoragePath = file.getAbsolutePath();
         }
 
         Uri fileUri = CameraUtils.getOutputMediaFileUri(getApplicationContext(), file);
@@ -122,7 +128,7 @@ public class ProvidePhotoActivity extends AppCompatActivity {
 
         // save file url in bundle as it will be null on screen orientation
         // changes
-        outState.putString(CameraUtils.KEY_IMAGE_STORAGE_PATH, storagePath);
+        outState.putString(CameraUtils.KEY_IMAGE_STORAGE_PATH, imageStoragePath);
     }
 
     /**
@@ -133,7 +139,7 @@ public class ProvidePhotoActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
 
         // get the file url
-        storagePath = savedInstanceState.getString(CameraUtils.KEY_IMAGE_STORAGE_PATH);
+        imageStoragePath = savedInstanceState.getString(CameraUtils.KEY_IMAGE_STORAGE_PATH);
     }
 
     /**
@@ -143,7 +149,7 @@ public class ProvidePhotoActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             // Refreshing the gallery
-            CameraUtils.refreshGallery(getApplicationContext(), storagePath);
+            CameraUtils.refreshGallery(getApplicationContext(), imageStoragePath);
 
             // successfully captured the image
             // display it in image view
@@ -171,7 +177,7 @@ public class ProvidePhotoActivity extends AppCompatActivity {
 
             ImageView imgPreview = findViewById(R.id.imgPreview);
             imgPreview.setVisibility(View.VISIBLE);
-            Bitmap bitmap = CameraUtils.optimizeBitmap(CameraUtils.BITMAP_SAMPLE_SIZE, storagePath);
+            Bitmap bitmap = CameraUtils.optimizeBitmap(CameraUtils.BITMAP_SAMPLE_SIZE, imageStoragePath);
             imgPreview.setImageBitmap(bitmap);
 
         } catch (NullPointerException e) {
