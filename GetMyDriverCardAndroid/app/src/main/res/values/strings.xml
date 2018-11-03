@@ -55,4 +55,11 @@
     <string name="country_which_issued_driving_license">Country which issued\ndriving license</string>
     <string name="driving_license_number">Driving license number</string>
     <string name="date_of_expire">Date of expire</string>
+    <string name="district">District</string>
+    <string name="city">City</string>
+    <string name="identity_card_number">Identity card number</string>
+    <string name="issued_by">Issued by</string>
+    <string name="issued_on">Issued on</string>
+    <string name="pick_date">Pick date</string>
+    <string name="categories">Categories</string>
 </resources>

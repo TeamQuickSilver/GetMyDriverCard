@@ -1,8 +1,9 @@
 package com.quicksilver.getmydrivercard.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class IdentityCard {
+public class IdentityCard implements Serializable {
 
     private Long identityCardNumber;
     private Long personalNumber;

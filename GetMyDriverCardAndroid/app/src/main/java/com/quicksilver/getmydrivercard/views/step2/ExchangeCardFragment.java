@@ -54,7 +54,7 @@ public class ExchangeCardFragment extends Fragment {
         return view;
     }
 
-    @OnClick(R.id.btn_next)
+    @OnClick({R.id.btn_next})
     public void onClick(View view) {
         // Navigate to Step 3
     }

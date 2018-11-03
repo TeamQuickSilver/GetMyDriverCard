@@ -76,6 +76,7 @@
         android:layout_height="wrap_content"
         android:text="@string/next"
         android:layout_below="@+id/cb_withdrawn_card"
+        android:background="@drawable/custom_button"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

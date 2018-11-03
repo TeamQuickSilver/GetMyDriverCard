@@ -1,6 +1,8 @@
 package com.quicksilver.getmydrivercard.models;
 
-public class ApplicationImages {
+import java.io.Serializable;
+
+public class ApplicationImages implements Serializable {
 
     private byte[] personImage;
     private byte[] previousCardImage;

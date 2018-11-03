@@ -90,6 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_driving_license_number"
         android:layout_centerHorizontal="true"
+        android:background="@drawable/custom_button"
         android:text="@string/next" />
 
 </RelativeLayout>

@@ -6,11 +6,12 @@ import android.support.v4.app.FragmentTransaction;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
 
 import javax.inject.Inject;
 
-public class Step2Activity extends BaseDrawerActivity {
+public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.Navigator {
     private static final int IDENTIFIER = 10;
     private String mReason;
     private FragmentTransaction mTransaction;
@@ -30,6 +31,8 @@ public class Step2Activity extends BaseDrawerActivity {
     @Inject
     ExchangeCardFragment mExchangeCardFragment;
 
+    private static Application mApplication;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,8 @@ public class Step2Activity extends BaseDrawerActivity {
 
         Intent step1Intent = getIntent();
         mReason = step1Intent.getStringExtra(Constants.INTENT_REASON);
+
+        mNewCardFragment.setNavigator(this);
 
         mTransaction = getSupportFragmentManager().beginTransaction();
         arrangeFragments(mReason);
@@ -73,5 +78,12 @@ public class Step2Activity extends BaseDrawerActivity {
     @Override
     protected int getIdentifier() {
         return IDENTIFIER;
+    }
+
+    @Override
+    public void navigateToNextStep(Application application) {
+        Intent intent = new Intent(this, NewCardActivityDocuments.class);
+        intent.putExtra(Constants.APPLICATION, application);
+        startActivity(intent);
     }
 }

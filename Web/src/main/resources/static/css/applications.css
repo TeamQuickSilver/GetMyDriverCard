@@ -1,0 +1,14 @@
+body {
+    background: #3e9c45;
+}
+
+.applications {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 20px;
+    color: aliceblue;
+}
+
+td {
+    padding: 10px;
+}

@@ -1,8 +1,9 @@
 package com.quicksilver.getmydrivercard.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class DrivingLicense {
+public class DrivingLicense implements Serializable {
 
     private Long drivingLicenseNumber;
     private Date issuedOn;

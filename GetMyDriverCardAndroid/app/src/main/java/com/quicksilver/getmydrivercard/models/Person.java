@@ -1,6 +1,8 @@
 package com.quicksilver.getmydrivercard.models;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable{
 
     private IdentityCard identityCard;
     private DrivingLicense drivingLicense;

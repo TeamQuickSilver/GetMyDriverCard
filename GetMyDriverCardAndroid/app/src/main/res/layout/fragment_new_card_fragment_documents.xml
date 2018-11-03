@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.step2.NewCardFragmentDocuments">
+
+    <TextView
+        android:id="@+id/tv_district"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/district"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
+
+    <EditText
+        android:id="@+id/et_district"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_district"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tv_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/et_district"
+        android:text="@string/city"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
+
+    <EditText
+        android:id="@+id/et_city"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_city"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/et_city"
+        android:text="@string/address"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_address"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tv_identity_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/et_address"
+        android:text="@string/identity_card_number"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
+
+    <EditText
+        android:id="@+id/et_identity_card_number"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_identity_card_number"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/tv_issued_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/et_identity_card_number"
+        android:text="@string/issued_by"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
+
+    <EditText
+        android:id="@+id/et_issued_by"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_issued_by"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/tv_issued_on"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/et_issued_by"
+        android:text="@string/issued_on"
+        android:textSize="16sp"
+        android:paddingTop="10sp"/>
+
+   <Button
+       android:id="@+id/btn_pick_date"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="10sp"
+       android:text="@string/pick_date"
+       android:layout_below="@id/tv_issued_on"
+       android:background="@drawable/custom_button"
+       android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/tv_chosen_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn_pick_date"
+        android:visibility="invisible"/>
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_marginTop="30sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/next"
+        android:background="@drawable/custom_button"
+        android:layout_below="@+id/btn_pick_date"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
