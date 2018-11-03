@@ -16,9 +16,9 @@
         <td>Application status</td>
         <td>Application reason</td>
     </tr>
-    <th:block th:each="smokeTest : ${smokeTests}">
+    <th:block th:each="application : ${applications}">
         <tr>
-            <td th:text="${smokeTest.name}">A Smoke Test'</td>
+            <td th:text="${application.applicationReason}">Application reason</td>
         </tr>
     </th:block>
 </table>

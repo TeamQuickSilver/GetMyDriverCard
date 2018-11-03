@@ -2,6 +2,7 @@ package com.quicksilver.web.models;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -20,6 +21,10 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private UserRole role;
+
+    @OneToMany(targetEntity = Role.class)
+    @JoinColumn(name = "role_id")
+    private Set<Role> authorities;
 
 //    @OneToMany(mappedBy = "user")
 //    private List<Application> applications;
