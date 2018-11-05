@@ -132,4 +132,14 @@ public class NewCardFragmentDocuments extends Fragment implements Step2Contracts
     public void setNavigator(Step2Contracts.Navigator navigator) {
         mNavigator = navigator;
     }
+
+    @Override
+    public void getApplication(Application application) {
+
+    }
+
+    @Override
+    public void showError(Throwable error) {
+
+    }
 }

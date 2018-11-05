@@ -1,5 +1,7 @@
 package com.quicksilver.getmydrivercard.views.step1;
 
+import com.quicksilver.getmydrivercard.models.User;
+
 public interface Step1Contracts {
     interface View {
         void setPresenter(Presenter presenter);
@@ -13,6 +15,6 @@ public interface Step1Contracts {
 
     interface Navigator {
 
-        void navigateToStep2(String reason);
+        void navigateToStep2(String reason, User user);
     }
 }

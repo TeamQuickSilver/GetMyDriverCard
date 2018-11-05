@@ -17,6 +17,11 @@ import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -41,6 +46,9 @@ public class NewCardPart3Fragment extends Fragment implements Step2Contracts.Vie
 
     @BindView(R.id.tv_chosen_date)
     TextView mChosenDate;
+
+    @BindView(R.id.et_categories)
+    EditText mCategories;
 
     private Application mApplication;
     private Calendar mCalendar;
@@ -76,6 +84,16 @@ public class NewCardPart3Fragment extends Fragment implements Step2Contracts.Vie
         mNavigator = navigator;
     }
 
+    @Override
+    public void getApplication(Application application) {
+
+    }
+
+    @Override
+    public void showError(Throwable error) {
+
+    }
+
     @OnClick({R.id.btn_pick_date, R.id.btn_next})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -95,6 +113,22 @@ public class NewCardPart3Fragment extends Fragment implements Step2Contracts.Vie
                 mDatePickerDialog.show();
                 break;
             case R.id.btn_next:
+                Long drivingLicenseNumber = Long.parseLong(mDrivingLicenseNumber.getText().toString());
+                String issuedBy = mIssuedBy.getText().toString();
+                String categories = mCategories.getText().toString();
+
+                DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
+                Date date = null;
+                try {
+                    date = dateFormat.parse(mChosenDate.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                mApplication.getPerson().getDrivingLicense().setDrivingLicenseNumber(drivingLicenseNumber);
+                mApplication.getPerson().getDrivingLicense().setIssuedBy(issuedBy);
+                mApplication.getPerson().getDrivingLicense().setIssuedOn(date);
+                mApplication.getPerson().getDrivingLicense().setMotorVehiclesCategories(categories);
                 mNavigator.navigateToNextStep(mApplication);
                 break;
         }

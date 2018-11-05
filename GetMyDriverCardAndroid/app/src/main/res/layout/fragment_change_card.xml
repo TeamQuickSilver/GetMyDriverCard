@@ -21,7 +21,48 @@
         android:layout_width="175sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_identity_number"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:inputType="phone"/>
+
+    <TextView
+        android:id="@+id/tv_district"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        android:paddingTop="10sp"
+        android:layout_below="@+id/et_identity_number"
+        android:layout_centerHorizontal="true"
+        android:text="@string/district"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/et_district"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_district"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        android:paddingTop="10sp"
+        android:layout_below="@+id/et_district"
+        android:layout_centerHorizontal="true"
+        android:text="@string/city"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/et_city"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_city"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
 
     <TextView
         android:id="@+id/tv_address"
@@ -30,7 +71,7 @@
         android:layout_marginEnd="10dp"
         android:textSize="16sp"
         android:paddingTop="10sp"
-        android:layout_below="@+id/et_identity_number"
+        android:layout_below="@+id/et_city"
         android:layout_centerHorizontal="true"
         android:text="@string/address"
         android:visibility="gone"/>
@@ -42,6 +83,7 @@
         android:layout_below="@+id/tv_address"
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
+
 
     <TextView
         android:id="@+id/tv_first_name"

@@ -13,17 +13,17 @@
         android:layout_centerHorizontal="true"
         android:text="@string/driving_license_number"
         android:textSize="16sp"
-        android:paddingTop="10sp"/>
+        android:paddingTop="10sp" />
 
     <EditText
         android:id="@+id/et_driving_license_number"
         android:layout_width="175sp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_issued_by"
+        android:layout_below="@id/tv_driving_license_number"
         android:layout_centerInParent="true"
         android:ellipsize="start"
         android:textSize="16sp"
-        android:inputType="number" />
+        android:inputType="phone" />
 
     <TextView
         android:id="@+id/tv_issued_by"

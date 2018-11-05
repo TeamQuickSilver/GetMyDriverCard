@@ -10,9 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.models.Address;
+import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.ApplicationReason;
 
 import java.util.Objects;
 
@@ -25,12 +29,18 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChangeCardFragment extends Fragment {
+public class ChangeCardFragment extends Fragment implements Step2Contracts.View{
     @BindView(R.id.relative_layout)
     RelativeLayout mRelativeLayout;
 
     @BindView(R.id.tv_identity_number)
     TextView mIdentityNumberTextView;
+
+    @BindView(R.id.tv_district)
+    TextView mDistrictTextView;
+
+    @BindView(R.id.tv_city)
+    TextView mCityTextView;
 
     @BindView(R.id.tv_address)
     TextView mAddressTextView;
@@ -49,6 +59,12 @@ public class ChangeCardFragment extends Fragment {
 
     @BindView(R.id.et_driving_license)
     EditText mDrivingLicenseEditText;
+
+    @BindView(R.id.et_district)
+    EditText mDistrictEditText;
+
+    @BindView(R.id.et_city)
+    EditText mCityEditText;
 
     @BindView(R.id.et_address)
     EditText mAddressEditText;
@@ -69,6 +85,9 @@ public class ChangeCardFragment extends Fragment {
     @BindView(R.id.btn_next)
     Button mNextButton;
     private String mReason;
+    private Step2Contracts.Navigator mNavigator;
+    private Application mApplication;
+    private Step2Contracts.Presenter mPresenter;
 
     @Inject
     public ChangeCardFragment() {
@@ -103,6 +122,10 @@ public class ChangeCardFragment extends Fragment {
 
 
     private void showAddressChangeView() {
+        mDistrictTextView.setVisibility(View.VISIBLE);
+        mDistrictEditText.setVisibility(View.VISIBLE);
+        mCityTextView.setVisibility(View.VISIBLE);
+        mCityEditText.setVisibility(View.VISIBLE);
         mAddressTextView.setVisibility(View.VISIBLE);
         mAddressEditText.setVisibility(View.VISIBLE);
 
@@ -139,21 +162,54 @@ public class ChangeCardFragment extends Fragment {
 
     @OnClick(R.id.btn_next)
     public void onClick(View view) {
+        Long identityNumber = Long.parseLong(mIdentityNumberEditText.getText().toString());
+        mPresenter.loadApplication(identityNumber);
         switch (mReason) {
             case Constants.ADDRESS_CHANGE:
+                String district = mDistrictEditText.getText().toString();
+                String city = mCityEditText.getText().toString();
+                String address = mAddressEditText.getText().toString();
+                Address fullAddress = new Address(district, city, address);
+                mApplication.setApplicationReason(ApplicationReason.ADDRESS_CHANGE);
+                mApplication.getPerson().getIdentityCard().setAddress(fullAddress);
                 break;
             case Constants.NAME_CHANGE:
-                String identityNumber = mIdentityNumberEditText.getText().toString();
                 String firstName = mFirstNameEditText.getText().toString();
                 String fathersName = mFathersNameEditText.getText().toString();
                 String lastName = mLastNameEditText.getText().toString();
+                mApplication.setApplicationReason(ApplicationReason.NAME_CHANGE);
+                mApplication.getPerson().getIdentityCard().setFirstName(firstName);
+                mApplication.getPerson().getIdentityCard().setFathersName(fathersName);
+                mApplication.getPerson().getIdentityCard().setLastName(lastName);
                 break;
             case Constants.PHOTO_CHANGE:
+                mApplication.setApplicationReason(ApplicationReason.PHOTO_CHANGE);
                 break;
             case Constants.DRIVING_LICENSE_CHANGE:
+                mApplication.setApplicationReason(ApplicationReason.DRIVING_LICENSE_CHANGE);
                 break;
         }
 
-        // Navigate to Step 3
+        mNavigator.navigateToNextStep(mApplication);
+    }
+
+    @Override
+    public void setPresenter(Step2Contracts.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void setNavigator(Step2Contracts.Navigator navigator) {
+        mNavigator = navigator;
+    }
+
+    @Override
+    public void getApplication(Application application) {
+        mApplication = application;
+    }
+
+    @Override
+    public void showError(Throwable error) {
+        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
     }
 }

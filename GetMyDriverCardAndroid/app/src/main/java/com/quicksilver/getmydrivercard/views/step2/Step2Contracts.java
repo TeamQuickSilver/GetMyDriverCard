@@ -7,10 +7,16 @@ public interface Step2Contracts {
         void setPresenter(Presenter presenter);
 
         void setNavigator(Navigator navigator);
+
+        void getApplication(Application application);
+
+        void showError(Throwable error);
     }
 
     interface Presenter {
         void subscribe(View view);
+
+        void loadApplication(Long id);
     }
 
     interface Navigator {

@@ -7,7 +7,10 @@ import com.quicksilver.getmydrivercard.views.step2.NewCardFragment;
 import com.quicksilver.getmydrivercard.views.step2.NewCardFragmentDocuments;
 import com.quicksilver.getmydrivercard.views.step2.NewCardPart3Fragment;
 import com.quicksilver.getmydrivercard.views.step2.RenewCardFragment;
+import com.quicksilver.getmydrivercard.views.step2.Step2Contracts;
+import com.quicksilver.getmydrivercard.views.step2.Step2Presenter;
 
+import dagger.Binds;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -41,7 +44,7 @@ public abstract class Step2Module {
     @ContributesAndroidInjector
     abstract NewCardPart3Fragment newCardPart3Fragment();
 
-//    @ActivityScoped
-//    @Binds
-//    abstract Step1Contracts.Presenter presenter(Step1Presenter step1Presenter);
+    @ActivityScoped
+    @Binds
+    abstract Step2Contracts.Presenter presenter(Step2Presenter step2Presenter);
 }

@@ -7,7 +7,9 @@ import android.support.v4.app.FragmentTransaction;
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.User;
 import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
+import com.quicksilver.getmydrivercard.views.step3.ProvidePhotoActivity;
 
 import javax.inject.Inject;
 
@@ -15,6 +17,9 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
     private static final int IDENTIFIER = 10;
     private String mReason;
     private FragmentTransaction mTransaction;
+
+    @Inject
+    Step2Contracts.Presenter mStep2Presenter;
 
     @Inject
     NewCardFragment mNewCardFragment;
@@ -32,6 +37,7 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
     ExchangeCardFragment mExchangeCardFragment;
 
     private static Application mApplication;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +46,19 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
 
         Intent step1Intent = getIntent();
         mReason = step1Intent.getStringExtra(Constants.INTENT_REASON);
+        mUser = (User)step1Intent.getSerializableExtra(Constants.USER);
 
         mNewCardFragment.setNavigator(this);
+        mLostStolenMalfunctionFragment.setNavigator(this);
+        mRenewCardFragment.setNavigator(this);
+        mChangeCardFragment.setNavigator(this);
+        mExchangeCardFragment.setNavigator(this);
+
+//        mNewCardFragment.setPresenter(mStep2Presenter);
+        mLostStolenMalfunctionFragment.setPresenter(mStep2Presenter);
+        mRenewCardFragment.setPresenter(mStep2Presenter);
+        mChangeCardFragment.setPresenter(mStep2Presenter);
+        mExchangeCardFragment.setPresenter(mStep2Presenter);
 
         mTransaction = getSupportFragmentManager().beginTransaction();
         arrangeFragments(mReason);
@@ -50,6 +67,7 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
     private void arrangeFragments(String reason) {
         switch (reason) {
             case Constants.NEW_CARD:
+            case Constants.WITHDRAWN_CARD:
                 mTransaction.replace(R.id.content, mNewCardFragment).commit();
                 break;
             case Constants.LOST_TEXT:
@@ -69,9 +87,6 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
             case Constants.RENEW_CARD:
                 mTransaction.replace(R.id.content, mRenewCardFragment).commit();
                 break;
-            case Constants.WITHDRAWN_CARD:
-                // TODO
-                break;
         }
     }
 
@@ -82,8 +97,21 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
 
     @Override
     public void navigateToNextStep(Application application) {
-        Intent intent = new Intent(this, NewCardActivityDocuments.class);
+        Intent intent = null;
+        switch (mReason) {
+            case Constants.NEW_CARD:
+            case Constants.WITHDRAWN_CARD:
+                intent = new Intent(this, NewCardActivityDocuments.class);
+                break;
+            default:
+                intent = new Intent(this, ProvidePhotoActivity.class);
+                break;
+        }
+
         intent.putExtra(Constants.APPLICATION, application);
+        intent.putExtra(Constants.REASON, mReason);
+        intent.putExtra(Constants.USER, mUser);
         startActivity(intent);
     }
 }
+

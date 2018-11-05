@@ -6,12 +6,31 @@
     tools:context=".views.step2.LostStolenMalfunctionCardFragment">
 
     <TextView
+        android:id="@+id/tv_identity_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="10dp"
+        android:paddingTop="10sp"
+        android:text="@string/identity_number"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_identity_number"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_identity_number"
+        android:layout_centerHorizontal="true"
+        android:inputType="phone"/>
+
+    <TextView
         android:id="@+id/tv_place"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/place"
+        android:layout_below="@+id/et_identity_number"
         android:layout_centerHorizontal="true"
-        android:textSize="16sp"/>
+        android:text="@string/place"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/et_place"
@@ -27,23 +46,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_place"
-        android:text="@string/date"
         android:layout_centerHorizontal="true"
-        android:textSize="16sp"/>
+        android:text="@string/date"
+        android:textSize="16sp" />
 
-    <DatePicker
-        android:id="@+id/date_picker"
-        android:layout_width="match_parent"
-        android:layout_height="395sp"
-        android:layout_below="@id/tv_date" />
+    <Button
+        android:id="@+id/btn_pick_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_date"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10sp"
+        android:background="@drawable/custom_button"
+        android:text="@string/pick_date" />
+
+    <TextView
+        android:id="@+id/tv_chosen_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_pick_date"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible" />
 
     <Button
         android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_pick_date"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="30sp"
         android:background="@drawable/custom_button"
-        android:text="@string/next"
-        android:layout_below="@id/date_picker"/>
+        android:text="@string/next" />
+
 
 </RelativeLayout>

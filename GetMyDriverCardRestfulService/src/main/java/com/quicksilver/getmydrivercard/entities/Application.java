@@ -37,6 +37,16 @@ public class Application {
     @Column(name = "date_of_submission")
     private Date dateOfSubmission;
 
+    @Column(name = "lost_place")
+    private String lostPlace;
+
+    @Column(name = "lost_date")
+    private Date lostDate;
+
+    @Column(name = "date_of_expire")
+    private Date dateOfExpire;
+
+
     public Application() {
 
     }
@@ -104,5 +114,29 @@ public class Application {
 
     public void setReason(ApplicationReason reason) {
         this.reason = reason;
+    }
+
+    public String getLostPlace() {
+        return lostPlace;
+    }
+
+    public void setLostPlace(String lostPlace) {
+        this.lostPlace = lostPlace;
+    }
+
+    public Date getLostDate() {
+        return lostDate;
+    }
+
+    public void setLostDate(Date lostDate) {
+        this.lostDate = lostDate;
+    }
+
+    public Date getDateOfExpire() {
+        return dateOfExpire;
+    }
+
+    public void setDateOfExpire(Date dateOfExpire) {
+        this.dateOfExpire = dateOfExpire;
     }
 }

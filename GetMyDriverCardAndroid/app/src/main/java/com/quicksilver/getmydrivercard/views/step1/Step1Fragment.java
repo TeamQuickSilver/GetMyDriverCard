@@ -139,7 +139,7 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
                     return;
                 }
 
-                mNavigator.navigateToStep2(mReason);
+                mNavigator.navigateToStep2(mReason, mUser);
                 break;
         }
     }

@@ -10,6 +10,7 @@ import android.widget.EditText;
 
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.DrivingLicense;
 import com.quicksilver.getmydrivercard.models.IdentityCard;
 import com.quicksilver.getmydrivercard.models.Person;
 
@@ -68,12 +69,14 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
         Application application = new Application();
         Person person = new Person();
         IdentityCard identityCard = new IdentityCard();
+        DrivingLicense drivingLicense = new DrivingLicense();
         identityCard.setPersonalNumber(identityNumber);
         identityCard.setFirstName(firstName);
         identityCard.setFathersName(fathersName);
         identityCard.setLastName(lastName);
         person.setIdentityCard(identityCard);
         person.setPhoneNumber(phoneNumber);
+        person.setDrivingLicense(drivingLicense);
         // person.setEmail(email);
         application.setPerson(person);
 
@@ -88,5 +91,15 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
     @Override
     public void setNavigator(Step2Contracts.Navigator navigator) {
         mNavigator = navigator;
+    }
+
+    @Override
+    public void getApplication(Application application) {
+
+    }
+
+    @Override
+    public void showError(Throwable error) {
+
     }
 }

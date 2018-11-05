@@ -6,11 +6,32 @@
     tools:context=".views.step2.ExchangeCardFragment">
 
     <TextView
+        android:id="@+id/tv_identity_number"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="10dp"
+        android:paddingTop="10sp"
+        android:text="@string/identity_number"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/et_identity_number"
+        android:layout_width="175sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_identity_number"
+        android:layout_centerInParent="true"
+        android:ellipsize="start"
+        android:textSize="16sp"
+        android:inputType="phone"/>
+
+    <TextView
         android:id="@+id/tv_country"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_centerHorizontal="true"
         android:layout_marginEnd="10dp"
+        android:layout_below="@id/et_identity_number"
         android:paddingTop="10sp"
         android:text="@string/country_which_issued_card"
         android:textSize="16sp" />
