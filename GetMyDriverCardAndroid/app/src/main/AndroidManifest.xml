@@ -56,18 +56,22 @@
         <activity android:name=".views.requests.RequestsActivity" />
         <activity android:name=".views.requestdetails.RequestDetailsActivity" />
         <activity android:name=".views.step2.NewCardActivityDocuments" />
-        <activity android:name=".views.step2.NewCardPart3Activity"></activity>
+        <activity android:name=".views.step2.NewCardPart3Activity" />
 
         <provider
-        android:name="android.support.v4.content.FileProvider"
-        android:authorities="${applicationId}.provider"
-        android:exported="false"
-        android:grantUriPermissions="true">
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/file_paths" />
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
 
+        <activity android:name=".views.preview.PreviewActivity" />
+        <activity android:name=".views.step3.IdCardPhotoActivity" />
+        <activity android:name=".views.step3.DrivingLicensePhotoActivity" />
+        <activity android:name=".views.step3.PreviousCardPhotoActivity"></activity>
     </application>
 
 </manifest>
