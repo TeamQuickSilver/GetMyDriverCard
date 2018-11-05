@@ -62,4 +62,5 @@
     <string name="issued_on">Issued on</string>
     <string name="pick_date">Pick date</string>
     <string name="categories">Categories</string>
+    <string name="submit">Submit</string>
 </resources>
