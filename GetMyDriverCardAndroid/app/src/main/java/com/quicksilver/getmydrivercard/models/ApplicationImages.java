@@ -9,17 +9,19 @@ public class ApplicationImages implements Serializable {
     private byte[] identityCardImage;
     private byte[] drivingLicenseImage;
     private byte[] euroCardImage;
+    private byte[] signatureImage;
 
     public ApplicationImages() {
 
     }
 
-    public ApplicationImages(byte[] personImage, byte[] previousCardImage, byte[] identityCardImage, byte[] drivingLicenseImage, byte[] euroCardImage) {
+    public ApplicationImages(byte[] personImage, byte[] previousCardImage, byte[] identityCardImage, byte[] drivingLicenseImage, byte[] euroCardImage, byte[] signatureImage) {
         this.personImage = personImage;
         this.previousCardImage = previousCardImage;
         this.identityCardImage = identityCardImage;
         this.drivingLicenseImage = drivingLicenseImage;
         this.euroCardImage = euroCardImage;
+        this.signatureImage = signatureImage;
     }
 
     public byte[] getPersonImage() {
@@ -61,4 +63,13 @@ public class ApplicationImages implements Serializable {
     public void setEuroCardImage(byte[] euroCardImage) {
         this.euroCardImage = euroCardImage;
     }
+
+    public byte[] getSignatureImage() {
+        return signatureImage;
+    }
+
+    public void setSignatureImage(byte[] signatureImage) {
+        this.signatureImage = signatureImage;
+    }
+
 }

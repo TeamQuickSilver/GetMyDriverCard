@@ -55,19 +55,19 @@
         <activity android:name=".views.step2.Step2Activity" />
         <activity android:name=".views.requests.RequestsActivity" />
         <activity android:name=".views.requestdetails.RequestDetailsActivity" />
-
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="${applicationId}.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
-
         <activity android:name=".views.step2.NewCardActivityDocuments" />
         <activity android:name=".views.step2.NewCardPart3Activity"></activity>
+
+        <provider
+        android:name="android.support.v4.content.FileProvider"
+        android:authorities="${applicationId}.provider"
+        android:exported="false"
+        android:grantUriPermissions="true">
+            <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/file_paths" />
+        </provider>
+
     </application>
 
 </manifest>

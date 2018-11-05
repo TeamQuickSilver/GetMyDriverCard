@@ -73,7 +73,7 @@ class CameraUtils {
      * android:required="true" is used in manifest file
      */
     static boolean isDeviceSupportCamera(Context context) {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
     }
 
     /**

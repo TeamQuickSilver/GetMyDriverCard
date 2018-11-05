@@ -17,8 +17,8 @@ import javax.inject.Inject;
  */
 public class Step4Fragment extends Fragment implements Step4Contracts.View {
 
-    private Step1Contracts.Presenter mPresenter;
-    private Step1Contracts.Navigator mNavigator;
+    private Step4Contracts.Presenter mPresenter;
+    private Step4Contracts.Navigator mNavigator;
 
     @Inject
     public Step4Fragment() {
