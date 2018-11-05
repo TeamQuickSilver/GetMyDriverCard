@@ -1,9 +1,8 @@
-package com.quicksilver.web.models;
+package com.quicksilver.getmydrivercard.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 public class Role implements GrantedAuthority {
@@ -14,6 +13,10 @@ public class Role implements GrantedAuthority {
 
     @Column
     private String authority;
+
+    public Role() {
+
+    }
 
     public Role(String authority) {
         this.authority = authority;

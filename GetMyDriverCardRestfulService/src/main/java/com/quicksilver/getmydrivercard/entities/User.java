@@ -1,9 +1,7 @@
 package com.quicksilver.getmydrivercard.entities;
 
-import com.quicksilver.getmydrivercard.utils.UserRole;
-
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -19,12 +17,9 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private UserRole role;
-
-//    @OneToMany(mappedBy = "user")
-//    private List<Application> applications;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id")
+    private Role role;
 
     public User() {
 
@@ -34,7 +29,7 @@ public class User {
         this.email = email;
     }
 
-    public User(String email, String password, UserRole role) {
+    public User(String email, String password, Set<Role> authorities) {
         this.email = email;
         this.password = password;
     }
@@ -63,11 +58,11 @@ public class User {
         this.password = password;
     }
 
-    public UserRole getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

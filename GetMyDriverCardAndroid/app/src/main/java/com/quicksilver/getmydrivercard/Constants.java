@@ -1,7 +1,9 @@
 package com.quicksilver.getmydrivercard;
 
 public class Constants {
-    public static final String BASE_SERVER_URL = "http://192.168.0.102:8080";
+    public static final String BASE_SERVER_URL = "http://192.168.43.103:8080";
+    public static final String USER = "USER";
+    public static final String ADMIN = "ADMIN";
     public static final String NEW_CARD = "NEW_CARD";
     public static final String CHANGE_CARD = "CHANGE_CARD";
     public static final String EXCHANGE_CARD = "EXCHANGE_CARD";

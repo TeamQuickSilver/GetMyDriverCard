@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable {
     private String email;
     private String password;
-    private UserRole role;
+    private Role role;
 
     public User() {
 
@@ -36,7 +36,7 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public UserRole getRole() {
+    public Role getRole() {
         return role;
     }
 }

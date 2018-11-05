@@ -1,5 +1,7 @@
 package com.quicksilver.web.models;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -18,16 +20,13 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "role")
-    private UserRole role;
+//    @Enumerated(EnumType.STRING)
+//    @Column(name = "role")
+//    private UserRole role;
 
-    @OneToMany(targetEntity = Role.class)
+    @OneToOne
     @JoinColumn(name = "role_id")
-    private Set<Role> authorities;
-
-//    @OneToMany(mappedBy = "user")
-//    private List<Application> applications;
+    private Role role;
 
     public User() {
 
@@ -37,7 +36,7 @@ public class User {
         this.email = email;
     }
 
-    public User(String email, String password, UserRole role) {
+    public User(String email, String password, Role role) {
         this.email = email;
         this.password = password;
     }
@@ -66,11 +65,11 @@ public class User {
         this.password = password;
     }
 
-    public UserRole getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(UserRole role) {
+    public void setRole(Role role) {
         this.role = role;
     }
 }

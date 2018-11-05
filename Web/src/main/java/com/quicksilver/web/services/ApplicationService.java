@@ -20,6 +20,4 @@ public interface ApplicationService {
 
     List<Application> getById(Long id);
 
-    Application save(Application application);
-
 }

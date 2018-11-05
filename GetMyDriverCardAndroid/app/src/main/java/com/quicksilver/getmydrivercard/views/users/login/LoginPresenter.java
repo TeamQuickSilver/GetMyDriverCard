@@ -1,8 +1,8 @@
 package com.quicksilver.getmydrivercard.views.users.login;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.async.base.SchedulerProvider;
 import com.quicksilver.getmydrivercard.models.User;
-import com.quicksilver.getmydrivercard.models.UserRole;
 import com.quicksilver.getmydrivercard.services.UserService;
 
 import javax.inject.Inject;
@@ -53,15 +53,15 @@ public class LoginPresenter implements LoginContracts.Presenter {
     }
 
     private void loginNavigation(Observable<User> observable) {
-        Disposable subscriptionUser = observable.filter(u -> u.getRole().equals(UserRole.USER))
+        Disposable subscriptionUser = observable.filter(u -> u.getRole().getAuthority().equals(Constants.USER))
                 .subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())
                 .subscribe(u -> mView.navigateToStep1(u), error -> mView.showError(error));
 
-        Disposable subscriptionAdmin = observable.filter(u -> u.getRole().equals(UserRole.ADMIN))
-                .subscribeOn(mSchedulerProvider.background())
-                .observeOn(mSchedulerProvider.ui())
-                .subscribe(u -> mView.navigateToRequests(u), error -> mView.showError(error));
+//        Disposable subscriptionAdmin = observable.filter(u -> u.getRole().getAuthority().equals(Constants.ADMIN))
+//                .subscribeOn(mSchedulerProvider.background())
+//                .observeOn(mSchedulerProvider.ui())
+//                .subscribe(u -> mView.navigateToRequests(u), error -> mView.showError(error));
     }
 }
 

@@ -1,9 +1,9 @@
 package com.quicksilver.getmydrivercard;
 
+import com.quicksilver.getmydrivercard.entities.Role;
 import com.quicksilver.getmydrivercard.entities.User;
 import com.quicksilver.getmydrivercard.repositories.UserRepository;
 import com.quicksilver.getmydrivercard.services.UserServiceImpl;
-import com.quicksilver.getmydrivercard.utils.UserRole;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,6 +12,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @RunWith(MockitoJUnitRunner.class)
 public class UserServiceImplTests {
@@ -28,7 +31,8 @@ public class UserServiceImplTests {
     @InjectMocks
     UserServiceImpl userService;
 
-    User user = new User(TRUE_EMAIL, TRUE_PASSWORD, UserRole.USER);
+
+    User user = new User(TRUE_EMAIL, TRUE_PASSWORD, new HashSet<>());
 
     @Test
     public void getByEmail_ShouldReturnMatchingUser_WhenMatchingExist() {

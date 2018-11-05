@@ -1,26 +1,25 @@
 package com.quicksilver.getmydrivercard.services;
 
+import com.quicksilver.getmydrivercard.entities.Role;
 import com.quicksilver.getmydrivercard.entities.User;
+import com.quicksilver.getmydrivercard.repositories.RoleRepository;
 import com.quicksilver.getmydrivercard.repositories.UserRepository;
-import com.quicksilver.getmydrivercard.utils.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-
 @Service
 public class UserServiceImpl implements UserService {
-
     private final UserRepository userRepository;
-
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -43,7 +42,8 @@ public class UserServiceImpl implements UserService {
         }
 
         // Applied also with Facebook or Google login
-        user.setRole(UserRole.USER);
+//        Role role = new Role("USER");
+        user.setRole(roleRepository.getByRoleId(1L));
         return userRepository.save(user);
     }
 
