@@ -14,8 +14,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.ApplicationReason;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -86,6 +88,15 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
                 mDatePickerDialog.show();
                 break;
             case R.id.btn_next:
+                boolean isValid = true;
+                String identityNumberStr = mIdentityNumber.getText().toString();
+
+                if(identityNumberStr.length() != 10) {
+                    mIdentityNumber.setError(Constants.IDENTITY_NUMBER_ERROR);
+                    Toast.makeText(getContext(), Constants.IDENTITY_NUMBER_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Long identityNumber = Long.parseLong(mIdentityNumber.getText().toString());
                 mPresenter.loadApplication(identityNumber);
 
@@ -94,10 +105,12 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
                 try {
                     date = dateFormat.parse(mChosenDate.getText().toString());
                 } catch (ParseException e) {
+                    Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
+                    return;
                 }
 
-
+                mApplication.setApplicationReason(ApplicationReason.RENEW);
                 mApplication.setDateOfExpire(date);
                 mNavigator.navigateToNextStep(mApplication);
                 break;

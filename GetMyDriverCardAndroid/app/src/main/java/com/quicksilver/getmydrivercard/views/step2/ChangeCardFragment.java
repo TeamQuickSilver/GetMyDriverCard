@@ -29,7 +29,7 @@ import butterknife.OnClick;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChangeCardFragment extends Fragment implements Step2Contracts.View{
+public class ChangeCardFragment extends Fragment implements Step2Contracts.View {
     @BindView(R.id.relative_layout)
     RelativeLayout mRelativeLayout;
 
@@ -162,13 +162,42 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View{
 
     @OnClick(R.id.btn_next)
     public void onClick(View view) {
-        Long identityNumber = Long.parseLong(mIdentityNumberEditText.getText().toString());
+        String identityNumberStr = mIdentityNumberEditText.getText().toString();
+        boolean isValid = true;
+
+        if (identityNumberStr.length() != 10) {
+            mIdentityNumberEditText.setError(Constants.IDENTITY_NUMBER_ERROR);
+            isValid = false;
+        }
+
+        Long identityNumber = Long.parseLong(identityNumberStr);
         mPresenter.loadApplication(identityNumber);
         switch (mReason) {
             case Constants.ADDRESS_CHANGE:
                 String district = mDistrictEditText.getText().toString();
                 String city = mCityEditText.getText().toString();
                 String address = mAddressEditText.getText().toString();
+
+                if (district.length() < 3 || district.length() >= 20) {
+                    mDistrictEditText.setError(Constants.DISTRICT_ERROR);
+                    isValid = false;
+                }
+
+                if (city.length() < 3 || city.length() >= 20) {
+                    mCityEditText.setError(Constants.CITY_ERROR);
+                    isValid = false;
+                }
+
+                if (address.length() < 5 || address.length() >= 30) {
+                    mAddressEditText.setError(Constants.ADDRESS_ERROR);
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Address fullAddress = new Address(district, city, address);
                 mApplication.setApplicationReason(ApplicationReason.ADDRESS_CHANGE);
                 mApplication.getPerson().getIdentityCard().setAddress(fullAddress);
@@ -177,6 +206,27 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View{
                 String firstName = mFirstNameEditText.getText().toString();
                 String fathersName = mFathersNameEditText.getText().toString();
                 String lastName = mLastNameEditText.getText().toString();
+
+                if (firstName.length() < 2 || firstName.length() > 20) {
+                    mFirstNameEditText.setError(Constants.FIRST_NAME_ERROR);
+                    isValid = false;
+                }
+
+                if (fathersName.length() < 2 || fathersName.length() > 30) {
+                    mFathersNameEditText.setError(Constants.FATHERS_NAME_ERROR);
+                    isValid = false;
+                }
+
+                if (lastName.length() < 2 || lastName.length() > 20) {
+                    mLastNameEditText.setError(Constants.LAST_NAME_ERROR);
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 mApplication.setApplicationReason(ApplicationReason.NAME_CHANGE);
                 mApplication.getPerson().getIdentityCard().setFirstName(firstName);
                 mApplication.getPerson().getIdentityCard().setFathersName(fathersName);

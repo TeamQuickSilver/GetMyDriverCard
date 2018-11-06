@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
@@ -103,15 +104,51 @@ public class NewCardFragmentDocuments extends Fragment implements Step2Contracts
                 String district = mDistrict.getText().toString();
                 String city = mCity.getText().toString();
                 String address = mAddress.getText().toString();
-                Address fullAddress = new Address(district, city, address);
-                Long identityCardNumber = Long.parseLong(mIdentityCardNumber.getText().toString());
+                String identityCardNumberStr = mIdentityCardNumber.getText().toString();
                 String issuedBy = mIssuedBy.getText().toString();
+
+                boolean isValid = true;
+
+                if(district.length() < 3 || district.length() >= 20) {
+                    mDistrict.setError(Constants.DISTRICT_ERROR);
+                    isValid = false;
+                }
+
+                if(city.length() < 3 || city.length() >= 20) {
+                    mCity.setError(Constants.CITY_ERROR);
+                    isValid = false;
+                }
+
+                if(address.length() < 5 || address.length() >= 30) {
+                    mAddress.setError(Constants.ADDRESS_ERROR);
+                    isValid = false;
+                }
+
+                if(identityCardNumberStr.length() != 9) {
+                    mIdentityCardNumber.setError(Constants.IDENTITY_CARD_NUMBER_ERROR);
+                    isValid = false;
+                }
+
+                if(issuedBy.length() < 3 || issuedBy.length() >= 20) {
+                    mIssuedBy.setError(Constants.ISSUED_BY_ERROR);
+                    isValid = false;
+                }
+
+                if(!isValid) {
+                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Address fullAddress = new Address(district, city, address);
+                Long identityCardNumber = Long.parseLong(identityCardNumberStr);
                 DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
                 Date date = null;
                 try {
                     date = dateFormat.parse(mChosenDate.getText().toString());
                 } catch (ParseException e) {
+                    Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
+                    return;
                 }
 
                 mApplication.getPerson().getIdentityCard().setIdentityCardNumber(identityCardNumber);

@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.ApplicationReason;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -112,18 +113,40 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
                 mDatePickerDialog.show();
                 break;
             case R.id.btn_next:
-                Long identityNumber = Long.parseLong(mIdentityNumber.getText().toString());
+                boolean isValid = true;
+                String identityNumberStr = mIdentityNumber.getText().toString();
+
+                if(identityNumberStr.length() != 10) {
+                    mIdentityNumber.setError(Constants.IDENTITY_NUMBER_ERROR);
+                    isValid = false;
+                }
+
+                Long identityNumber = Long.parseLong(identityNumberStr);
                 mPresenter.loadApplication(identityNumber);
 
                 String place = mPlaceEditText.getText().toString();
+
+                if(place.length() < 5 || place.length() >= 30) {
+                    mPlaceEditText.setError(Constants.PLACE_ERROR);
+                    isValid = false;
+                }
+
+                if(!isValid) {
+                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
                 Date date = null;
                 try {
                     date = dateFormat.parse(mChosenDate.getText().toString());
                 } catch (ParseException e) {
+                    Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
+                    return;
                 }
 
+                mApplication.setApplicationReason(ApplicationReason.LOST);
                 mApplication.setPlaceLost(place);
                 mApplication.setDateLost(date);
                 mNavigator.navigateToNextStep(mApplication);

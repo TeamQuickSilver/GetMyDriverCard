@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.ApplicationReason;
@@ -65,14 +66,44 @@ public class ExchangeCardFragment extends Fragment implements Step2Contracts.Vie
 
     @OnClick({R.id.btn_next})
     public void onClick(View view) {
-        Long identityNumber = Long.parseLong(mIdentityNumber.getText().toString());
+        boolean isValid = true;
+        String identityNumberStr = mIdentityNumber.getText().toString();
+
+        if(identityNumberStr.length() != 10) {
+            mIdentityNumber.setError(Constants.IDENTITY_NUMBER_ERROR);
+            isValid = false;
+        }
+
+        Long identityNumber = Long.parseLong(identityNumberStr);
         mPresenter.loadApplication(identityNumber);
 
+        String tachographCardNumberStr = mCardNumber.getText().toString();
         String countryWhichIssuedPreviousCard = mCountry.getText().toString();
-        Long tachographCardNumber = Long.parseLong(mCardNumber.getText().toString());
         String countryWhichIssuedDrivingLicense = mCountryDrivingLicense.getText().toString();
 //        Long drivingLicenseNumber = Long.parseLong(mDrivingLicenseNumber.getText().toString());
 
+        if(countryWhichIssuedPreviousCard.length() < 3 ||
+                countryWhichIssuedPreviousCard.length() > 20) {
+            mCountry.setError(Constants.COUNTRY_ERROR);
+            isValid = false;
+        }
+
+        if(tachographCardNumberStr.length() != 10) {
+            mCardNumber.setError(Constants.TACHOGRAPH_CARD_NUMBER_ERROR);
+            isValid = false;
+        }
+
+        if(countryWhichIssuedDrivingLicense.length() < 3 || countryWhichIssuedDrivingLicense.length() > 20) {
+            mCountryDrivingLicense.setError(Constants.COUNTRY_ERROR);
+            isValid = false;
+        }
+
+        if(!isValid) {
+            Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        Long tachographCardNumber = Long.parseLong(tachographCardNumberStr);
 
         mApplication.setApplicationReason(ApplicationReason.EXCHANGE);
         mApplication.setCountryPreviousCard(countryWhichIssuedPreviousCard);

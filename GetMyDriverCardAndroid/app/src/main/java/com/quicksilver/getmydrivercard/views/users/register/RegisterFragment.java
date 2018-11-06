@@ -11,9 +11,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.User;
 import com.quicksilver.getmydrivercard.views.OnSwipeTouchListener;
+
+import org.apache.commons.validator.routines.EmailValidator;
 
 import javax.inject.Inject;
 
@@ -102,9 +105,21 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
                 mNavigator.navigateToLogin();
                 break;
             case R.id.btn_register:
-                String username = mEmailEdiText.getText().toString();
+                String email = mEmailEdiText.getText().toString();
                 String password = mEditTextPassword.getText().toString();
-                User user = new User(username, password);
+                EmailValidator emailValidator = EmailValidator.getInstance();
+
+                if(!emailValidator.isValid(email)) {
+                    mEmailEdiText.setError(Constants.EMAIL_ERROR);
+                    return;
+                }
+
+                if(password.length() < 6) {
+                    mEditTextPassword.setError(Constants.PASSWORD_ERROR);
+                    return;
+                }
+
+                User user = new User(email, password);
                 mPresenter.register(user);
                 break;
         }
@@ -114,4 +129,9 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
     public void navigateToStep1() {
         mNavigator.navigateToStep1();
     }
+
+//    @OnTextChanged({R.id.et_email, R.id.et_password})
+//    public void onTextChanged(CharSequence s, int start, int before, int count) {
+//        String email = mEmailEdiText.getText().toString();
+//    }
 }

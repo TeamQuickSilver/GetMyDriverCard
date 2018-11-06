@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
@@ -113,16 +114,41 @@ public class NewCardPart3Fragment extends Fragment implements Step2Contracts.Vie
                 mDatePickerDialog.show();
                 break;
             case R.id.btn_next:
-                Long drivingLicenseNumber = Long.parseLong(mDrivingLicenseNumber.getText().toString());
+                String drivingLicenseNumberStr = mDrivingLicenseNumber.getText().toString();
                 String issuedBy = mIssuedBy.getText().toString();
                 String categories = mCategories.getText().toString();
 
+                boolean isValid = true;
+
+                if(drivingLicenseNumberStr.length() != 9) {
+                    mDrivingLicenseNumber.setError(Constants.DRIVING_LICENSE_NUMBER_ERROR);
+                    isValid = false;
+                }
+
+                if(issuedBy.length() < 5 || issuedBy.length() >= 20) {
+                    mIssuedBy.setError(Constants.ISSUED_BY_ERROR);
+                    isValid = false;
+                }
+
+                if(categories.length() < 3 || categories.length() >= 20) {
+                    mCategories.setError(Constants.CATEGORIES_ERROR);
+                    isValid = false;
+                }
+
+                if(!isValid) {
+                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Long drivingLicenseNumber = Long.parseLong(drivingLicenseNumberStr);
                 DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
                 Date date = null;
                 try {
                     date = dateFormat.parse(mChosenDate.getText().toString());
                 } catch (ParseException e) {
+                    Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
+                    return;
                 }
 
                 mApplication.getPerson().getDrivingLicense().setDrivingLicenseNumber(drivingLicenseNumber);
