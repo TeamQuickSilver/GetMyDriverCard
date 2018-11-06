@@ -9,7 +9,7 @@ public class DrivingLicense {
 
     @Id
     @Column(name = "id_driver_license")
-    private Long id_card;
+    private Long idCard;
 
     @Column(name = "identity_card_number")
     private Long identityCardNumber;
@@ -23,19 +23,19 @@ public class DrivingLicense {
     public DrivingLicense() {
     }
 
-    public DrivingLicense(Long id_card, Long identityCardNumber, Date issuedOn, String issuedBy) {
-        this.setId_card(id_card);
+    public DrivingLicense(Long idCard, Long identityCardNumber, Date issuedOn, String issuedBy) {
+        this.setIdCard(idCard);
         this.setIdentityCardNumber(identityCardNumber);
         this.setIssuedOn(issuedOn);
         this.setIssuedBy(issuedBy);
     }
 
-    public Long getId_card() {
-        return id_card;
+    public Long getIdCard() {
+        return idCard;
     }
 
-    public void setId_card(Long id_card) {
-        this.id_card = id_card;
+    public void setIdCard(Long idCard) {
+        this.idCard = idCard;
     }
 
     public Long getIdentityCardNumber() {

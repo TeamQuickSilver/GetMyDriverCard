@@ -21,4 +21,6 @@ public interface ApplicationRepository extends JpaRepository<Application, Long> 
 
     List<Application> getByPersonIdentityCardPersonalNumber(Long id);
 
+    Application getByApplicationId(Long id);
+
 }

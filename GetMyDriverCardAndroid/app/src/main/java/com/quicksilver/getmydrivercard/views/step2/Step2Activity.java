@@ -70,11 +70,13 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
             case Constants.WITHDRAWN_CARD:
                 mTransaction.replace(R.id.content, mNewCardFragment).commit();
                 break;
-            case Constants.LOST_TEXT:
-            case Constants.STOLEN_TEXT:
-            case Constants.MALFUNCTION_BROKEN_TEXT:
+            case Constants.LOST_CARD:
+            case Constants.STOLEN_CARD:
                 mTransaction.replace(R.id.content, mLostStolenMalfunctionFragment).commit();
                 break;
+            case Constants.MALFUNCTION_BROKEN_CARD:
+                //TODO
+            break;
             case Constants.ADDRESS_CHANGE:
             case Constants.NAME_CHANGE:
             case Constants.PHOTO_CHANGE:

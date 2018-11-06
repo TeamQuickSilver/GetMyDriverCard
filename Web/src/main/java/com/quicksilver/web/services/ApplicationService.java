@@ -7,7 +7,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import java.util.Date;
 import java.util.List;
 
-@PreAuthorize("hasRole('ADMIN')")
+//@PreAuthorize("hasRole('ADMIN')")
 public interface ApplicationService {
 
     List<Application> getAllByUserEmailOrderById(String email);
@@ -18,6 +18,8 @@ public interface ApplicationService {
 
     List<Application> getAllOrderByPersonName();
 
-    List<Application> getById(Long id);
+    List<Application> getByIdentityNumber(Long id);
+
+    Application getById(Long id);
 
 }

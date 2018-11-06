@@ -82,13 +82,13 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
 
     private void arrangeViews(String reason) {
         switch (reason) {
-            case Constants.LOST_TEXT:
+            case Constants.LOST_CARD:
 
                 break;
-            case Constants.STOLEN_TEXT:
+            case Constants.STOLEN_CARD:
 
                 break;
-            case Constants.MALFUNCTION_BROKEN_TEXT:
+            case Constants.MALFUNCTION_BROKEN_CARD:
 
                 break;
         }
@@ -118,7 +118,8 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
 
                 if(identityNumberStr.length() != 10) {
                     mIdentityNumber.setError(Constants.IDENTITY_NUMBER_ERROR);
-                    isValid = false;
+                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 Long identityNumber = Long.parseLong(identityNumberStr);

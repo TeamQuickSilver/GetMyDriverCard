@@ -39,7 +39,12 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<Application> getById(Long id) {
+    public List<Application> getByIdentityNumber(Long id) {
         return applicationRepository.getByPersonIdentityCardPersonalNumber(id);
+    }
+
+    @Override
+    public Application getById(Long id) {
+        return applicationRepository.getByApplicationId(id);
     }
 }

@@ -114,10 +114,17 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
             case Constants.NAME_CHANGE:
                 showNameChangeView();
                 break;
+            case Constants.PHOTO_CHANGE:
+                showPhotoChangeView();
+                break;
             case Constants.DRIVING_LICENSE_CHANGE:
                 showDrivingLicenseChangeView();
                 break;
         }
+    }
+
+    private void showPhotoChangeView() {
+        addParamsToRelativeLayout(R.id.et_identity_number);
     }
 
 
@@ -167,7 +174,8 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
 
         if (identityNumberStr.length() != 10) {
             mIdentityNumberEditText.setError(Constants.IDENTITY_NUMBER_ERROR);
-            isValid = false;
+            Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+            return;
         }
 
         Long identityNumber = Long.parseLong(identityNumberStr);

@@ -6,21 +6,10 @@
     <link rel="stylesheet" th:href="@{/css/index.css}" type="text/css">
 </head>
 <body>
-<table class="applications">
-    <tr class="titles">
-        <td>Identity number</td>
-        <td>First name</td>
-        <td>Father's name</td>
-        <td>Last name</td>
-        <td>Date of submission</td>
-        <td>Application status</td>
-        <td>Application reason</td>
-    </tr>
-    <th:block th:each="application : ${applications}">
-        <tr>
-            <td th:text="${application.applicationReason}">Application reason</td>
-        </tr>
-    </th:block>
-</table>
+<section class="container">
+    <h1>Only for civil servants!</h1>
+    <div>Please login from </div>
+    <a th:href="@{/login}">here</a>
+</section>
 </body>
 </html>

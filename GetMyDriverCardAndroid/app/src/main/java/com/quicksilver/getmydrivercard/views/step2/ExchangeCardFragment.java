@@ -71,7 +71,8 @@ public class ExchangeCardFragment extends Fragment implements Step2Contracts.Vie
 
         if(identityNumberStr.length() != 10) {
             mIdentityNumber.setError(Constants.IDENTITY_NUMBER_ERROR);
-            isValid = false;
+            Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+            return;
         }
 
         Long identityNumber = Long.parseLong(identityNumberStr);

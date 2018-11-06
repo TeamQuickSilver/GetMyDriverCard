@@ -60,7 +60,6 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -152,9 +151,10 @@ public class Step1Fragment extends Fragment implements Step1Contracts.View {
                     mReason.equals(Constants.EXCHANGE_CARD) || mReason.equals(Constants.RENEW_CARD)
                     || mReason.equals(Constants.WITHDRAWN_CARD)) {
 
-                mReason = Constants.LOST_TEXT;
+                mReason = Constants.LOST_CARD;
             }
             //We have true reason
+            System.out.println();
         } else if(mExchangeCard.isChecked()) {
             mReason = Constants.EXCHANGE_CARD;
         } else if(mRenewCard.isChecked()) {

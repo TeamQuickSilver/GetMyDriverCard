@@ -1,14 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 body {
     background: #3e9c45;
+    font-family: 'Open sans', sans-serif;
 }
 
-.applications {
+.container {
     text-align: center;
-    margin: 0 auto;
-    font-size: 20px;
-    color: aliceblue;
-}
-
-td {
-    padding: 10px;
+    position: absolute;
+    top:40%;
+    right:0;
+    left:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,21 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 body {
     background: #3e9c45;
+    font-family: 'Open sans', sans-serif;
 }
 
-section {
-    margin: 0 auto;
+.applications {
     text-align: center;
-}
-
-section h1 {
-    font-size: 2.0rem;
-}
-
-table {
     margin: 0 auto;
     font-size: 20px;
+    color: #0DFF84;
+    padding: 0;
+    width: 100%;
 }
 
-tr {
-    padding-bottom: 20px;
+h1 {
+    text-align: center;
+    color: #E8B00C;
+}
+
+select {
+    margin: 0 auto;
+    background: #3e9c45;
+    color: aliceblue;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: #E8B00C;
+}
+
+li {
+    flex-direction: column;
+}
+
+td {
+    padding: 10px;
+    color: aliceblue;
 }

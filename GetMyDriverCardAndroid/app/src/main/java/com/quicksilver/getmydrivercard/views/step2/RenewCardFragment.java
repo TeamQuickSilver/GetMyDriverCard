@@ -93,7 +93,7 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
 
                 if(identityNumberStr.length() != 10) {
                     mIdentityNumber.setError(Constants.IDENTITY_NUMBER_ERROR);
-                    Toast.makeText(getContext(), Constants.IDENTITY_NUMBER_ERROR, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
                     return;
                 }
 

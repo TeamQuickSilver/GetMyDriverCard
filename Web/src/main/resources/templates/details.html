@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>GetMyDriverCard</title>
+    <link rel="stylesheet" th:href="@{/css/details.css}" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script th:href="@{/scripts/details.js}"></script>
+</head>
+<body>
+<section>
+    <h1>
+       <span>Application &numero;</span>
+       <span th:text="${applicationDetails.getApplicationId()}"></span>
+    </h1>
+    <table>
+        <th:block>
+
+        </th:block>
+        <tr>
+            <td>
+                Date of submission:
+            </td>
+            <td th:text="${applicationDetails.getDateOfSubmission()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Reason:
+            </td>
+            <td th:text="${applicationDetails.getReason()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Status:
+            </td>
+            <td th:text="${applicationDetails.getStatus()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Identity number:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getPersonalNumber()}"></td>
+        </tr>
+        <tr>
+            <td>
+                First name:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getFirstName()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Father's name:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getFathersName()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Last name:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getLastName()}"></td>
+        </tr>
+        <tr>
+            <td>
+                City:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getAddress().getCity()}"></td>
+        </tr>
+        <tr>
+            <td>
+                District:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getAddress().getDistrict()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Address:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getAddress().getAddress()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Identity card number:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getIdentityCardNumber()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Issued by:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getIssuedBy()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Issued on:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getIdentityCard().getIssuedOn()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Driving license number:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getDrivingLicense().getIdCard()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Issued by:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getDrivingLicense().getIssuedBy()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Issued on:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getDrivingLicense().getIssuedOn()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Email:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getEmail()}"></td>
+        </tr>
+        <tr>
+            <td>
+                Phone number:
+            </td>
+            <td th:text="${applicationDetails.getPerson().getPhoneNumber()}"></td>
+        </tr>
+    </table>
+    <div class="buttons-container">
+        <button id="approve" value="Approve">Approve</button>
+        <button id="reject" value="Reject">Reject</button>
+    </div>
+</section>
+</body>
+</html>

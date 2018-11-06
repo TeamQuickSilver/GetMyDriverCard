@@ -86,7 +86,8 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
 
         if(identityNumberStr.length() != 10) {
             mIdentityNumber.setError(Constants.IDENTITY_NUMBER_ERROR);
-            isValid = false;
+            Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+            return;
         }
 
         if(firstName.length() < 2 || firstName.length() > 20) {

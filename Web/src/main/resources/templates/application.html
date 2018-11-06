@@ -4,156 +4,47 @@
     <meta charset="UTF-8">
     <title>GetMyDriverCard</title>
     <link rel="stylesheet" th:href="@{/css/application.css}" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script th:href="@{/scripts/applications.js}"></script>
 </head>
 <body>
-<section>
-    <h1>Application</h1>
-    <table>
-        <tr>
+<h1>Applications for driver card issue</h1>
+<select name="Filter">
+    <option value="Filter by status">Filter by status</option>
+    <option value="Filter by ID">Filter by id</option>
+    <option value="Filter by date of submission">Filter by date of submission</option>
+    <option value="Filter by name">Filter by name</option>
+</select>
+<table class="applications">
+    <tr class="titles">
+        <!--<td>Application number</td>-->
+        <td>Identity number</td>
+        <td>First name</td>
+        <td>Father's name</td>
+        <td>Last name</td>
+        <td>Date of submission</td>
+        <td>Application status</td>
+        <td>Application reason</td>
+        <td></td>
+    </tr>
+    <th:block th:each="app : ${applicationList}">
+        <tr class="clickable">
+            <!--<td th:text="${app.getApplicationId()}"></td>-->
+            <td th:text="${app.getPerson().getIdentityCard().getPersonalNumber()}"></td>
+            <td th:text="${app.getPerson().getIdentityCard().getFirstName()}"></td>
+            <td th:text="${app.getPerson().getIdentityCard().getFathersName()}"></td>
+            <td th:text="${app.getPerson().getIdentityCard().getLastName()}"></td>
+            <td th:text="${app.getDateOfSubmission()}"></td>
+            <td th:text="${app.getStatus()}"></td>
+            <td th:text="${app.getReason()}"></td>
             <td>
-                Date of submission:
-            </td>
-            <td id="date-of-submission">
-
+                <a class="details" th:href="@{/applications/{id}(id=${app.getApplicationId()})}">Show details &raquo;</a>
             </td>
         </tr>
-        <tr>
-            <td>
-                Reason:
-            </td>
-            <td id="reason">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Status:
-            </td>
-            <td id="status">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Identity number:
-            </td>
-            <td id="identity-number">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                First name:
-            </td>
-            <td id="first-name">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Father's name:
-            </td>
-            <td id="fathers-name">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Last name:
-            </td>
-            <td id="last-name">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                City:
-            </td>
-            <td id="city">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                District:
-            </td>
-            <td id="district">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Address:
-            </td>
-            <td id="address">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Identity card number:
-            </td>
-            <td id="identity-card-number">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Issued by:
-            </td>
-            <td id="issued-by">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Issued on:
-            </td>
-            <td id="issued-on">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Driving license number:
-            </td>
-            <td id="driving-license-number">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Issued by:
-            </td>
-            <td id="issued-by-license">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Issued on:
-            </td>
-            <td id="issued-on-license">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Email:
-            </td>
-            <td id="email">
-
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Phone number:
-            </td>
-            <td id="phone-number">
-
-            </td>
-        </tr>
-    </table>
-</section>
+    </th:block>
+</table>
 </body>
 </html>
