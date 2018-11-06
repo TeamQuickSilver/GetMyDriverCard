@@ -43,7 +43,7 @@
 
         <Button
             android:id="@+id/btnCapturePicture"
-            android:layout_width="173dp"
+            android:layout_width="107dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/dimen_8"
             android:background="@color/colorPrimary"
@@ -52,13 +52,22 @@
             android:textColor="@android:color/white" />
 
         <Button
-            android:id="@+id/btnSavePicture"
-            android:layout_width="173dp"
+            android:id="@+id/btnUploadPicture"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="@dimen/dimen_8"
             android:background="@color/colorPrimary"
             android:foreground="?attr/selectableItemBackground"
-            android:text="Save Picture"
+            android:text="Upload Picture"
+            android:textColor="@android:color/white" />
+
+        <Button
+            android:id="@+id/btnSavePicture"
+            android:layout_width="107dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="@string/next"
             android:textColor="@android:color/white" />
 </LinearLayout>
 </LinearLayout>

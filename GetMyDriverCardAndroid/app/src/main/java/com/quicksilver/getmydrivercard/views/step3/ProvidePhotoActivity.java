@@ -37,7 +37,7 @@ public class ProvidePhotoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_provide_photo);
 
         // Checking availability of the camera
-        if (!CameraUtils.isDeviceSupportCamera(getApplicationContext())) {
+        if (!CameraUtils.isDeviceSupportFrontCamera(getApplicationContext())) {
             Toast.makeText(getApplicationContext(),
                     "Sorry! Your device doesn't support camera",
                     Toast.LENGTH_LONG).show();

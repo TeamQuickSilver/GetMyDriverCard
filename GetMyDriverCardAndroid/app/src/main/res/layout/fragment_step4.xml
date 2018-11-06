@@ -27,6 +27,6 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:enabled="false"
-            android:text="@string/save_signature" />
+            android:text="@string/next" />
     </LinearLayout>
 </RelativeLayout>
