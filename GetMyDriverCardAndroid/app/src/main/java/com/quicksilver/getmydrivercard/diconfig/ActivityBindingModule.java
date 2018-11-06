@@ -1,5 +1,6 @@
 package com.quicksilver.getmydrivercard.diconfig;
 
+import com.quicksilver.getmydrivercard.views.preview.PreviewActivity;
 import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
 import com.quicksilver.getmydrivercard.views.step2.NewCardActivityDocuments;
@@ -46,4 +47,8 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = Step2Module.class)
     abstract NewCardPart3Activity newCardPart3Activity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = PreviewModule.class)
+    abstract PreviewActivity previewActivity();
 }

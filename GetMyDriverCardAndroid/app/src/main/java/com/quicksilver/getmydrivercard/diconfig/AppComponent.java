@@ -22,6 +22,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         Step2Module.class,
         Step4Module.class,
         ParsersModule.class,
+        PreviewModule.class,
         HttpModule.class,
         RepositoriesModule.class,
         ServicesModule.class,

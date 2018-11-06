@@ -1,9 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.preview.PreviewActivity">
+    android:fillViewport="true">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:background="@color/colorPrimaryDark">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/drawer_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="40sp"
+            android:background="@color/primary"/>
+
+        <TextView
+            android:id="@+id/tv_header"
+            android:layout_width="184dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="94dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="106dp"
+            android:lines="3"
+            android:text="REPUBLIC 0F BULGARIA MINISTRY OF TRANSPORT"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/photo_container"
+            android:layout_width="80dp"
+            android:layout_height="108dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="62dp"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/signature_container"
+            android:layout_width="80dp"
+            android:layout_height="78dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="191dp"
+            tools:ignore="ContentDescription" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="277dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/signature_container"
+            android:layout_below="@id/tv_header"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="textPersonName"
+            android:text="name" />
+
+        <EditText
+            android:id="@+id/surname"
+            android:layout_width="274dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_name"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="-2dp"
+            android:layout_toEndOf="@+id/signature_container"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="textPersonName"
+            android:text="surname"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <EditText
+            android:id="@+id/et_address"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginBottom="185dp"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="textPersonName"
+            android:text="address_preview"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <EditText
+            android:id="@+id/et_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginBottom="142dp"
+            android:ems="10"
+            android:focusable="false"
+            android:text="phone_number_preview"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <EditText
+            android:id="@+id/birth_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_phone_number"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="-142dp"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="date"
+            android:text="date_of_birth"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="26dp"
+            android:layout_marginBottom="53dp"
+            android:ems="10"
+            android:focusable="false"
+            android:text="email"
+            android:textSize="16sp"
+            tools:ignore="Autofill,LabelFor,TextFields" />
+
+        <Button
+            android:id="@+id/request_submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="15dp"
+            android:text="Submit"
+            android:textColor="@color/md_white_1000"
+            android:textSize="16sp"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</ScrollView>

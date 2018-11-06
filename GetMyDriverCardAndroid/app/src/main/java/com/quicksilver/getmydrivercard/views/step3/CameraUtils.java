@@ -69,6 +69,14 @@ class CameraUtils {
     }
 
     /**
+     * Checks whether device has front camera or not. This method not necessary if
+     * android:required="true" is used in manifest file
+     */
+    static boolean isDeviceSupportFrontCamera(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
+    }
+
+    /**
      * Checks whether device has camera or not. This method not necessary if
      * android:required="true" is used in manifest file
      */
