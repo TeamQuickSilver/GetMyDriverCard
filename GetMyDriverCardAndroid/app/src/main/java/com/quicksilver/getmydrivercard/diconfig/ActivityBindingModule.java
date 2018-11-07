@@ -6,6 +6,10 @@ import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
 import com.quicksilver.getmydrivercard.views.step2.NewCardActivityDocuments;
 import com.quicksilver.getmydrivercard.views.step2.NewCardPart3Activity;
 import com.quicksilver.getmydrivercard.views.step2.Step2Activity;
+import com.quicksilver.getmydrivercard.views.step3.DrivingLicensePhotoActivity;
+import com.quicksilver.getmydrivercard.views.step3.IdCardPhotoActivity;
+import com.quicksilver.getmydrivercard.views.step3.PreviousCardPhotoActivity;
+import com.quicksilver.getmydrivercard.views.step3.ProvidePhotoActivity;
 import com.quicksilver.getmydrivercard.views.step4.Step4Activity;
 import com.quicksilver.getmydrivercard.views.users.login.LoginActivity;
 import com.quicksilver.getmydrivercard.views.users.register.RegisterActivity;
@@ -51,4 +55,8 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = PreviewModule.class)
     abstract PreviewActivity previewActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = ProvidePhotoModule.class)
+    abstract ProvidePhotoActivity providePhotoActivity();
 }

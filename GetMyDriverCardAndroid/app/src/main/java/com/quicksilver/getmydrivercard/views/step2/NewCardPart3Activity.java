@@ -16,6 +16,7 @@ import dagger.android.support.DaggerAppCompatActivity;
 public class NewCardPart3Activity extends DaggerAppCompatActivity implements Step2Contracts.Navigator {
     @Inject
     NewCardPart3Fragment mNewCardPart3Fragment;
+
     private String mReason;
     private User mUser;
     private Application mApplication;

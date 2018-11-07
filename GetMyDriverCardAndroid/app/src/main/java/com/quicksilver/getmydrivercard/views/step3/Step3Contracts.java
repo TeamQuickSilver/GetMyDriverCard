@@ -1,5 +1,7 @@
 package com.quicksilver.getmydrivercard.views.step3;
 
+import android.os.Bundle;
+
 import com.quicksilver.getmydrivercard.models.Application;
 
 public interface Step3Contracts {
@@ -7,6 +9,8 @@ public interface Step3Contracts {
         void setPresenter(Presenter presenter);
 
         void setNavigator(Navigator navigator);
+
+        void onRestoreInstanceState(Bundle savedInstanceState);
     }
 
     interface Presenter {
