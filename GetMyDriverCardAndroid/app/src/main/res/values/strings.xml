@@ -42,7 +42,7 @@
     <string name="date_of_birth">Date of birth</string>
     <string name="action_settings">Settings</string>
     <string name="preview_description">Image preview will appear here</string>
-    <string name="btn_take_picture">Take Picture</string>
+    <string name="btn_take_picture">Take</string>
     <string name="malfunction_broken_card_message">Malfunction or broken situation the previous card must be returned</string>
     <string name="lost_card_title">Lost situation please specify the date and the place</string>
     <string name="date">Date</string>

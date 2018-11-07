@@ -45,13 +45,23 @@ public class ProvidePhotoActivity extends AppCompatActivity {
             finish();
         }
 
-        Button btnCapturePicture = findViewById(R.id.btnCapturePicture);
+        Button btnCapturePicture = findViewById(R.id.btn_capture_picture);
         btnCapturePicture.setOnClickListener(v -> {
             if (CameraUtils.checkPermissions(getApplicationContext())) {
                 captureImage();
             } else {
                 requestCameraPermission();
             }
+        });
+
+        Button btnUploadPicture = findViewById(R.id.btn_upload_picture);
+        btnUploadPicture.setOnClickListener(v -> {
+
+        });
+
+        Button btnNextStep = findViewById(R.id.btn_next);
+        btnNextStep.setOnClickListener(v -> {
+
         });
 
         // restoring storage image path from saved instance state
