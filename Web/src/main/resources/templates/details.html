@@ -8,18 +8,14 @@
             src="https://code.jquery.com/jquery-3.3.1.js"
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
-    <script th:href="@{/scripts/details.js}"></script>
 </head>
 <body>
 <section>
     <h1>
-       <span>Application &numero;</span>
-       <span th:text="${applicationDetails.getApplicationId()}"></span>
+        <span>Application &numero;</span>
+        <span th:text="${applicationDetails.getApplicationId()}"></span>
     </h1>
     <table>
-        <th:block>
-
-        </th:block>
         <tr>
             <td>
                 Date of submission:
@@ -130,9 +126,46 @@
         </tr>
     </table>
     <div class="buttons-container">
-        <button id="approve" value="Approve">Approve</button>
-        <button id="reject" value="Reject">Reject</button>
+        <form th:action="@{/applications}" id="form" method="post">
+            <label for="approve">Approve</label>
+            <input th:value="Approve" type="radio" name="status" value="Approve" id="approve" onchange="approve()"/>
+            <label for="reject">Reject</label>
+            <input th:value="Reject" type="radio" value="Reject" name="status" id="reject" onchange="reject()"/>
+            <label for="in-progress">In progress</label>
+            <input th:value="InProgress" type="radio" name="status" value="In progress" id="in-progress"
+                   onchange="inProgress()"/>
+            <label for="complete">Complete</label>
+            <input th:value="Complete" type="radio" name="status" value="Complete" id="complete" onchange="complete()"/>
+            <input type="submit" value="Submit" id="submit"
+                   th:onclick="'javascript:submitForm(\'' + ${applicationDetails.getApplicationId()} + '\');'">
+        </form>
+        <!--<button th:onclick="'javascript:approve(\'' + ${applicationDetails.getApplicationId()} + '\');'" id="approve" value="Approve">Approve</button>-->
+        <!--<button th:onclick="'javascript:reject(\'' + ${applicationDetails.getApplicationId()} + '\');'" id="reject" value="Reject">Reject</button>-->
     </div>
+    <script th:inline="javascript">
+        function submitForm(id) {
+            if ($('#approve').is(':checked')) {
+                let action = /*[[@{approve/}]]*/ '';
+                $('#form').attr('action', action + id);
+                confirm('Are you sure that you want to approve this application?');
+            } else if ($('#reject').is(':checked')) {
+                let action = /*[[@{reject/}]]*/ '';
+                $('#form').attr('action', action + id);
+                confirm('Are you sure that you want to reject this application?');
+            } else if ($('#in-progress').is(':checked')) {
+                let action = /*[[@{inprogress/}]]*/ '';
+                $('#form').attr('action', action + id);
+                confirm('Are you sure that this application is in progress?');
+            } else if ($('#complete').is(':checked')) {
+                let action = /*[[@{complete/}]]*/ '';
+                $('#form').attr('action', action + id);
+                confirm('Are you sure that this application is completed?');
+            }
+            else {
+                alert('Please set status for this application');
+            }
+        }
+    </script>
 </section>
 </body>
 </html>

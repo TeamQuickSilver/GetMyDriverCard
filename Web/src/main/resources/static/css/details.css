@@ -27,9 +27,10 @@ tr {
 
 .buttons-container {
     flex-direction: row;
+    margin: 0 auto;
 }
 
-.buttons-container button {
+#submit {
     background: #E8B00C;
     border: none;
     border-radius: 15px;
@@ -37,4 +38,10 @@ tr {
     padding: 10px 15px;
     margin-right: 20px;
     font-size: 20px;
+}
+
+form {
+    margin: 20px 10px;
+    font-size: 20px;
+    display: flex;
 }

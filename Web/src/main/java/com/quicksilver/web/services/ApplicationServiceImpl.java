@@ -47,4 +47,9 @@ public class ApplicationServiceImpl implements ApplicationService {
     public Application getById(Long id) {
         return applicationRepository.getByApplicationId(id);
     }
+
+    @Override
+    public Application save(Application application) {
+        return applicationRepository.save(application);
+    }
 }

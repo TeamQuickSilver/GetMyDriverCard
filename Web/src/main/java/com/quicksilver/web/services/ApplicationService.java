@@ -22,4 +22,6 @@ public interface ApplicationService {
 
     Application getById(Long id);
 
+    Application save(Application application);
+
 }
