@@ -120,6 +120,14 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
                 }
                 break;
             case R.id.btn_upload_picture:
+                Intent intentToGallery = new Intent(
+                        Intent.ACTION_PICK,
+                        MediaStore.Images.Media.INTERNAL_CONTENT_URI
+                );
+                startActivityForResult(intentToGallery, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
+                break;
+            case R.id.btn_next:
+                mNavigator.navigateToNextStep(mApplication);
                 break;
         }
     }
