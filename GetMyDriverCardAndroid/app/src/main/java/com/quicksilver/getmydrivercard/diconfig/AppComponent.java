@@ -3,6 +3,7 @@ package com.quicksilver.getmydrivercard.diconfig;
 import android.app.Application;
 
 import com.quicksilver.getmydrivercard.AndroidApplication;
+import com.quicksilver.getmydrivercard.views.step3.IdCardPhotoActivity;
 
 import javax.inject.Singleton;
 
@@ -18,6 +19,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AppModule.class,
         AsyncModule.class,
         PreviewModule.class,
+        ProvidePhotoModule.class,
         LoginModule.class,
         Step1Module.class,
         Step2Module.class,
