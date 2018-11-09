@@ -33,7 +33,7 @@ public class Application {
     @Column(name = "status")
     private ApplicationStatus status;
 
-    @DateTimeFormat(pattern = "dd\\MM\\yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     @Column(name = "date_of_submission")
     private Date dateOfSubmission;

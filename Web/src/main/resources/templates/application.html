@@ -22,8 +22,8 @@
     <input type="radio" name="filter" id="id" th:onclick="showInput()"/>
     <select class="hidden" id="combo">
         <option value="new" id="new">New</option>
-        <option value="rejected" id="rejected">New</option>
         <option value="approved" id="approved">Approved</option>
+        <option value="rejected" id="rejected">Rejected</option>
         <option value="in-progress" id="in-progress">In progress</option>
         <option value="completed" id="completed">Completed</option>
     </select>
@@ -62,46 +62,46 @@
 <script th:inline="javascript">
     function submitForm() {
         let action = null;
-        let form =  $('#form');
+        // $('#form').attr('action', '');
         if ($('#status').is(':checked')) {
-            let selected = $(this).find('option:selected').val();
-            switch (selected) {
+            let value = $('#combo').val();
+            switch (value) {
                 case 'new':
-                    action = /*[[@{new}]]*/ '';
+                    action = /*[[@{/applications/new}]]*/ '';
                     break;
                 case 'approved':
-                    action = /*[[@{approved}]]*/ '';
+                    action = /*[[@{/applications/approved}]]*/ '';
                     break;
                 case 'rejected':
-                    action = /*[[@{rejected}]]*/ '';
+                    action = /*[[@{/applications/rejected}]]*/ '';
                     break;
                 case 'in-progress':
-                    action = /*[[@{inprogress}]]*/ '';
+                    action = /*[[@{/applications/inprogress}]]*/ '';
                     break;
                 case 'completed':
-                    action = /*[[@{completed}]]*/ '';
+                    action = /*[[@{/applications/completed}]]*/ '';
                     break;
             }
-            form.attr('action', action);
+            $('#form').attr('action', action);
         } else if ($('#date').is(':checked')) {
             let value = $('#input-date').val();
-            action = /*[[@{filter/}]]*/ '';
-            form.attr('action', action + value);
+            action = /*[[@{/applications/date/}]]*/ '';
+            $('#form').attr('action', action + value);
         } else if ($('#id').is(':checked')) {
             let value = $('#input').val();
-            action = /*[[@{filter/}]]*/ '';
-            form.attr('action', action + value);
+            action = /*[[@{/applications/id/}]]*/ '';
+            $('#form').attr('action', action + value);
         } else if ($('#name').is(':checked')) {
             let value = $('#input').val();
-            action = /*[[@{filter/}]]*/ '';
-            form.attr('action', action + value);
+            action = /*[[@{/applications/name/}]]*/ '';
+            $('#form').attr('action', action + value);
         }
     }
 
     function isValid() {
         if ($('#status').is(':checked')) {
             let selected = $(this).find('option:selected').val();
-            return selected != null;
+            return true;
         } else if ($('#date').is(':checked')) {
             let value = $('#input-date').val();
             return value != null;

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,49 +24,71 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @GetMapping("/applications/new")
+    @RequestMapping("/applications/new")
     public ModelAndView getNewApplications() {
         List<Application> applicationList = applicationService.getAllByStatus(ApplicationStatus.NEW);
 
         return new ModelAndView("application.html", "applicationList", applicationList);
     }
 
-    @GetMapping("/applications/rejected")
+    @RequestMapping("/applications/approved")
+    public ModelAndView getApprovedApplications() {
+        List<Application> applicationList = applicationService.getAllByStatus(ApplicationStatus.APPROVED);
+
+        return new ModelAndView("application.html", "applicationList", applicationList);
+    }
+
+
+    @RequestMapping("/applications/rejected")
     public ModelAndView getRejectedApplications() {
         List<Application> applicationList = applicationService.getAllByStatus(ApplicationStatus.REJECTED);
 
-        return new ModelAndView("application.html", "applicationDetails", applicationList);
+        return new ModelAndView("application.html", "applicationList", applicationList);
     }
 
-    @GetMapping("/applications/inprogress")
+    @RequestMapping("/applications/inprogress")
     public ModelAndView getInProgressApplications() {
         List<Application> applicationList = applicationService.getAllByStatus(ApplicationStatus.INPROGRESS);
 
-        return new ModelAndView("application.html", "applicationDetails", applicationList);
+        return new ModelAndView("application.html", "applicationList", applicationList);
     }
 
-    @GetMapping("/applications/completed")
+    @RequestMapping("/applications/completed")
     public ModelAndView getCompletedApplications() {
         List<Application> applicationList = applicationService.getAllByStatus(ApplicationStatus.COMPLETED);
 
-        return new ModelAndView("application.html", "applicationDetails", applicationList);
+        return new ModelAndView("application.html", "applicationList", applicationList);
     }
 
-    @GetMapping("/applications/filter/{date}")
-    public ModelAndView getAllByDateOfSubmission(@PathVariable Date date) {
+    @RequestMapping("/applications/date/{dateStr}")
+    public ModelAndView getAllByDateOfSubmission(@PathVariable String dateStr) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = null;
+        try {
+            date = format.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         List<Application> applicationList = applicationService.getAllOrderByDateOfSubmission(date);
 
-        return new ModelAndView("application.html", "applicationDetails", applicationList);
+        return new ModelAndView("application.html", "applicationList", applicationList);
     }
 
-    @GetMapping("/applications/filter/{name}")
+    @RequestMapping("/applications/name/{name}")
     public ModelAndView getAllByName(@PathVariable String name) {
         List<Application> applicationList = applicationService.getAllOrderByPersonName(name);
 
-        return new ModelAndView("application.html", "applicationDetails", applicationList);
+        return new ModelAndView("application.html", "applicationList", applicationList);
     }
 
-    @GetMapping("/applications/filter/{id}")
+    @RequestMapping("/applications/id/{id}")
+    public ModelAndView getById(@PathVariable Long id) {
+        List<Application> applicationList = applicationService.getByIdentityNumber(id);
+
+        return new ModelAndView("application.html", "applicationList", applicationList);
+    }
+
+    @RequestMapping("/applications/{id}")
     public ModelAndView getApplicationById(@PathVariable Long id) {
         Application applicationDetails = applicationService.getById(id);
 
