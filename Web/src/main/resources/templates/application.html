@@ -100,17 +100,19 @@
 
     function isValid() {
         if ($('#status').is(':checked')) {
-            let selected = $(this).find('option:selected').val();
             return true;
         } else if ($('#date').is(':checked')) {
             let value = $('#input-date').val();
-            return value != null;
+            alert('Please choose date');
+            return value != null && value !== undefined && value !== '';
         } else if ($('#id').is(':checked')) {
             let value = $('#input').val();
-            return value != null;
+            alert('Please write id');
+            return value != null && value !== undefined && value !== '';
         } else if ($('#name').is(':checked')) {
             let value = $('#input').val();
-            return value != null;
+            alert('Please write name');
+            return value != null && value !== undefined && value !== '';
         }
 
         return false;
