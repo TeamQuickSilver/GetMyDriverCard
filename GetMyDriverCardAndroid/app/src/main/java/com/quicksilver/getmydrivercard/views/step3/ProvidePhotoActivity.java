@@ -3,6 +3,8 @@ package com.quicksilver.getmydrivercard.views.step3;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.Button;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
@@ -36,15 +38,18 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
                 .beginTransaction()
                 .replace(R.id.content, mView)
                 .commit();
+//
+//        Button btnNextStep = findViewById(R.id.btn_next);
+//        btnNextStep.setOnClickListener(v -> {
+//
+//        });
     }
-
-
 
     @Override
     public void navigateToNextStep(Application application) {
         Intent intent = new Intent(this, IdCardPhotoActivity.class);
-        intent.putExtra(Constants.APPLICATION, application);
-        intent.putExtra(Constants.USER, mUser);
+//        intent.putExtra(Constants.APPLICATION, application);
+//        intent.putExtra(Constants.USER, mUser);
         startActivity(intent);
     }
 }
