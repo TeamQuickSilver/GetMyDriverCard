@@ -16,7 +16,7 @@ public interface ApplicationService {
 
     List<Application> getAllOrderByDateOfSubmission(Date date);
 
-    List<Application> getAllOrderByPersonName();
+    List<Application> getAllOrderByPersonName(String name);
 
     List<Application> getByIdentityNumber(Long id);
 

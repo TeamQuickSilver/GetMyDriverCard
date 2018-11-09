@@ -11,11 +11,12 @@ import java.util.List;
 @Repository
 public interface ApplicationRepository extends JpaRepository<Application, Long> {
 
-    List<Application> findAllByUserEmailOrderByApplicationId(String email);
+    List<Application> findAllByUserEmail(String email);
 
     List<Application> findAllByDateOfSubmission(Date date);
 
-    List<Application> findAllByOrderByPersonIdentityCardFirstNameAscPersonIdentityCardFathersNameAscPersonIdentityCardLastNameAsc();
+    List<Application> findAllByPersonIdentityCardFirstNameOrPersonIdentityCardFathersNameOrPersonIdentityCardLastName(
+            String firstName, String middleName, String lastName);
 
     List<Application> findAllByStatus(ApplicationStatus status);
 

@@ -1,5 +1,7 @@
 package com.quicksilver.web.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -31,6 +33,8 @@ public class Application {
     @Column(name = "status")
     private ApplicationStatus status;
 
+    @DateTimeFormat(pattern = "dd\\MM\\yyyy")
+    @Temporal(TemporalType.DATE)
     @Column(name = "date_of_submission")
     private Date dateOfSubmission;
 

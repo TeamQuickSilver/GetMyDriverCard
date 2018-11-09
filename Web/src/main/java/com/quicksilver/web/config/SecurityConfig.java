@@ -62,7 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .successHandler(new AuthenticationSuccessHandler() {
                             @Override
                             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-                                redirectStrategy.sendRedirect(request, response, "/applications");
+                                redirectStrategy.sendRedirect(request, response, "/applications/new");
                             }
                         })
                         .and().logout().logoutSuccessUrl("/login?logout").permitAll()

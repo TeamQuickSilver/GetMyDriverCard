@@ -126,16 +126,15 @@
         </tr>
     </table>
     <div class="buttons-container">
-        <form th:action="@{/applications}" id="form" method="post">
+        <form th:action="@{/applications/new}" id="form" method="post" onsubmit="return isValid();">
             <label for="approve">Approve</label>
-            <input th:value="Approve" type="radio" name="status" value="Approve" id="approve" onchange="approve()"/>
+            <input type="radio" name="status" value="Approve" id="approve" />
             <label for="reject">Reject</label>
-            <input th:value="Reject" type="radio" value="Reject" name="status" id="reject" onchange="reject()"/>
+            <input type="radio" value="Reject" name="status" id="reject" />
             <label for="in-progress">In progress</label>
-            <input th:value="InProgress" type="radio" name="status" value="In progress" id="in-progress"
-                   onchange="inProgress()"/>
+            <input type="radio" name="status" value="In progress" id="in-progress"/>
             <label for="complete">Complete</label>
-            <input th:value="Complete" type="radio" name="status" value="Complete" id="complete" onchange="complete()"/>
+            <input type="radio" name="status" value="Complete" id="complete"/>
             <input type="submit" value="Submit" id="submit"
                    th:onclick="'javascript:submitForm(\'' + ${applicationDetails.getApplicationId()} + '\');'">
         </form>
@@ -143,6 +142,15 @@
         <!--<button th:onclick="'javascript:reject(\'' + ${applicationDetails.getApplicationId()} + '\');'" id="reject" value="Reject">Reject</button>-->
     </div>
     <script th:inline="javascript">
+        function isValid() {
+            let isApproveChecked = $('#approve').is(':checked');
+            let isRejectChecked = $('#reject').is(':checked');
+            let isInProgressChecked = $('#in-progress').is(':checked');
+            let isCompleteChecked = $('#complete').is(':checked');
+
+            return !!(isApproveChecked || isRejectChecked || isInProgressChecked || isCompleteChecked);
+        }
+
         function submitForm(id) {
             if ($('#approve').is(':checked')) {
                 let action = /*[[@{approve/}]]*/ '';

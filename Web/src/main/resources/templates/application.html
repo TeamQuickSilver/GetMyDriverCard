@@ -11,15 +11,29 @@
 </head>
 <body>
 <h1>Applications for driver card issue</h1>
-<select name="Filter">
-    <option value="Filter by status">Filter by status</option>
-    <option value="Filter by ID">Filter by id</option>
-    <option value="Filter by date of submission">Filter by date of submission</option>
-    <option value="Filter by name">Filter by name</option>
-</select>
+<form id="form" th:action="@{/applications/new}" onsubmit="return isValid();" method="post">
+    <label for="status">Filter by status</label>
+    <input type="radio" name="filter" id="status" th:onclick="showCombo()"/>
+    <label for="name">Filter by name</label>
+    <input type="radio" name="filter" id="name" th:onclick="showInput()"/>
+    <label for="date">Filter by date of submission</label>
+    <input type="radio" name="filter" id="date" th:onclick="showDate()"/>
+    <label for="id">Filter by id</label>
+    <input type="radio" name="filter" id="id" th:onclick="showInput()"/>
+    <select class="hidden" id="combo">
+        <option value="new" id="new">New</option>
+        <option value="rejected" id="rejected">New</option>
+        <option value="approved" id="approved">Approved</option>
+        <option value="in-progress" id="in-progress">In progress</option>
+        <option value="completed" id="completed">Completed</option>
+    </select>
+    <input type="text" id="input" class="hidden">
+    <input type="date" id="input-date" class="hidden" >
+    <input type="submit" id="submit" class="hidden" value="Submit"
+           th:onclick="'javascript:submitForm();'">
+</form>
 <table class="applications">
     <tr class="titles">
-        <!--<td>Application number</td>-->
         <td>Identity number</td>
         <td>First name</td>
         <td>Father's name</td>
@@ -31,7 +45,6 @@
     </tr>
     <th:block th:each="app : ${applicationList}">
         <tr class="clickable">
-            <!--<td th:text="${app.getApplicationId()}"></td>-->
             <td th:text="${app.getPerson().getIdentityCard().getPersonalNumber()}"></td>
             <td th:text="${app.getPerson().getIdentityCard().getFirstName()}"></td>
             <td th:text="${app.getPerson().getIdentityCard().getFathersName()}"></td>
@@ -40,10 +53,137 @@
             <td th:text="${app.getStatus()}"></td>
             <td th:text="${app.getReason()}"></td>
             <td>
-                <a class="details" th:href="@{/applications/{id}(id=${app.getApplicationId()})}">Show details &raquo;</a>
+                <a class="details" th:href="@{/applications/{id}(id=${app.getApplicationId()})}">Show details
+                    &raquo;</a>
             </td>
         </tr>
     </th:block>
 </table>
+<script th:inline="javascript">
+    function submitForm() {
+        let action = null;
+        let form =  $('#form');
+        if ($('#status').is(':checked')) {
+            let selected = $(this).find('option:selected').val();
+            switch (selected) {
+                case 'new':
+                    action = /*[[@{new}]]*/ '';
+                    break;
+                case 'approved':
+                    action = /*[[@{approved}]]*/ '';
+                    break;
+                case 'rejected':
+                    action = /*[[@{rejected}]]*/ '';
+                    break;
+                case 'in-progress':
+                    action = /*[[@{inprogress}]]*/ '';
+                    break;
+                case 'completed':
+                    action = /*[[@{completed}]]*/ '';
+                    break;
+            }
+            form.attr('action', action);
+        } else if ($('#date').is(':checked')) {
+            let value = $('#input-date').val();
+            action = /*[[@{filter/}]]*/ '';
+            form.attr('action', action + value);
+        } else if ($('#id').is(':checked')) {
+            let value = $('#input').val();
+            action = /*[[@{filter/}]]*/ '';
+            form.attr('action', action + value);
+        } else if ($('#name').is(':checked')) {
+            let value = $('#input').val();
+            action = /*[[@{filter/}]]*/ '';
+            form.attr('action', action + value);
+        }
+    }
+
+    function isValid() {
+        if ($('#status').is(':checked')) {
+            let selected = $(this).find('option:selected').val();
+            return selected != null;
+        } else if ($('#date').is(':checked')) {
+            let value = $('#input-date').val();
+            return value != null;
+        } else if ($('#id').is(':checked')) {
+            let value = $('#input').val();
+            return value != null;
+        } else if ($('#name').is(':checked')) {
+            let value = $('#input').val();
+            return value != null;
+        }
+
+        return false;
+    }
+
+    function showCombo() {
+        showStatusCombo();
+        showButton();
+        hideTextInput();
+        hideDataInput();
+    }
+
+    function showInput() {
+        showTextInput();
+        showButton();
+        hideStatusCombo();
+        hideDataInput();
+    }
+
+    function showDate() {
+        showDateInput();
+        showButton();
+        hideStatusCombo();
+        hideTextInput();
+    }
+
+    function showDateInput() {
+        let date = $('#input-date');
+        date.removeClass('hidden');
+        date.addClass('visible');
+    }
+
+    function hideDataInput() {
+        let date = $('#input-date');
+        date.addClass('hidden');
+        date.removeClass('visible');
+    }
+
+    function showStatusCombo() {
+        let combo = $('#combo');
+        combo.removeClass('hidden');
+        combo.addClass('visible');
+    }
+
+    function hideStatusCombo() {
+        let combo = $('#combo');
+        combo.removeClass('visible');
+        combo.addClass('hidden');
+    }
+
+    function showTextInput() {
+        let inputText = $('#input');
+        inputText.removeClass('hidden');
+        inputText.addClass('visible');
+    }
+
+    function hideTextInput() {
+        let inputText = $('#input');
+        inputText.removeClass('visible');
+        inputText.addClass('hidden');
+    }
+
+    function showButton() {
+        let submit = $('#submit');
+        submit.removeClass('hidden');
+        submit.addClass('visible');
+    }
+
+    function hideButton() {
+        let submit = $('#submit');
+        submit.removeClass('visible');
+        submit.addClass('hidden');
+    }
+</script>
 </body>
 </html>
