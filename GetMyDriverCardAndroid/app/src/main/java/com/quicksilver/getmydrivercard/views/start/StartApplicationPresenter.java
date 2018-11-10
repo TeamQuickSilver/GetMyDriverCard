@@ -11,7 +11,7 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.disposables.Disposable;
 
 public class StartApplicationPresenter implements StartApplicationContracts.Presenter {
-    private static final int DELAY_TIME = 3000;
+    private static final int DELAY_TIME = 2000;
     private StartApplicationContracts.View mView;
 
     private SchedulerProvider mSchedulerProvider;

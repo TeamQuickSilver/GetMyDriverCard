@@ -14,7 +14,6 @@ import javax.inject.Inject;
 public class Step1Activity extends BaseDrawerActivity implements Step1Contracts.Navigator {
     public static final int IDENTIFIER = 2;
 
-
     @Inject
     Step1Fragment mView;
 

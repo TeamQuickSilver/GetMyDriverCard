@@ -1,5 +1,6 @@
 package com.quicksilver.getmydrivercard.diconfig;
 
+import com.quicksilver.getmydrivercard.views.users.home.HomeActivity;
 import com.quicksilver.getmydrivercard.views.preview.PreviewActivity;
 import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
 import com.quicksilver.getmydrivercard.views.start.StartApplicationActivity;
@@ -61,4 +62,8 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = StartApplicationModule.class)
     abstract StartApplicationActivity startApplicationActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = HomeModule.class)
+    abstract HomeActivity homeActivity();
 }

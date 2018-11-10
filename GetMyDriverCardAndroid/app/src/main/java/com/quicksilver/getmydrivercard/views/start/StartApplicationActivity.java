@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
-import com.quicksilver.getmydrivercard.views.home.HomeActivity;
+import com.quicksilver.getmydrivercard.views.users.home.HomeActivity;
 
 import javax.inject.Inject;
 

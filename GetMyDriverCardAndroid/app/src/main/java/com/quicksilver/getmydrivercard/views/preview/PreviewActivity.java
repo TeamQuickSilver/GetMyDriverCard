@@ -9,8 +9,9 @@ import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
 import javax.inject.Inject;
 
 import butterknife.OnClick;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class PreviewActivity extends BaseDrawerActivity implements PreviewContracts.Navigator {
+public class PreviewActivity extends DaggerAppCompatActivity implements PreviewContracts.Navigator {
 
     @Inject
     PreviewFragment mView;
@@ -18,14 +19,10 @@ public class PreviewActivity extends BaseDrawerActivity implements PreviewContra
     @Inject
     PreviewContracts.Presenter mPresenter;
 
-    private Application mApplication;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview);
-
-        setSupportActionBar(getDrawerToolbar());
 
         mView.setPresenter(mPresenter);
         mView.setNavigator(this);
@@ -40,11 +37,6 @@ public class PreviewActivity extends BaseDrawerActivity implements PreviewContra
     @OnClick(R.id.request_submit_button)
     void onSubmitButtonClicked() {
 
-    }
-
-    @Override
-    protected int getIdentifier() {
-        return 0;
     }
 
     @Override

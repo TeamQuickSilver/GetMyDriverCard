@@ -40,7 +40,7 @@ public class StartApplicationFragment extends Fragment implements StartApplicati
 
         ButterKnife.bind(this, view);
 
-        mProgressBar.getIndeterminateDrawable().setColorFilter(0xFF3568A3, android.graphics.PorterDuff.Mode.MULTIPLY);
+        mProgressBar.getIndeterminateDrawable().setColorFilter(0xFF008577, android.graphics.PorterDuff.Mode.MULTIPLY);
         return view;
     }
 

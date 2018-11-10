@@ -31,6 +31,7 @@ import butterknife.OnClick;
 public class RegisterFragment extends Fragment implements RegisterContracts.View {
     private static final String REGISTER_ERROR = "User with this username already exists";
     private RegisterContracts.Presenter mPresenter;
+    private RegisterContracts.Navigator mNavigator;
 
     @BindView(R.id.tv_go_to_login_form)
     TextView mGoToLoginForm;
@@ -43,7 +44,6 @@ public class RegisterFragment extends Fragment implements RegisterContracts.View
 
     @BindView(R.id.et_password)
     EditText mEditTextPassword;
-    private RegisterContracts.Navigator mNavigator;
 
     @Inject
     public RegisterFragment() {
