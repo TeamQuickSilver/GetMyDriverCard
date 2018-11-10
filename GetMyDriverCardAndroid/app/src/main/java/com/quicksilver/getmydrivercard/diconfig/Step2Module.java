@@ -44,6 +44,15 @@ public abstract class Step2Module {
     @ContributesAndroidInjector
     abstract NewCardPart3Fragment newCardPart3Fragment();
 
+//    @ContributesAndroidInjector
+//    abstract Step2Activity step2Activity();
+//
+//    @ContributesAndroidInjector
+//    abstract NewCardActivityDocuments newCardActivityDocuments();
+//
+//    @ContributesAndroidInjector
+//    abstract NewCardPart3Activity newCardPart3Activity();
+
     @ActivityScoped
     @Binds
     abstract Step2Contracts.Presenter presenter(Step2Presenter step2Presenter);

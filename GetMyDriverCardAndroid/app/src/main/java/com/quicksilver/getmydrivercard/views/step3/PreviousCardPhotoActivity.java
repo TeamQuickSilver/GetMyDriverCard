@@ -42,9 +42,11 @@ public class PreviousCardPhotoActivity extends DaggerAppCompatActivity implement
 
 
     @Override
-    public void navigateToNextStep(Application application) {
+    public void navigateToNextStep(Application application, byte[] imageBytes) {
         Intent intent = new Intent(this, Step4Activity.class);
+        application.getApplicationImages().setPreviousCardImage(imageBytes);
         intent.putExtra(Constants.APPLICATION, application);
         intent.putExtra(Constants.USER, mUser);
+        startActivity(intent);
     }
 }

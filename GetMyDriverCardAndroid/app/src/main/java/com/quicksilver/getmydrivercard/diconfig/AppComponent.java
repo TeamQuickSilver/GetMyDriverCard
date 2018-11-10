@@ -3,7 +3,6 @@ package com.quicksilver.getmydrivercard.diconfig;
 import android.app.Application;
 
 import com.quicksilver.getmydrivercard.AndroidApplication;
-import com.quicksilver.getmydrivercard.views.step3.IdCardPhotoActivity;
 
 import javax.inject.Singleton;
 

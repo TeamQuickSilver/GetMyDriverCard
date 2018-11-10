@@ -3,9 +3,9 @@ package com.quicksilver.getmydrivercard.models;
 import java.io.Serializable;
 
 public class User implements Serializable {
-    private String email;
-    private String password;
-    private Role role;
+    public String email;
+    public String password;
+    public Role role;
 
     public User() {
 

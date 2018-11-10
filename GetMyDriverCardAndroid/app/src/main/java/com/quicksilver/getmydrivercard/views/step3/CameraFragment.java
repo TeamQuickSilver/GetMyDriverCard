@@ -28,7 +28,10 @@ import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.User;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -71,6 +74,8 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
 
     private User mUser;
     private Application mApplication;
+    private Intent mIntentData;
+    private byte[] mImageBytes;
 
     @Inject
     public CameraFragment() {
@@ -127,7 +132,12 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
                 startActivityForResult(intentToGallery, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
                 break;
             case R.id.btn_next:
-                mNavigator.navigateToNextStep(mApplication);
+                if(mImageBytes == null) {
+                    Toast.makeText(getApplicationContext(), Constants.PHOTO_ERROR, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                mNavigator.navigateToNextStep(mApplication, mImageBytes);
                 break;
         }
     }
@@ -226,6 +236,7 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
 
             // successfully captured the image
             // display it in image view
+            mIntentData = data;
             previewCapturedImage();
         } else if (resultCode == RESULT_CANCELED) {
             // user cancelled Image capture
@@ -253,9 +264,38 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
             Bitmap bitmap = CameraUtils.optimizeBitmap(CameraUtils.BITMAP_SAMPLE_SIZE, imageStoragePath);
             imgPreview.setImageBitmap(bitmap);
 
+//            Uri uri = mIntentData.getData();
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            mImageBytes = stream.toByteArray();
+            mNavigator.navigateToNextStep(mApplication, mImageBytes);
+
+//            try {
+//                InputStream inputStream = getActivity().getContentResolver().openInputStream(uri);
+//
+//                mImageBytes = convertUriIntoByteArray(inputStream);
+////                mApplication.getApplicationImages().setPersonImage(convertUriIntoByteArray(inputStream));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }
+
+    public byte[] convertUriIntoByteArray(InputStream inputStream) throws IOException {
+        ByteArrayOutputStream byteBuffer = new ByteArrayOutputStream();
+
+        byte[] buffer = new byte[Constants.BUFFER_SIZE];
+
+        int len = 0;
+        while((len = inputStream.read(buffer)) != -1) {
+            byteBuffer.write(buffer, 0, len);
+        }
+
+        return byteBuffer.toByteArray();
     }
 
     /**

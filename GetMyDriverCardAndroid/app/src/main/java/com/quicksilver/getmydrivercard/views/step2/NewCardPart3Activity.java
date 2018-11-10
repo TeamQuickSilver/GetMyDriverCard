@@ -16,6 +16,9 @@ import dagger.android.support.DaggerAppCompatActivity;
 public class NewCardPart3Activity extends DaggerAppCompatActivity implements Step2Contracts.Navigator {
     @Inject
     NewCardPart3Fragment mNewCardPart3Fragment;
+//
+//    @Inject
+//    Step2Contracts.Presenter mPresenter;
 
     private String mReason;
     private User mUser;
@@ -27,6 +30,7 @@ public class NewCardPart3Activity extends DaggerAppCompatActivity implements Ste
         setContentView(R.layout.activity_new_card_part3);
 
         mNewCardPart3Fragment.setNavigator(this);
+//        mNewCardPart3Fragment.setPresenter(mPresenter);
 
         Intent intent = getIntent();
         mReason = intent.getStringExtra(Constants.REASON);

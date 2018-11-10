@@ -31,7 +31,9 @@ public class GsonJsonParser<T> implements JsonParser<T> {
     private Gson initGson() {
         Gson gson = new GsonBuilder()
                 .registerTypeHierarchyAdapter(byte[].class,
-                        new ByteArrayToBase64TypeAdapter()).create();
+                        new ByteArrayToBase64TypeAdapter())
+                .setDateFormat("yyyy-MM-dd")
+                .create();
 
         return gson;
     }
@@ -53,7 +55,7 @@ public class GsonJsonParser<T> implements JsonParser<T> {
     }
 
     // Need this because default Gson don't work with array fields (byte[] for image)
-    private static class ByteArrayToBase64TypeAdapter implements JsonSerializer<byte[]>, JsonDeserializer<byte[]> {
+    public static class ByteArrayToBase64TypeAdapter implements JsonSerializer<byte[]>, JsonDeserializer<byte[]> {
         public byte[] deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
             return Base64.decode(json.getAsString(), Base64.NO_WRAP);
         }

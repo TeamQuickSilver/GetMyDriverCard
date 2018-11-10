@@ -80,6 +80,12 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.subscribe(this);
+    }
+
     private void arrangeViews(String reason) {
         switch (reason) {
             case Constants.LOST_CARD:
@@ -113,7 +119,6 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
                 mDatePickerDialog.show();
                 break;
             case R.id.btn_next:
-                boolean isValid = true;
                 String identityNumberStr = mIdentityNumber.getText().toString();
 
                 if(identityNumberStr.length() != 10) {
@@ -124,33 +129,6 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
 
                 Long identityNumber = Long.parseLong(identityNumberStr);
                 mPresenter.loadApplication(identityNumber);
-
-                String place = mPlaceEditText.getText().toString();
-
-                if(place.length() < 5 || place.length() >= 30) {
-                    mPlaceEditText.setError(Constants.PLACE_ERROR);
-                    isValid = false;
-                }
-
-                if(!isValid) {
-                    Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
-                Date date = null;
-                try {
-                    date = dateFormat.parse(mChosenDate.getText().toString());
-                } catch (ParseException e) {
-                    Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                    return;
-                }
-
-                mApplication.setApplicationReason(ApplicationReason.LOST);
-                mApplication.setPlaceLost(place);
-                mApplication.setDateLost(date);
-                mNavigator.navigateToNextStep(mApplication);
                 break;
         }
     }
@@ -168,6 +146,33 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
     @Override
     public void getApplication(Application application) {
         mApplication = application;
+        boolean isValid = true;
+        String place = mPlaceEditText.getText().toString();
+
+        if(place.length() < 5 || place.length() >= 30) {
+            mPlaceEditText.setError(Constants.PLACE_ERROR);
+            isValid = false;
+        }
+
+        if(!isValid) {
+            Toast.makeText(getContext(), Constants.FIELDS_ERROR, Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
+        Date date = null;
+        try {
+            date = dateFormat.parse(mChosenDate.getText().toString());
+        } catch (ParseException e) {
+            Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+            return;
+        }
+
+        mApplication.setApplicationReason(ApplicationReason.LOST);
+        mApplication.setPlaceLost(place);
+        mApplication.setDateLost(date);
+        mNavigator.navigateToNextStep(mApplication);
     }
 
     @Override

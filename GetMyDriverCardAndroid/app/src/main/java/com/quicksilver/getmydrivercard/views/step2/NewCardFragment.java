@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.ApplicationImages;
 import com.quicksilver.getmydrivercard.models.ApplicationReason;
 import com.quicksilver.getmydrivercard.models.DrivingLicense;
 import com.quicksilver.getmydrivercard.models.IdentityCard;
@@ -122,6 +123,8 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
         Person person = new Person();
         IdentityCard identityCard = new IdentityCard();
         DrivingLicense drivingLicense = new DrivingLicense();
+        ApplicationImages applicationImages = new ApplicationImages();
+        application.setApplicationImages(applicationImages);
         identityCard.setPersonalNumber(identityNumber);
 
         identityCard.setFirstName(firstName);

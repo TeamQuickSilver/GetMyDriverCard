@@ -3,7 +3,7 @@ package com.quicksilver.getmydrivercard.models;
 import java.io.Serializable;
 
 public class Role implements Serializable {
-    private String authority;
+    public String authority;
 
     public Role() {
 

@@ -69,14 +69,14 @@ public class ApplicationController {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        List<Application> applicationList = applicationService.getAllOrderByDateOfSubmission(date);
+        List<Application> applicationList = applicationService.getAllByDateOfSubmissions(date);
 
         return new ModelAndView("application.html", "applicationList", applicationList);
     }
 
     @RequestMapping("/applications/name/{name}")
     public ModelAndView getAllByName(@PathVariable String name) {
-        List<Application> applicationList = applicationService.getAllOrderByPersonName(name);
+        List<Application> applicationList = applicationService.getAllByPersonNames(name);
 
         return new ModelAndView("application.html", "applicationList", applicationList);
     }

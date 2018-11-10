@@ -4,18 +4,18 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Application implements Serializable{
-    private Long applicationId;
-    private Person person;
-    private ApplicationImages applicationImages;
-    private ApplicationStatus applicationStatus;
-    private ApplicationReason applicationReason;
-    private Date dateOfSubmission;
-    private String placeLost;
-    private Date dateLost;
-    private Date dateOfExpire;
-    private String countryPreviousCard;
-    private Long previousCardNumber;
-    private String countryDrivingLicense;
+    public Long applicationId;
+    public Person person;
+    public ApplicationImages applicationImages;
+    public ApplicationStatus applicationStatus;
+    public ApplicationReason applicationReason;
+    public Date dateOfSubmission;
+    public String placeLost;
+    public Date dateLost;
+    public Date dateOfExpire;
+    public String countryPreviousCard;
+    public Long previousCardNumber;
+    public String countryDrivingLicense;
 
     public Application() {
 

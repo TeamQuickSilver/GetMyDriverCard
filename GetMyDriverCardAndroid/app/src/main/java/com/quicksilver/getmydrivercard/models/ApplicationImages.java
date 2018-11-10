@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class ApplicationImages implements Serializable {
 
-    private byte[] personImage;
-    private byte[] previousCardImage;
-    private byte[] identityCardImage;
-    private byte[] drivingLicenseImage;
-    private byte[] euroCardImage;
-    private byte[] signatureImage;
+    public byte[] personImage;
+    public byte[] previousCardImage;
+    public byte[] identityCardImage;
+    public byte[] drivingLicenseImage;
+    public byte[] euroCardImage;
+    public byte[] signatureImage;
 
     public ApplicationImages() {
 

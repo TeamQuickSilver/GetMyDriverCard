@@ -1,14 +1,20 @@
 package com.quicksilver.getmydrivercard.views.step4;
 
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
-import com.quicksilver.getmydrivercard.views.step1.Step1Contracts;
+import com.quicksilver.getmydrivercard.models.Application;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import javax.inject.Inject;
 
@@ -19,6 +25,7 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
 
     private Step4Contracts.Presenter mPresenter;
     private Step4Contracts.Navigator mNavigator;
+    private Application mApplication;
 
     @Inject
     public Step4Fragment() {
@@ -30,16 +37,43 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_step4, container, false);
+        View view = inflater.inflate(R.layout.fragment_step4, container, false);
+
+        mApplication = (Application)getActivity().getIntent().getSerializableExtra(Constants.APPLICATION);
+
+        return view;
     }
 
     @Override
     public void setPresenter(Step4Contracts.Presenter presenter) {
-
+        mPresenter = presenter;
     }
 
     @Override
     public void setNavigator(Step4Contracts.Navigator navigator) {
+        mNavigator = navigator;
+    }
 
+    @Override
+    public void showError(Throwable error) {
+        Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void navigateToRequests() {
+        mNavigator.navigateToRequests();
+    }
+
+    public void createImageBytesFromUri(Uri contentUri) {
+        try {
+            InputStream inputStream = getActivity().getContentResolver().openInputStream(contentUri);
+
+            byte[] imageBytes = mPresenter.convertUriIntoByteArray(inputStream);
+            mApplication.getApplicationImages().setSignatureImage(imageBytes);
+
+            mPresenter.saveApplication(mApplication);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

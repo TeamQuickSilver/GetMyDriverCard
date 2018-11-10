@@ -5,15 +5,15 @@ import java.util.Date;
 
 public class IdentityCard implements Serializable {
 
-    private Long identityCardNumber;
-    private Long personalNumber;
-    private Date issuedOn;
-    private String issuedBy;
-    private String firstName;
-    private String fathersName;
-    private String lastName;
-    private Date dateOfBirth;
-    private Address address;
+    public Long identityCardNumber;
+    public Long personalNumber;
+    public Date issuedOn;
+    public String issuedBy;
+    public String firstName;
+    public String fathersName;
+    public String lastName;
+    public Date dateOfBirth;
+    public Address address;
 
     public IdentityCard() {
 

@@ -1,7 +1,7 @@
 package com.quicksilver.getmydrivercard;
 
 public class Constants {
-    public static final String BASE_SERVER_URL = "http://192.168.43.103:8080";
+    public static final String BASE_SERVER_URL = "http://192.168.1.8:8080";
     public static final String USER = "USER";
     public static final String ADMIN = "ADMIN";
     public static final String REASON = "REASON";
@@ -14,6 +14,7 @@ public class Constants {
     public static final String RENEW_CARD = "RENEW_CARD";
     public static final String WITHDRAWN_CARD = "WITHDRAWN_CARD";
     public static final String MESSAGE = "Please choose a reason";
+    public static final int BUFFER_SIZE = 1024;
     public static final String USER_TEXT = "USER";
     public static final String APPLICATION_TEXT = "USER";
     public static final String INTENT_REASON = "REASON";
@@ -37,6 +38,7 @@ public class Constants {
     public static final String DRIVING_LICENSE_NUMBER_ERROR = "Invalid driving license number number";
     public static final String ISSUED_BY_ERROR = "Invalid issued by";
     public static final String DATE_ERROR = "Invalid date!";
+    public static final String PHOTO_ERROR = "Please select photo!";
     public static final String CATEGORIES_ERROR = "Invalid categories!";
     public static final String COUNTRY_ERROR = "Invalid country!";
     public static final String PLACE_ERROR = "Invalid place!";

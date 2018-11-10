@@ -18,6 +18,6 @@ public interface Step3Contracts {
     }
 
     interface Navigator {
-        void navigateToNextStep(Application application);
+        void navigateToNextStep(Application application, byte[] imageBytes);
     }
 }

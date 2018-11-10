@@ -5,10 +5,10 @@ import java.util.Date;
 
 public class DrivingLicense implements Serializable {
 
-    private Long drivingLicenseNumber;
-    private Date issuedOn;
-    private String issuedBy;
-    private String motorVehiclesCategories;
+    public Long drivingLicenseNumber;
+    public Date issuedOn;
+    public String issuedBy;
+    public String motorVehiclesCategories;
 
     public DrivingLicense() {
 

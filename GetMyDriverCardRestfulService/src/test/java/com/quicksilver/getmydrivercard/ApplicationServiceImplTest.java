@@ -21,11 +21,11 @@ public class ApplicationServiceImplTest {
     @Test
     public void getAllByUserEmailOrderById() {
 //        //Arrange
-//        Mockito.when(applicationService.getAllByUserEmailOrderById(TRUE_EMAIL))
+//        Mockito.when(applicationService.getAllByUserEmail(TRUE_EMAIL))
 //                .thenReturn();
 //
 //        // Act
-//        List<Application> result = applicationService.getAllByUserEmailOrderById(TRUE_EMAIL);
+//        List<Application> result = applicationService.getAllByUserEmail(TRUE_EMAIL);
 //
 //        // Assert
 //        Assert.assertEquals();
@@ -71,7 +71,7 @@ public class ApplicationServiceImplTest {
 //    }
 //
 //    @Test
-//    public void getById() {
+//    public void getByIdentityNumber() {
 //        //Arrange
 //        Mockito.when(userService.getByEmail(TRUE_EMAIL))
 //                .thenReturn(user);

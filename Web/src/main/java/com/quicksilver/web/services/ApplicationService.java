@@ -10,13 +10,13 @@ import java.util.List;
 //@PreAuthorize("hasRole('ADMIN')")
 public interface ApplicationService {
 
-    List<Application> getAllByUserEmailOrderById(String email);
+    List<Application> getAllByEmail(String email);
 
     List<Application> getAllByStatus(ApplicationStatus status);
 
-    List<Application> getAllOrderByDateOfSubmission(Date date);
+    List<Application> getAllByDateOfSubmissions(Date date);
 
-    List<Application> getAllOrderByPersonName(String name);
+    List<Application> getAllByPersonNames(String name);
 
     List<Application> getByIdentityNumber(Long id);
 
