@@ -3,8 +3,6 @@ package com.quicksilver.getmydrivercard.views.preview;
 import android.os.Bundle;
 
 import com.quicksilver.getmydrivercard.R;
-import com.quicksilver.getmydrivercard.models.Application;
-import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
 
 import javax.inject.Inject;
 
@@ -34,7 +32,7 @@ public class PreviewActivity extends DaggerAppCompatActivity implements PreviewC
 
     }
 
-    @OnClick(R.id.request_submit_button)
+    @OnClick()
     void onSubmitButtonClicked() {
 
     }

@@ -2,10 +2,7 @@
 <resources>
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorButton">#80A7A2</color>
     <color name="colorAccent">#D81B60</color>
     <color name="black60percent">#99000000</color>
-    <color name="facebook_brand_color">#3B5998</color>
-    <color name="google_plus_brand_color">#dc4e41</color>
-    <color name="facebooktransparent">#BF3b5998</color>
-    <color name="googletransparent">#BFea4335</color>
 </resources>
