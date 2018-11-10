@@ -20,6 +20,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
         AsyncModule.class,
         PreviewModule.class,
         ProvidePhotoModule.class,
+        StartApplicationModule.class,
         LoginModule.class,
         Step1Module.class,
         Step2Module.class,

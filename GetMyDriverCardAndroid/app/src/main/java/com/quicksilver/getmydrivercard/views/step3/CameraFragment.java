@@ -85,16 +85,9 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
         View view = inflater.inflate(R.layout.fragment_camera, container, false);
 
         ButterKnife.bind(this, view);
-        mApplication = (Application) getActivity().getIntent().getSerializableExtra(Constants.APPLICATION);
+        mApplication = (Application) Objects.requireNonNull(getActivity()).getIntent().getSerializableExtra(Constants.APPLICATION);
 
         // Checking availability of the camera
-        if (!CameraUtils.isDeviceSupportFrontCamera(getApplicationContext())) {
-            Toast.makeText(getApplicationContext(),
-                    "Sorry! Your device doesn't support camera",
-                    Toast.LENGTH_LONG).show();
-            // will close the app if the device doesn't have camera
-//            finish();
-        }
 
         return view;
     }
