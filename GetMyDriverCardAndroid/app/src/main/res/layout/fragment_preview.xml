@@ -67,6 +67,7 @@
                                 android:layout_marginEnd="5dp"
                                 tools:ignore="ContentDescription" />
                         </LinearLayout>
+
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -123,6 +124,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -175,6 +177,7 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -201,6 +204,7 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -227,6 +231,7 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -253,6 +258,7 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -279,6 +285,7 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -305,6 +312,7 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
 
 
@@ -332,6 +340,7 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -358,8 +367,8 @@
                                 android:textColor="@android:color/white"
                                 android:textSize="18sp"
                                 android:textStyle="italic" />
-                        </LinearLayout>
 
+                        </LinearLayout>
                     </RelativeLayout>
                 </LinearLayout>
 
@@ -367,7 +376,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ll_person">
-
 
                     <LinearLayout
                         android:id="@+id/ll_identity_card_photo"
@@ -394,6 +402,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
                             android:textSize="18sp" />
+
                     </LinearLayout>
 
 
@@ -420,6 +429,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp" />
+
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
@@ -436,6 +446,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="15dp"
                 android:textStyle="bold" />
+
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

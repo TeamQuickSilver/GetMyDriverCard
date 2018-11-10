@@ -1,5 +1,7 @@
 package com.quicksilver.getmydrivercard.views.preview;
 
+import com.quicksilver.getmydrivercard.models.Application;
+
 public interface PreviewContracts {
     interface View {
         void setPresenter(Presenter presenter);
@@ -9,10 +11,12 @@ public interface PreviewContracts {
 
     interface Presenter {
         void subscribe(View view);
+
+        void submit(Application application);
     }
 
     interface Navigator {
 
-        void navigateTo(String reason);
+        void navigateTo(Application application);
     }
 }

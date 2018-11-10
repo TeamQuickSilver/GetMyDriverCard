@@ -1,5 +1,7 @@
 package com.quicksilver.getmydrivercard.views.preview;
 
+import com.quicksilver.getmydrivercard.models.Application;
+
 import javax.inject.Inject;
 
 public class PreviewPresenter implements PreviewContracts.Presenter {
@@ -13,5 +15,10 @@ public class PreviewPresenter implements PreviewContracts.Presenter {
     @Override
     public void subscribe(PreviewContracts.View view) {
         mView = view;
+    }
+
+    @Override
+    public void submit(Application application) {
+
     }
 }
