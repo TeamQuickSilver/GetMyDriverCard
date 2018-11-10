@@ -19,7 +19,7 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<Application> getAllByUserEmailOrderById(String email) {
+    public List<Application> getAllByEmail(String email) {
         return applicationRepository.findAllByUserEmail(email);
     }
 
@@ -29,24 +29,24 @@ public class ApplicationServiceImpl implements ApplicationService {
     }
 
     @Override
-    public List<Application> getAllOrderByDateOfSubmission(Date date) {
+    public List<Application> getAllByDateOfSubmissions(Date date) {
         return applicationRepository.findAllByDateOfSubmission(date);
     }
 
     @Override
-    public List<Application> getAllOrderByPersonName(String name) {
+    public List<Application> getAllByPersonNames(String name) {
         return applicationRepository
                 .findAllByPersonIdentityCardFirstNameOrPersonIdentityCardFathersNameOrPersonIdentityCardLastName(name, name, name);
     }
 
     @Override
     public List<Application> getByIdentityNumber(Long id) {
-        return applicationRepository.getByPersonIdentityCardPersonalNumber(id);
+        return applicationRepository.findAllByPersonIdentityCardPersonalNumber(id);
     }
 
     @Override
     public Application getById(Long id) {
-        return applicationRepository.getByApplicationId(id);
+        return applicationRepository.findByApplicationId(id);
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.quicksilver.getmydrivercard.views.home;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.quicksilver.getmydrivercard.R;
+
 public class HomeActivity extends Activity {
 
     @Override

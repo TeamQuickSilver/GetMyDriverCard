@@ -7,6 +7,7 @@ import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.User;
+import com.quicksilver.getmydrivercard.views.step4.Step4Activity;
 
 import javax.inject.Inject;
 
@@ -39,9 +40,11 @@ public class DrivingLicensePhotoActivity extends DaggerAppCompatActivity impleme
 
 
     @Override
-    public void navigateToNextStep(Application application) {
-        Intent intent = new Intent(this, PreviousCardPhotoActivity.class);
+    public void navigateToNextStep(Application application, byte[] imageBytes) {
+        Intent intent = new Intent(this, Step4Activity.class);
+        application.getApplicationImages().setDrivingLicenseImage(imageBytes);
         intent.putExtra(Constants.APPLICATION, application);
         intent.putExtra(Constants.USER, mUser);
+        startActivity(intent);
     }
 }

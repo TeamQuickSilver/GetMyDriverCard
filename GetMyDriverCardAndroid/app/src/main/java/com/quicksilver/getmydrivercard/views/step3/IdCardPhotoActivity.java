@@ -50,9 +50,11 @@ public class IdCardPhotoActivity extends DaggerAppCompatActivity implements Step
 
 
     @Override
-    public void navigateToNextStep(Application application) {
+    public void navigateToNextStep(Application application, byte[] imageBytes) {
         Intent intent = new Intent(this, DrivingLicensePhotoActivity.class);
+        application.getApplicationImages().setIdentityCardImage(imageBytes);
         intent.putExtra(Constants.APPLICATION, application);
         intent.putExtra(Constants.USER, mUser);
+        startActivity(intent);
     }
 }

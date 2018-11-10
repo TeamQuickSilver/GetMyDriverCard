@@ -18,7 +18,13 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.github.gcacace.signaturepad.views.SignaturePad;
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
+import com.quicksilver.getmydrivercard.async.base.SchedulerProvider;
+import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.User;
+import com.quicksilver.getmydrivercard.services.ApplicationService;
+import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -26,13 +32,33 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
-public class Step4Activity extends Activity {
+import javax.inject.Inject;
+
+import butterknife.ButterKnife;
+import dagger.android.support.DaggerAppCompatActivity;
+
+public class Step4Activity extends DaggerAppCompatActivity implements Step4Contracts.Navigator {
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private SignaturePad mSignaturePad;
     private Button mClearButton;
     private Button mSaveButton;
+    private Application mApplication;
+    private User mUser;
+
+    @Inject
+    Step4Fragment mStep4Fragment;
+
+    @Inject
+    Step4Contracts.Presenter mStep4Presenter;
+
+    @Inject
+    ApplicationService mApplicationService;
+
+    @Inject
+    SchedulerProvider mSchedulerProvider;
+    private Uri mContentUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +66,19 @@ public class Step4Activity extends Activity {
         verifyStoragePermissions(Step4Activity.this);
         setContentView(R.layout.activity_step4);
 
-        mSignaturePad = (SignaturePad) findViewById(R.id.signature_pad);
+        ButterKnife.bind(this);
+        mStep4Fragment.setPresenter(mStep4Presenter);
+        mStep4Fragment.setNavigator(this);
+
+        Intent intent = getIntent();
+        mUser = (User)intent.getSerializableExtra(Constants.USER);
+        mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
+
+//        getSupportFragmentManager().beginTransaction()
+//                .replace(R.id.content, mStep4Fragment)
+//                .commit();
+
+        mSignaturePad = findViewById(R.id.signature_pad);
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
@@ -60,8 +98,8 @@ public class Step4Activity extends Activity {
             }
         });
 
-        mClearButton = (Button) findViewById(R.id.clear_button);
-        mSaveButton = (Button) findViewById(R.id.save_button);
+        mClearButton = findViewById(R.id.clear_button);
+        mSaveButton = findViewById(R.id.save_button);
 
         mClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +122,7 @@ public class Step4Activity extends Activity {
                 } else {
                     Toast.makeText(Step4Activity.this, "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
                 }
+                mStep4Fragment.createImageBytesFromUri(mContentUri);
             }
         });
     }
@@ -137,8 +176,8 @@ public class Step4Activity extends Activity {
 
     private void scanMediaFile(File photo) {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        Uri contentUri = Uri.fromFile(photo);
-        mediaScanIntent.setData(contentUri);
+        mContentUri = Uri.fromFile(photo);
+        mediaScanIntent.setData(mContentUri);
         Step4Activity.this.sendBroadcast(mediaScanIntent);
     }
 
@@ -179,5 +218,12 @@ public class Step4Activity extends Activity {
                     REQUEST_EXTERNAL_STORAGE
             );
         }
+    }
+
+    @Override
+    public void navigateToRequests() {
+        Intent intent = new Intent(this, RequestsActivity.class);
+        intent.putExtra(Constants.USER, mUser);
+        startActivity(intent);
     }
 }

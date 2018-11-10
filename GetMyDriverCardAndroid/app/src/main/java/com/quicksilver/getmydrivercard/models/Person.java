@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Person implements Serializable{
 
-    private IdentityCard identityCard;
-    private DrivingLicense drivingLicense;
-    private Long phoneNumber;
+    public IdentityCard identityCard;
+    public DrivingLicense drivingLicense;
+    public Long phoneNumber;
     // Can be removed
-    private String email;
+    public String email;
 
     public Person() {
 

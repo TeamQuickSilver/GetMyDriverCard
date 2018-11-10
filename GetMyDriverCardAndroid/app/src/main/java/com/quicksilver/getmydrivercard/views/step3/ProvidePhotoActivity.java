@@ -1,17 +1,15 @@
 package com.quicksilver.getmydrivercard.views.step3;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.ApplicationImages;
 import com.quicksilver.getmydrivercard.models.User;
 
 import javax.inject.Inject;
@@ -22,7 +20,6 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
 
     @Inject
     CameraFragment mView;
-
     private User mUser;
     private Application mApplication;
 
@@ -82,9 +79,14 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
     }
 
     @Override
-    public void navigateToNextStep(Application application) {
+    public void navigateToNextStep(Application application, byte[] imageBytes) {
         Intent intent = new Intent(this, IdCardPhotoActivity.class);
         intent.putExtra(Constants.APPLICATION, application);
+        if(mApplication.getApplicationImages() == null) {
+            mApplication.setApplicationImages(new ApplicationImages());
+        }
+        mApplication.getApplicationImages().setPersonImage(imageBytes);
+        intent.putExtra(Constants.APPLICATION, mApplication);
         intent.putExtra(Constants.USER, mUser);
         startActivity(intent);
     }

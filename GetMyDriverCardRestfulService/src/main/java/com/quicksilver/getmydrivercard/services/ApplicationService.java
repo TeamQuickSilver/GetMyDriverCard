@@ -9,15 +9,9 @@ import java.util.List;
 
 public interface ApplicationService {
 
-    List<Application> getAllByUserEmailOrderById(String email);
+    List<Application> getAllByUserEmail(String email);
 
-    List<Application> getAllByStatus(ApplicationStatus status);
-
-    List<Application> getAllOrderByDateOfSubmission(Date date);
-
-    List<Application> getAllOrderByPersonName();
-
-    List<Application> getById(Long id);
+    List<Application> getByIdentityNumber(Long id);
 
     Application save(Application application);
 }

@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class Address implements Serializable {
 
-    private String district;
-    private String city;
-    private String address;
+    public String district;
+    public String city;
+    public String address;
 
     public Address() {
 
