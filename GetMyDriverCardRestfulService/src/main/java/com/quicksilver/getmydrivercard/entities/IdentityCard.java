@@ -28,9 +28,6 @@ public class IdentityCard {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "date_of_birth")
-    private Date dateOfBirth;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
@@ -40,7 +37,7 @@ public class IdentityCard {
     }
 
     public IdentityCard(Long identityCardNumber, Long personalNumber, Date issuedOn, String issuedBy,
-                        String firstName, String fathersName, String lastName, Date dateOfBirth, Address address) {
+                        String firstName, String fathersName, String lastName, Address address) {
         this.setIdentityCardNumber(identityCardNumber);
         this.setPersonalNumber(personalNumber);
         this.setIssuedOn(issuedOn);
@@ -48,7 +45,6 @@ public class IdentityCard {
         this.setFirstName(firstName);
         this.setFathersName(fathersName);
         this.setLastName(lastName);
-        this.setDateOfBirth(dateOfBirth);
         this.setAddress(address);
     }
 
@@ -106,14 +102,6 @@ public class IdentityCard {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
     public Address getAddress() {

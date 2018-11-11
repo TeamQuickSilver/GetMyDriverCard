@@ -9,7 +9,9 @@ import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.User;
 import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
+import com.quicksilver.getmydrivercard.views.step3.PreviousCardPhotoActivity;
 import com.quicksilver.getmydrivercard.views.step3.ProvidePhotoActivity;
+import com.quicksilver.getmydrivercard.views.step4.Step4Activity;
 
 import javax.inject.Inject;
 
@@ -105,8 +107,14 @@ public class Step2Activity extends BaseDrawerActivity implements Step2Contracts.
             case Constants.WITHDRAWN_CARD:
                 intent = new Intent(this, NewCardActivityDocuments.class);
                 break;
-            default:
+            case Constants.PHOTO_CHANGE:
                 intent = new Intent(this, ProvidePhotoActivity.class);
+                break;
+            case Constants.EXCHANGE_CARD:
+                intent = new Intent(this, PreviousCardPhotoActivity.class);
+                break;
+            default:
+                intent = new Intent(this, Step4Activity.class);
                 break;
         }
 

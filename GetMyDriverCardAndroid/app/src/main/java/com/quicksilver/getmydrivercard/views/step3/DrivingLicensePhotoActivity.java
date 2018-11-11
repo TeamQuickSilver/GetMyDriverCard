@@ -28,9 +28,9 @@ public class DrivingLicensePhotoActivity extends DaggerAppCompatActivity impleme
 
         mView.setNavigator(this);
 
-//        Intent intent = getIntent();
-//        mUser = (User)intent.getSerializableExtra(Constants.USER);
-//        mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
+        Intent intent = getIntent();
+        mUser = (User)intent.getSerializableExtra(Constants.USER);
+        mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
 
         getSupportFragmentManager()
                 .beginTransaction()

@@ -2,11 +2,9 @@ package com.quicksilver.getmydrivercard.controllers;
 
 import com.quicksilver.getmydrivercard.entities.Application;
 import com.quicksilver.getmydrivercard.services.ApplicationService;
-import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
 import java.util.List;
 
 @RestController

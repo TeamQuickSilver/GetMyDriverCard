@@ -112,7 +112,8 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
                 mDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        mChosenDate.setText(dayOfMonth + "\\" + month + "\\" + year);
+                        month++;
+                        mChosenDate.setText(year + "-" + month + "-" + dayOfMonth);
                         mChosenDate.setVisibility(View.VISIBLE);
                     }
                 }, year, month, day);
@@ -159,7 +160,7 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
             return;
         }
 
-        DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
             date = dateFormat.parse(mChosenDate.getText().toString());

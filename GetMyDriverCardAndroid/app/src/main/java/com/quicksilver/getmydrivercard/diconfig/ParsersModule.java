@@ -17,7 +17,9 @@ public class ParsersModule {
         return new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd")
                 .registerTypeHierarchyAdapter(byte[].class,
-                        new GsonJsonParser.ByteArrayToBase64TypeAdapter()).create();
+                        new GsonJsonParser.ByteArrayToBase64TypeAdapter())
+                .serializeNulls()
+                .create();
     }
 
     @Provides

@@ -29,6 +29,14 @@ public class Address {
         this.setAddress(address);
     }
 
+    public Long getAddress_id() {
+        return address_id;
+    }
+
+    public void setAddress_id(Long address_id) {
+        this.address_id = address_id;
+    }
+
     public String getDistrict() {
         return district;
     }

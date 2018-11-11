@@ -15,15 +15,6 @@ public class ApplicationImages implements Serializable {
 
     }
 
-    public ApplicationImages(byte[] personImage, byte[] previousCardImage, byte[] identityCardImage, byte[] drivingLicenseImage, byte[] euroCardImage, byte[] signatureImage) {
-        this.personImage = personImage;
-        this.previousCardImage = previousCardImage;
-        this.identityCardImage = identityCardImage;
-        this.drivingLicenseImage = drivingLicenseImage;
-        this.euroCardImage = euroCardImage;
-        this.signatureImage = signatureImage;
-    }
-
     public byte[] getPersonImage() {
         return personImage;
     }

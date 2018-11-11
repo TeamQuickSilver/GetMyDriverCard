@@ -12,9 +12,11 @@ import android.widget.Toast;
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
+import com.quicksilver.getmydrivercard.models.User;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -26,6 +28,7 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
     private Step4Contracts.Presenter mPresenter;
     private Step4Contracts.Navigator mNavigator;
     private Application mApplication;
+    private User mUser;
 
     @Inject
     public Step4Fragment() {
@@ -40,8 +43,15 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
         View view = inflater.inflate(R.layout.fragment_step4, container, false);
 
         mApplication = (Application)getActivity().getIntent().getSerializableExtra(Constants.APPLICATION);
+        mUser = (User)getActivity().getIntent().getSerializableExtra(Constants.USER);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.subscribe(this);
     }
 
     @Override
@@ -70,6 +80,8 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
 
             byte[] imageBytes = mPresenter.convertUriIntoByteArray(inputStream);
             mApplication.getApplicationImages().setSignatureImage(imageBytes);
+            mApplication.setUser(mUser);
+            mApplication.setDateOfSubmission(new Date());
 
             mPresenter.saveApplication(mApplication);
         } catch (IOException e) {

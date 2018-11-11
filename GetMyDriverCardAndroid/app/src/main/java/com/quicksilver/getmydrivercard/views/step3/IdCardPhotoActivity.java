@@ -19,6 +19,7 @@ public class IdCardPhotoActivity extends DaggerAppCompatActivity implements Step
 
     private User mUser;
     private Application mApplication;
+    private String mReason;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +28,11 @@ public class IdCardPhotoActivity extends DaggerAppCompatActivity implements Step
 
         mView.setNavigator(this);
 
-//        Intent intent = getIntent();
-//        mUser = (User)intent.getSerializableExtra(Constants.USER);
-//        mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
+        Intent intent = getIntent();
+        mUser = (User)intent.getSerializableExtra(Constants.USER);
+        mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
+        mReason = intent.getStringExtra(Constants.REASON);
+
 
         getSupportFragmentManager()
                 .beginTransaction()

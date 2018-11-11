@@ -64,7 +64,7 @@ public class HttpApplicationRepository implements ApplicationRepository {
 
     @Override
     public List<Application> getById(Long id) throws IOException {
-        String url = mBaseApplicationUrl + "/" + id;
+        String url = mBaseApplicationUrl + "/applications/" + id;
         String responseBody = mHttpRequester.get(url);
 
         return mApplicationJsonParser.fromJsonArray(responseBody);
@@ -72,8 +72,18 @@ public class HttpApplicationRepository implements ApplicationRepository {
 
     @Override
     public Application create(Application application) throws IOException {
+        String url = mBaseApplicationUrl + "/applications";
         String requestBody = mApplicationJsonParser.toJson(application);
-        String responseBody = mHttpRequester.post(mBaseApplicationUrl, requestBody);
+        String responseBody = mHttpRequester.post(url, requestBody);
+
+        return mApplicationJsonParser.fromJson(responseBody);
+    }
+
+    @Override
+    public Application update(Application applicationDetails) throws IOException {
+        String url = mBaseApplicationUrl + "/applications";
+        String requestBody = mApplicationJsonParser.toJson(applicationDetails);
+        String responseBody = mHttpRequester.put(url, requestBody);
 
         return mApplicationJsonParser.fromJson(responseBody);
     }

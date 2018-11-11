@@ -94,6 +94,7 @@ public class NewCardFragmentDocuments extends Fragment implements Step2Contracts
                 mDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month++;
                         mChosenDate.setText(dayOfMonth + "\\" + month + "\\" + year);
                         mChosenDate.setVisibility(View.VISIBLE);
                     }
@@ -141,10 +142,15 @@ public class NewCardFragmentDocuments extends Fragment implements Step2Contracts
 
                 Address fullAddress = new Address(district, city, address);
                 Long identityCardNumber = Long.parseLong(identityCardNumberStr);
-                DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//                String dayOfBirth = identityCardNumberStr.substring(4, 6);
+//                String monthOfBirth = identityCardNumberStr.substring(2, 4);
+//                String yearOfBirth = identityCardNumberStr.substring(0, 2);
+//                Date dateOfBirth = null;
                 Date date = null;
                 try {
                     date = dateFormat.parse(mChosenDate.getText().toString());
+//                    dateOfBirth = dateFormat.parse(dayOfBirth + monthOfBirth + yearOfBirth);
                 } catch (ParseException e) {
                     Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
                     e.printStackTrace();
@@ -155,6 +161,7 @@ public class NewCardFragmentDocuments extends Fragment implements Step2Contracts
                 mApplication.getPerson().getIdentityCard().setAddress(fullAddress);
                 mApplication.getPerson().getIdentityCard().setIssuedBy(issuedBy);
                 mApplication.getPerson().getIdentityCard().setIssuedOn(date);
+//                mApplication.getPerson().getIdentityCard().setDateOfBirth(dateOfBirth);
                 mNavigator.navigateToNextStep(mApplication);
                 break;
         }

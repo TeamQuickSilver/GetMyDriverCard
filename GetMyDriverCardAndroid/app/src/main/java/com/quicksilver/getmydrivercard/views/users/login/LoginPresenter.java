@@ -2,6 +2,7 @@ package com.quicksilver.getmydrivercard.views.users.login;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.async.base.SchedulerProvider;
+import com.quicksilver.getmydrivercard.models.Role;
 import com.quicksilver.getmydrivercard.models.User;
 import com.quicksilver.getmydrivercard.services.UserService;
 
@@ -43,6 +44,7 @@ public class LoginPresenter implements LoginContracts.Presenter {
             User user = mUserService.getByEmail(googleOrFacebookUser.getEmail());
             if (user == null) {
                 User userToRegister = new User(googleOrFacebookUser.getEmail());
+                userToRegister.setRole(new Role(Constants.USER));
                 user = mUserService.register(userToRegister);
             }
             emitter.onNext(user);
@@ -56,7 +58,7 @@ public class LoginPresenter implements LoginContracts.Presenter {
         Disposable subscriptionUser = observable.filter(u -> u.getRole().getAuthority().equals(Constants.USER))
                 .subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe(u -> mView.navigateToStep1(u), error -> mView.showError(error));
+                .subscribe(u -> mView.navigateToStep1(u), error ->error.printStackTrace());
 
 //        Disposable subscriptionAdmin = observable.filter(u -> u.getRole().getAuthority().equals(Constants.ADMIN))
 //                .subscribeOn(mSchedulerProvider.background())

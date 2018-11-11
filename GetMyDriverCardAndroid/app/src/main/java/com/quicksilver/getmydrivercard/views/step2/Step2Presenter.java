@@ -37,6 +37,6 @@ public class Step2Presenter implements Step2Contracts.Presenter {
             emitter.onComplete();
         }).subscribeOn(mSchedulerProvider.background())
                 .observeOn(mSchedulerProvider.ui())
-                .subscribe(a -> mView.getApplication(a), error -> mView.showError(error));
+                .subscribe(a -> mView.getApplication(a), error -> error.printStackTrace());
     }
 }

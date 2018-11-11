@@ -107,6 +107,7 @@ public class NewCardPart3Fragment extends Fragment implements Step2Contracts.Vie
                 mDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month++;
                         mChosenDate.setText(dayOfMonth + "\\" + month + "\\" + year);
                         mChosenDate.setVisibility(View.VISIBLE);
                     }
@@ -141,7 +142,7 @@ public class NewCardPart3Fragment extends Fragment implements Step2Contracts.Vie
                 }
 
                 Long drivingLicenseNumber = Long.parseLong(drivingLicenseNumberStr);
-                DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
+                DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date date = null;
                 try {
                     date = dateFormat.parse(mChosenDate.getText().toString());

@@ -16,6 +16,7 @@ public class Application implements Serializable{
     public String countryPreviousCard;
     public Long previousCardNumber;
     public String countryDrivingLicense;
+    public User user;
 
     public Application() {
 
@@ -25,6 +26,14 @@ public class Application implements Serializable{
         this.person = person;
         this.applicationImages = applicationImages;
         this.dateOfSubmission = dateOfSubmission;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Person getPerson() {

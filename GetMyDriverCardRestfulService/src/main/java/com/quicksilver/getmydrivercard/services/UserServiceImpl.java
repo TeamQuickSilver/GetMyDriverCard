@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
 
         // Applied also with Facebook or Google login
 //        Role role = new Role("USER");
-        user.setRole(roleRepository.getByRoleId(1L));
+//        user.setRole(roleRepository.getByRoleId(1L));
         return userRepository.save(user);
     }
 

@@ -35,6 +35,14 @@ public class Person {
         this.setEmail(email);
     }
 
+    public Long getPerson_id() {
+        return person_id;
+    }
+
+    public void setPerson_id(Long person_id) {
+        this.person_id = person_id;
+    }
+
     public IdentityCard getIdentityCard() {
         return identityCard;
     }

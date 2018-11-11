@@ -2,11 +2,9 @@ package com.quicksilver.getmydrivercard.services;
 
 import com.quicksilver.getmydrivercard.entities.Application;
 import com.quicksilver.getmydrivercard.repositories.ApplicationRepository;
-import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -31,6 +29,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public Application save(Application application) {
+        Application debug = application;
         return applicationRepository.save(application);
     }
 }

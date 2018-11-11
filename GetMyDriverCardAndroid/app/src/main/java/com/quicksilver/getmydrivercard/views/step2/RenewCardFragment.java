@@ -69,6 +69,12 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.subscribe(this);
+    }
+
     @OnClick({R.id.btn_pick_date, R.id.btn_next})
     public void onClick(View view) {
         switch (view.getId()) {
@@ -81,6 +87,7 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
                 mDatePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month++;
                         mChosenDate.setText(dayOfMonth + "\\" + month + "\\" + year);
                         mChosenDate.setVisibility(View.VISIBLE);
                     }

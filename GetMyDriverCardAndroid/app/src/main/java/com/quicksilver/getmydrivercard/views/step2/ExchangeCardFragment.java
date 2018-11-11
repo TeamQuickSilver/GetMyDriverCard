@@ -64,6 +64,12 @@ public class ExchangeCardFragment extends Fragment implements Step2Contracts.Vie
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.subscribe(this);
+    }
+
     @OnClick({R.id.btn_next})
     public void onClick(View view) {
         boolean isValid = true;

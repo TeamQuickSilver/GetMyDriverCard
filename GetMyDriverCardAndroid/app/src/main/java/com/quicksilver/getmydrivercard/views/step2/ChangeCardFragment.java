@@ -106,6 +106,12 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.subscribe(this);
+    }
+
     private void arrangeViews(String reason) {
         switch (reason) {
             case Constants.ADDRESS_CHANGE:
@@ -170,7 +176,6 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
     @OnClick(R.id.btn_next)
     public void onClick(View view) {
         String identityNumberStr = mIdentityNumberEditText.getText().toString();
-        boolean isValid = true;
 
         if (identityNumberStr.length() != 10) {
             mIdentityNumberEditText.setError(Constants.IDENTITY_NUMBER_ERROR);
@@ -180,6 +185,23 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
 
         Long identityNumber = Long.parseLong(identityNumberStr);
         mPresenter.loadApplication(identityNumber);
+    }
+
+    @Override
+    public void setPresenter(Step2Contracts.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void setNavigator(Step2Contracts.Navigator navigator) {
+        mNavigator = navigator;
+    }
+
+    @Override
+    public void getApplication(Application application) {
+        mApplication = application;
+        boolean isValid = true;
+
         switch (mReason) {
             case Constants.ADDRESS_CHANGE:
                 String district = mDistrictEditText.getText().toString();
@@ -249,21 +271,6 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
         }
 
         mNavigator.navigateToNextStep(mApplication);
-    }
-
-    @Override
-    public void setPresenter(Step2Contracts.Presenter presenter) {
-        mPresenter = presenter;
-    }
-
-    @Override
-    public void setNavigator(Step2Contracts.Navigator navigator) {
-        mNavigator = navigator;
-    }
-
-    @Override
-    public void getApplication(Application application) {
-        mApplication = application;
     }
 
     @Override

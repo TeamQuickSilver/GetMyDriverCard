@@ -114,7 +114,7 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
         mNavigator = navigator;
     }
 
-    @OnClick({R.id.btn_capture_picture, R.id.btn_upload_picture})
+    @OnClick({R.id.btn_capture_picture, R.id.btn_upload_picture, R.id.btn_next})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_capture_picture:
@@ -269,8 +269,6 @@ public class CameraFragment extends Fragment implements Step3Contracts.View{
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
             mImageBytes = stream.toByteArray();
-            mNavigator.navigateToNextStep(mApplication, mImageBytes);
-
 //            try {
 //                InputStream inputStream = getActivity().getContentResolver().openInputStream(uri);
 //

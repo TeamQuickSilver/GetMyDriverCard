@@ -18,7 +18,7 @@ public class Application {
     @JoinColumn(name = "person_id")
     private Person person;
 
-    @ManyToOne(targetEntity = User.class)
+    @ManyToOne(targetEntity = User.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
 

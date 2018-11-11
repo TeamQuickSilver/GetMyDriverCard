@@ -6,8 +6,8 @@ import android.os.Bundle;
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
-import com.quicksilver.getmydrivercard.models.ApplicationImages;
 import com.quicksilver.getmydrivercard.models.User;
+import com.quicksilver.getmydrivercard.views.step4.Step4Activity;
 
 import javax.inject.Inject;
 
@@ -19,6 +19,7 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
     CameraFragment mView;
     private User mUser;
     private Application mApplication;
+    private String mReason;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
         Intent intent = getIntent();
         mUser = (User)intent.getSerializableExtra(Constants.USER);
         mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
+        mReason = intent.getStringExtra(Constants.REASON);
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -44,10 +46,17 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
 
     @Override
     public void navigateToNextStep(Application application, byte[] imageBytes) {
-        Intent intent = new Intent(this, IdCardPhotoActivity.class);
-        if(mApplication.getApplicationImages() == null) {
-            mApplication.setApplicationImages(new ApplicationImages());
+        Intent intent = null;
+        switch (mReason) {
+            case Constants.NEW_CARD:
+            case Constants.WITHDRAWN_CARD:
+                intent = new Intent(this, IdCardPhotoActivity.class);
+                break;
+            case Constants.PHOTO_CHANGE:
+                intent = new Intent(this, Step4Activity.class);
+                break;
         }
+
         mApplication.getApplicationImages().setPersonImage(imageBytes);
         intent.putExtra(Constants.APPLICATION, mApplication);
         intent.putExtra(Constants.USER, mUser);

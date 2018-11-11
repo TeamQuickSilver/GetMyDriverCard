@@ -15,6 +15,7 @@ import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.ApplicationImages;
 import com.quicksilver.getmydrivercard.models.ApplicationReason;
+import com.quicksilver.getmydrivercard.models.ApplicationStatus;
 import com.quicksilver.getmydrivercard.models.DrivingLicense;
 import com.quicksilver.getmydrivercard.models.IdentityCard;
 import com.quicksilver.getmydrivercard.models.Person;
@@ -138,11 +139,11 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
         person.setDrivingLicense(drivingLicense);
         person.setEmail(mUser.getEmail());
 
-        DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String year = mIdentityNumber.getText().toString().substring(0, 2);
         String month = mIdentityNumber.getText().toString().substring(2, 4);
         String day = mIdentityNumber.getText().toString().substring(4, 6);
-        String dateStr = day + "\\" + month + "\\" + year;
+        String dateStr = year + "\\" + month + "\\" + day;
 
         Date date = null;
         try {
@@ -154,6 +155,7 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
         }
 
         application.setPerson(person);
+//        application.getPerson().getIdentityCard().setDateOfBirth(date);
 
         if(mReason.equals(Constants.NEW_CARD)) {
             application.setApplicationReason(ApplicationReason.NEW);
@@ -161,6 +163,7 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
             application.setApplicationReason(ApplicationReason.WITHDRAWN);
         }
 
+        application.setApplicationStatus(ApplicationStatus.NEW);
         mNavigator.navigateToNextStep(application);
     }
 

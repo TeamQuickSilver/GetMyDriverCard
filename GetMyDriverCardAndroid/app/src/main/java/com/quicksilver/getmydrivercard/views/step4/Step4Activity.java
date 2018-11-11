@@ -74,9 +74,9 @@ public class Step4Activity extends DaggerAppCompatActivity implements Step4Contr
         mUser = (User)intent.getSerializableExtra(Constants.USER);
         mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
 
-//        getSupportFragmentManager().beginTransaction()
-//                .replace(R.id.content, mStep4Fragment)
-//                .commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, mStep4Fragment)
+                .commit();
 
         mSignaturePad = findViewById(R.id.signature_pad);
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {

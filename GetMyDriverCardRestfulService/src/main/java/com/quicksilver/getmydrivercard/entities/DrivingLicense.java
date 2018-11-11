@@ -8,11 +8,12 @@ import java.util.Date;
 public class DrivingLicense {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_driver_license")
     private Long id_card;
 
-    @Column(name = "identity_card_number")
-    private Long identityCardNumber;
+//    @Column(name = "identity_card_number")
+//    private Long identityCardNumber;
 
     @Column(name = "issued_on")
     private Date issuedOn;
@@ -25,7 +26,7 @@ public class DrivingLicense {
 
     public DrivingLicense(Long id_card, Long identityCardNumber, Date issuedOn, String issuedBy) {
         this.setId_card(id_card);
-        this.setIdentityCardNumber(identityCardNumber);
+//        this.setIdentityCardNumber(identityCardNumber);
         this.setIssuedOn(issuedOn);
         this.setIssuedBy(issuedBy);
     }
@@ -38,13 +39,13 @@ public class DrivingLicense {
         this.id_card = id_card;
     }
 
-    public Long getIdentityCardNumber() {
-        return identityCardNumber;
-    }
-
-    public void setIdentityCardNumber(Long identityCardNumber) {
-        this.identityCardNumber = identityCardNumber;
-    }
+//    public Long getIdentityCardNumber() {
+//        return identityCardNumber;
+//    }
+//
+//    public void setIdentityCardNumber(Long identityCardNumber) {
+//        this.identityCardNumber = identityCardNumber;
+//    }
 
     public Date getIssuedOn() {
         return issuedOn;

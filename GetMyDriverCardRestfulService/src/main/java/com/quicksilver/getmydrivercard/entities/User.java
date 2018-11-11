@@ -11,7 +11,7 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(name = "password")
@@ -29,7 +29,7 @@ public class User {
         this.email = email;
     }
 
-    public User(String email, String password, Set<Role> authorities) {
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }
