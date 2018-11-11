@@ -78,13 +78,4 @@ public class HttpApplicationRepository implements ApplicationRepository {
 
         return mApplicationJsonParser.fromJson(responseBody);
     }
-
-    @Override
-    public Application update(Application applicationDetails) throws IOException {
-        String url = mBaseApplicationUrl + "/applications";
-        String requestBody = mApplicationJsonParser.toJson(applicationDetails);
-        String responseBody = mHttpRequester.put(url, requestBody);
-
-        return mApplicationJsonParser.fromJson(responseBody);
-    }
 }

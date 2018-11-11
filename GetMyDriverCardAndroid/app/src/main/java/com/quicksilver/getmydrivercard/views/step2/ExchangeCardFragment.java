@@ -72,7 +72,6 @@ public class ExchangeCardFragment extends Fragment implements Step2Contracts.Vie
 
     @OnClick({R.id.btn_next})
     public void onClick(View view) {
-        boolean isValid = true;
         String identityNumberStr = mIdentityNumber.getText().toString();
 
         if(identityNumberStr.length() != 10) {
@@ -83,6 +82,23 @@ public class ExchangeCardFragment extends Fragment implements Step2Contracts.Vie
 
         Long identityNumber = Long.parseLong(identityNumberStr);
         mPresenter.loadApplication(identityNumber);
+
+    }
+
+    @Override
+    public void setPresenter(Step2Contracts.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+    @Override
+    public void setNavigator(Step2Contracts.Navigator navigator) {
+        mNavigator = navigator;
+    }
+
+    @Override
+    public void getApplication(Application application) {
+        mApplication = application;
+        boolean isValid = true;
 
         String tachographCardNumberStr = mCardNumber.getText().toString();
         String countryWhichIssuedPreviousCard = mCountry.getText().toString();
@@ -117,21 +133,6 @@ public class ExchangeCardFragment extends Fragment implements Step2Contracts.Vie
         mApplication.setPreviousCardNumber(tachographCardNumber);
         mApplication.setCountryDrivingLicense(countryWhichIssuedDrivingLicense);
         mNavigator.navigateToNextStep(mApplication);
-    }
-
-    @Override
-    public void setPresenter(Step2Contracts.Presenter presenter) {
-        mPresenter = presenter;
-    }
-
-    @Override
-    public void setNavigator(Step2Contracts.Navigator navigator) {
-        mNavigator = navigator;
-    }
-
-    @Override
-    public void getApplication(Application application) {
-        mApplication = application;
     }
 
     @Override

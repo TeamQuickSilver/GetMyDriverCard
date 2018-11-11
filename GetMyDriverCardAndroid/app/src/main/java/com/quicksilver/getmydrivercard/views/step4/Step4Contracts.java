@@ -27,6 +27,6 @@ public interface Step4Contracts {
 
     interface Navigator {
 
-        void navigateToRequests();
+        void navigateToRequests(Application application);
     }
 }

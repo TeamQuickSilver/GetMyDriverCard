@@ -44,9 +44,4 @@ public class HttpApplicationService implements ApplicationService {
     public Application create(Application application) throws IOException {
         return mApplicationRepository.create(application);
     }
-
-    @Override
-    public Application update(Application applicationDetails) throws IOException {
-        return mApplicationRepository.update(applicationDetails);
-    }
 }

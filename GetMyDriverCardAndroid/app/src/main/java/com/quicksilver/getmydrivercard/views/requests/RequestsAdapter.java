@@ -75,7 +75,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Applic
         @BindView(R.id.tv_date_of_submission)
         TextView mDateOfSubmission;
 
-        @BindView(R.id.tv_application_status)
+        @BindView(R.id.tv_identity_number)
         TextView mApplicationStatus;
 
         private Application mApplication;
@@ -88,7 +88,7 @@ public class RequestsAdapter extends RecyclerView.Adapter<RequestsAdapter.Applic
 
         void bind(Application application) {
             mDateOfSubmission.setText(application.getDateOfSubmission().toString());
-            mApplicationStatus.setText(application.getApplicationStatus().toString());
+            mApplicationStatus.setText(application.getPerson().getIdentityCard().getPersonalNumber() + "");
 
             mApplication = application;
         }

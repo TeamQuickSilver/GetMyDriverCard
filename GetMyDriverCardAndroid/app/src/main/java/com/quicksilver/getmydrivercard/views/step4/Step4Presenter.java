@@ -48,7 +48,7 @@ public class Step4Presenter implements Step4Contracts.Presenter {
     @Override
     public void saveApplication(Application applicationDetails) {
         Disposable disposable = Observable.create((ObservableOnSubscribe<Application>) emitter -> {
-            Application application = mApplicationsService.update(applicationDetails);
+            Application application = mApplicationsService.create(applicationDetails);
             emitter.onNext(application);
             emitter.onComplete();
         }).subscribeOn(mSchedulerProvider.background())

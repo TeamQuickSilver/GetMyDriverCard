@@ -10,9 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
-import com.quicksilver.getmydrivercard.models.ApplicationStatus;
 
 import java.util.List;
 
@@ -33,6 +33,7 @@ public class RequestsFragment extends Fragment implements RequestsContracts.View
     private GridLayoutManager mApplicationViewLayoutManager;
     private RequestsContracts.Presenter mPresenter;
     private RequestsContracts.Navigator mNavigator;
+    private Application mApplication;
 
     @Inject
     public RequestsFragment() {
@@ -50,6 +51,8 @@ public class RequestsFragment extends Fragment implements RequestsContracts.View
         mRequestsAdapter.setOnApplicationClickListener(this);
         mRecyclerView.setAdapter(mRequestsAdapter);
 
+        mApplication = (Application) getActivity().getIntent().getSerializableExtra(Constants.APPLICATION);
+
         mApplicationViewLayoutManager = new GridLayoutManager(getContext(), 1);
         mRecyclerView.setLayoutManager(mApplicationViewLayoutManager);
 
@@ -60,7 +63,7 @@ public class RequestsFragment extends Fragment implements RequestsContracts.View
     public void onResume() {
         super.onResume();
         mPresenter.subscribe(this);
-        mPresenter.loadApplicationsByStatus(ApplicationStatus.NEW);
+        mPresenter.loadApplicationsById(mApplication.getPerson().getIdentityCard().getPersonalNumber());
     }
 
     @Override

@@ -71,7 +71,7 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
 
     @Override
     public void navigateToRequests() {
-        mNavigator.navigateToRequests();
+        mNavigator.navigateToRequests(mApplication);
     }
 
     public void createImageBytesFromUri(Uri contentUri) {

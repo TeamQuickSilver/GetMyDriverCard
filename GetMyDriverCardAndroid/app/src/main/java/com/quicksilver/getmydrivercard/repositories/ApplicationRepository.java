@@ -19,6 +19,4 @@ public interface ApplicationRepository {
     List<Application> getById(Long id) throws IOException;
 
     Application create(Application application) throws IOException;
-
-    Application update(Application applicationDetails) throws IOException;
 }

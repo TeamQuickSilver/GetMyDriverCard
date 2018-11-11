@@ -21,11 +21,6 @@ import com.quicksilver.getmydrivercard.models.IdentityCard;
 import com.quicksilver.getmydrivercard.models.Person;
 import com.quicksilver.getmydrivercard.models.User;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.inject.Inject;
 
 import butterknife.BindView;
@@ -139,20 +134,20 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
         person.setDrivingLicense(drivingLicense);
         person.setEmail(mUser.getEmail());
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String year = mIdentityNumber.getText().toString().substring(0, 2);
-        String month = mIdentityNumber.getText().toString().substring(2, 4);
-        String day = mIdentityNumber.getText().toString().substring(4, 6);
-        String dateStr = year + "\\" + month + "\\" + day;
-
-        Date date = null;
-        try {
-            date = dateFormat.parse(dateStr);
-        } catch (ParseException e) {
-            Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-            return;
-        }
+//        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//        String year = mIdentityNumber.getText().toString().substring(0, 2);
+//        String month = mIdentityNumber.getText().toString().substring(2, 4);
+//        String day = mIdentityNumber.getText().toString().substring(4, 6);
+//        String dateStr = year + "\\" + month + "\\" + day;
+//
+//        Date date = null;
+//        try {
+//            date = dateFormat.parse(dateStr);
+//        } catch (ParseException e) {
+//            Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
+//            e.printStackTrace();
+//            return;
+//        }
 
         application.setPerson(person);
 //        application.getPerson().getIdentityCard().setDateOfBirth(date);

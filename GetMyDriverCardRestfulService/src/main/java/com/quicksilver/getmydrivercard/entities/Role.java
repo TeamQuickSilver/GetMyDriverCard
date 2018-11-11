@@ -11,7 +11,7 @@ public class Role implements GrantedAuthority {
     @Column(name = "role_id")
     private Long roleId;
 
-    @Column(unique = true)
+    @Column()
     private String authority;
 
     public Long getRoleId() {

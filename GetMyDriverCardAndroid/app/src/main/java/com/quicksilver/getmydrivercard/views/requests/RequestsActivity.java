@@ -31,6 +31,10 @@ public class RequestsActivity extends BaseDrawerActivity implements RequestsCont
         mRequestsFragment.setNavigator(this);
 
         setSupportActionBar(getDrawerToolbar());
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content, mRequestsFragment)
+                .commit();
     }
 
     @Override

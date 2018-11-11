@@ -95,7 +95,7 @@ public class NewCardFragmentDocuments extends Fragment implements Step2Contracts
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month++;
-                        mChosenDate.setText(dayOfMonth + "\\" + month + "\\" + year);
+                        mChosenDate.setText(year + "-" + month + "-" + dayOfMonth);
                         mChosenDate.setVisibility(View.VISIBLE);
                     }
                 }, year, month, day);

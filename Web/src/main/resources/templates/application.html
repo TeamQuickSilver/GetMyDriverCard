@@ -103,16 +103,28 @@
             return true;
         } else if ($('#date').is(':checked')) {
             let value = $('#input-date').val();
-            alert('Please choose date');
-            return value != null && value !== undefined && value !== '';
+            if(value == null && value === undefined && value === '') {
+                alert('Please choose date');
+                return false;
+            }
+
+            return true;
         } else if ($('#id').is(':checked')) {
             let value = $('#input').val();
-            alert('Please write id');
-            return value != null && value !== undefined && value !== '';
+            if(value == null && value === undefined && value === '') {
+                alert('Please choose date');
+                return false;
+            }
+
+            return true;
         } else if ($('#name').is(':checked')) {
             let value = $('#input').val();
-            alert('Please write name');
-            return value != null && value !== undefined && value !== '';
+            if(value == null && value === undefined && value === '') {
+                alert('Please choose date');
+                return false;
+            }
+
+            return true;
         }
 
         return false;

@@ -82,7 +82,6 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
 
     @Override
     public void navigateToNextStep(Application application, byte[] imageBytes) {
-<<<<<<< HEAD
         Intent intent = null;
         switch (mReason) {
             case Constants.NEW_CARD:
@@ -92,12 +91,6 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
             case Constants.PHOTO_CHANGE:
                 intent = new Intent(this, Step4Activity.class);
                 break;
-=======
-        Intent intent = new Intent(this, IdCardPhotoActivity.class);
-        intent.putExtra(Constants.APPLICATION, application);
-        if(mApplication.getApplicationImages() == null) {
-            mApplication.setApplicationImages(new ApplicationImages());
->>>>>>> eb68d2be0a79fd2ca110a887316cec75f03b4888
         }
 
         mApplication.getApplicationImages().setPersonImage(imageBytes);

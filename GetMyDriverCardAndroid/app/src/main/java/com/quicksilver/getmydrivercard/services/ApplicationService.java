@@ -20,5 +20,4 @@ public interface ApplicationService {
 
     Application create(Application application) throws IOException;
 
-    Application update(Application applicationDetails) throws IOException;
 }

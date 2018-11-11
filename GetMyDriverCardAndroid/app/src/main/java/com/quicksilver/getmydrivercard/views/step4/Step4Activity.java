@@ -221,9 +221,10 @@ public class Step4Activity extends DaggerAppCompatActivity implements Step4Contr
     }
 
     @Override
-    public void navigateToRequests() {
+    public void navigateToRequests(Application application) {
         Intent intent = new Intent(this, RequestsActivity.class);
         intent.putExtra(Constants.USER, mUser);
+        intent.putExtra(Constants.APPLICATION, application);
         startActivity(intent);
     }
 }

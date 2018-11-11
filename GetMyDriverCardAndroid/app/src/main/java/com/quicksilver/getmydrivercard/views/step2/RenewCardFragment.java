@@ -88,7 +88,7 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         month++;
-                        mChosenDate.setText(dayOfMonth + "\\" + month + "\\" + year);
+                        mChosenDate.setText(year + "-" + month + "-" + dayOfMonth);
                         mChosenDate.setVisibility(View.VISIBLE);
                     }
                 }, year, month, day);
@@ -106,20 +106,6 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
 
                 Long identityNumber = Long.parseLong(mIdentityNumber.getText().toString());
                 mPresenter.loadApplication(identityNumber);
-
-                DateFormat dateFormat = new SimpleDateFormat("dd\\MM\\YYYY");
-                Date date = null;
-                try {
-                    date = dateFormat.parse(mChosenDate.getText().toString());
-                } catch (ParseException e) {
-                    Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
-                    e.printStackTrace();
-                    return;
-                }
-
-                mApplication.setApplicationReason(ApplicationReason.RENEW);
-                mApplication.setDateOfExpire(date);
-                mNavigator.navigateToNextStep(mApplication);
                 break;
         }
     }
@@ -137,6 +123,20 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
     @Override
     public void getApplication(Application application) {
         mApplication = application;
+
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+        Date date = null;
+        try {
+            date = dateFormat.parse(mChosenDate.getText().toString());
+        } catch (ParseException e) {
+            Toast.makeText(getContext(), Constants.DATE_ERROR, Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+            return;
+        }
+
+        mApplication.setApplicationReason(ApplicationReason.RENEW);
+        mApplication.setDateOfExpire(date);
+        mNavigator.navigateToNextStep(mApplication);
     }
 
     @Override

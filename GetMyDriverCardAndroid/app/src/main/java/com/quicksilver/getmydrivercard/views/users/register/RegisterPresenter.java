@@ -1,7 +1,9 @@
 package com.quicksilver.getmydrivercard.views.users.register;
 
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.async.base.SchedulerProvider;
+import com.quicksilver.getmydrivercard.models.Role;
 import com.quicksilver.getmydrivercard.models.User;
 import com.quicksilver.getmydrivercard.services.UserService;
 
@@ -32,6 +34,7 @@ public class RegisterPresenter implements RegisterContracts.Presenter {
     @Override
     public void register(User user) {
         Disposable disposable = Observable.create((ObservableOnSubscribe<User>) emitter -> {
+            user.setRole(new Role(Constants.USER));
             User returnedUser = mUserService.register(user);
             // Validator can be applied here
             if (returnedUser == null) {
