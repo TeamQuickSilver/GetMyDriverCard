@@ -1,7 +1,10 @@
 package com.quicksilver.getmydrivercard.views.step3;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
@@ -25,7 +28,6 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_provide_photo);
-
         mView.setNavigator(this);
 
         Intent intent = getIntent();
@@ -37,15 +39,50 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
                 .beginTransaction()
                 .replace(R.id.content, mView)
                 .commit();
-//
+
+        if (!isDeviceSupportFrontCamera(getApplicationContext())) {
+            Toast.makeText(getApplicationContext(),
+                    "Sorry! Your device doesn't have front camera",
+                    Toast.LENGTH_LONG).show();
+            // will close the app if the device doesn't have camera
+            finish();
+        } else if (!isDeviceSupportCamera(getApplicationContext())) {
+            Toast.makeText(getApplicationContext(),
+                    "Sorry! Your device doesn't have camera",
+                    Toast.LENGTH_LONG).show();
+            // will close the app if the device doesn't have camera
+            finish();
+        } else {
+            isDeviceSupportCamera(getApplicationContext());
+        }
+            isDeviceSupportFrontCamera(getApplicationContext());
+
 //        Button btnNextStep = findViewById(R.id.btn_next);
 //        btnNextStep.setOnClickListener(v -> {
-//
+//            navigateToNextStep();
 //        });
+    }
+
+
+    /**
+     * Checks whether device has camera or not. This method not necessary if
+     * android:required="true" is used in manifest file
+     */
+    static boolean isDeviceSupportCamera(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+    }
+
+    /**
+     * Checks whether device has front camera or not. This method not necessary if
+     * android:required="true" is used in manifest file
+     */
+    static boolean isDeviceSupportFrontCamera(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
     }
 
     @Override
     public void navigateToNextStep(Application application, byte[] imageBytes) {
+<<<<<<< HEAD
         Intent intent = null;
         switch (mReason) {
             case Constants.NEW_CARD:
@@ -55,6 +92,12 @@ public class ProvidePhotoActivity extends DaggerAppCompatActivity implements Ste
             case Constants.PHOTO_CHANGE:
                 intent = new Intent(this, Step4Activity.class);
                 break;
+=======
+        Intent intent = new Intent(this, IdCardPhotoActivity.class);
+        intent.putExtra(Constants.APPLICATION, application);
+        if(mApplication.getApplicationImages() == null) {
+            mApplication.setApplicationImages(new ApplicationImages());
+>>>>>>> eb68d2be0a79fd2ca110a887316cec75f03b4888
         }
 
         mApplication.getApplicationImages().setPersonImage(imageBytes);

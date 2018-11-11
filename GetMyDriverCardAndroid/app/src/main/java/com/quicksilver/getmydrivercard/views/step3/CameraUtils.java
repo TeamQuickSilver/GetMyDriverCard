@@ -68,21 +68,14 @@ class CameraUtils {
         return BitmapFactory.decodeFile(filePath, options);
     }
 
-    /**
-     * Checks whether device has front camera or not. This method not necessary if
-     * android:required="true" is used in manifest file
-     */
-    static boolean isDeviceSupportFrontCamera(Context context) {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_FRONT);
-    }
+//    /**
+//     * Checks whether device has camera or not. This method not necessary if
+//     * android:required="true" is used in manifest file
+//     */
+//    static boolean isDeviceSupportCamera(Context context) {
+//        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
+//    }
 
-    /**
-     * Checks whether device has camera or not. This method not necessary if
-     * android:required="true" is used in manifest file
-     */
-    static boolean isDeviceSupportCamera(Context context) {
-        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA);
-    }
 
     /**
      * Open device app settings to allow user to enable permissions

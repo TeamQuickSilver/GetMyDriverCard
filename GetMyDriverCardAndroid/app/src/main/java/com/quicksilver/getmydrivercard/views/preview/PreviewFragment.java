@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -27,31 +26,53 @@ public class PreviewFragment extends Fragment implements PreviewContracts.View{
     private PreviewContracts.Navigator mNavigator;
     private PreviewContracts.Presenter mPresenter;
 
-    @BindView(R.id.photo_container)
-    ImageView mPhotoContainer;
+    @BindView(R.id.iv_photo)
+    ImageView mPhoto;
 
-    @BindView(R.id.signature_container)
-    ImageView mSignatureContainer;
+    @BindView(R.id.iv_signature)
+    ImageView mSignatureImage;
 
-    @BindView(R.id. tv_header)
-    TextView mHeader;
+    @BindView(R.id.tv_identity_number)
+    TextView mIdentityNumber;
 
-    @BindView(R.id.et_name)
-    EditText mName;
+    @BindView(R.id.tv_first_name)
+    TextView mFirstName;
 
-    @BindView(R.id.et_last_name)
-    EditText mLastName;
+    @BindView(R.id.tv_fathers_name)
+    TextView mFatherName;
 
-    @BindView(R.id.et_address)
-    EditText mAddress;
+    @BindView(R.id.tv_last_name)
+    TextView mLastName;
 
-    @BindView(R.id.et_birth_date)
-    EditText mBirthDate;
+    @BindView(R.id.tv_district)
+    TextView mDistrict;
 
-    @BindView(R.id.et_phone_number)
-    EditText mPhoneNumber;
+    @BindView(R.id.tv_city)
+    TextView mCity;
 
-    @BindView(R.id.request_submit_button)
+    @BindView(R.id.tv_address)
+    TextView mAddress;
+
+    @BindView(R.id.tv_phone_number)
+    TextView mPhoneNumber;
+
+    @BindView(R.id.tv_email)
+    TextView mEmail;
+
+    @BindView(R.id.tv_status)
+    TextView mStatus;
+
+    @BindView(R.id.tv_reason)
+    TextView mReason;
+
+    @BindView(R.id.iv_identity_card_photo)
+    ImageView mIdentityCardPhoto;
+
+    @BindView(R.id.iv_driving_license_photo)
+    ImageView mDrivingLicensePhoto;
+
+
+    @BindView(R.id.btn_submit)
     Button mSubmitButton;
 
     @Inject
@@ -86,7 +107,7 @@ public class PreviewFragment extends Fragment implements PreviewContracts.View{
         mPresenter.subscribe(this);
     }
 
-    @OnClick(R.id.request_submit_button)
+    @OnClick(R.id.btn_submit)
     public void onClick(View view) {
 
     }

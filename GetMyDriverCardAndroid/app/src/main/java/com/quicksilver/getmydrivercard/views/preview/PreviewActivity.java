@@ -1,16 +1,20 @@
 package com.quicksilver.getmydrivercard.views.preview;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
-import com.quicksilver.getmydrivercard.views.BaseDrawerActivity;
+import com.quicksilver.getmydrivercard.models.User;
+import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
 
 import javax.inject.Inject;
 
-import butterknife.OnClick;
+import butterknife.ButterKnife;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class PreviewActivity extends BaseDrawerActivity implements PreviewContracts.Navigator {
+public class PreviewActivity extends DaggerAppCompatActivity implements PreviewContracts.Navigator {
 
     @Inject
     PreviewFragment mView;
@@ -19,36 +23,34 @@ public class PreviewActivity extends BaseDrawerActivity implements PreviewContra
     PreviewContracts.Presenter mPresenter;
 
     private Application mApplication;
+    private User mUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preview);
 
-        setSupportActionBar(getDrawerToolbar());
+        ButterKnife.bind(this);
 
         mView.setPresenter(mPresenter);
         mView.setNavigator(this);
+
+        Intent intent = getIntent();
+        mUser = (User)intent.getSerializableExtra(Constants.USER);
+        mApplication = (Application)intent.getSerializableExtra(Constants.APPLICATION);
 
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content, mView)
                 .commit();
-
-    }
-
-    @OnClick(R.id.request_submit_button)
-    void onSubmitButtonClicked() {
-
     }
 
     @Override
-    protected int getIdentifier() {
-        return 0;
-    }
-
-    @Override
-    public void navigateTo(String reason) {
-
+    public void navigateTo(Application application) {
+        Intent intent = new Intent(this, RequestsActivity.class);
+        intent.putExtra(Constants.CREATED_APPLICATION, application);
+        intent.putExtra(Constants.USER, mUser);
+        startActivity(intent);
+        finish();
     }
 }

@@ -23,6 +23,7 @@ public class ImageSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         try {
             camera.setPreviewDisplay(holder);
             camera.startPreview();
+            camera.startFaceDetection();
         } catch (IOException e) {
             e.printStackTrace();
         }

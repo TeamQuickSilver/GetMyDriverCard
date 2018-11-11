@@ -6,21 +6,34 @@
     <link rel="stylesheet" th:href="@{/css/login.css}" type="text/css">
 </head>
 <body>
-<p>Login</p>
 <form th:action="@{/login}" method="post">
-    <div class="container">
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Enter Email" name="email" required>
+    <div class="login-page">
+        <div class="form">
+            <form class="login-form">
+                <input type="text" placeholder="Enter Email" name="email" required>
+                <input type="password" placeholder="Enter Password" name="password" required>
 
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-
-        <button class="submit" type="submit" >Login</button>
+                <button class="submit" type="submit" >Login</button>
+            </form>
+        </div>
     </div>
+    <ul class="colorlib-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
     <input
             type="hidden"
             th:name="${_csrf.parameterName}"
             th:value="${_csrf.token}" />
+
 </form>
 </body>
 </html>

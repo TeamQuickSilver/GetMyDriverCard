@@ -44,4 +44,5 @@ public class Constants {
     public static final String PLACE_ERROR = "Invalid place!";
     public static final String TACHOGRAPH_CARD_NUMBER_ERROR = "Invalid tachograph card number!";
     public static final String FIELDS_ERROR = "Please fill all fields!";
+    public static final String CREATED_APPLICATION = "CREATED_APPLICATION";
 }

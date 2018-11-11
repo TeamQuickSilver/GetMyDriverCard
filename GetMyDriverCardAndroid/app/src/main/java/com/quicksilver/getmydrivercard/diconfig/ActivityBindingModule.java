@@ -1,14 +1,13 @@
 package com.quicksilver.getmydrivercard.diconfig;
 
+import com.quicksilver.getmydrivercard.views.users.home.HomeActivity;
 import com.quicksilver.getmydrivercard.views.preview.PreviewActivity;
 import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
+import com.quicksilver.getmydrivercard.views.start.StartApplicationActivity;
 import com.quicksilver.getmydrivercard.views.step1.Step1Activity;
 import com.quicksilver.getmydrivercard.views.step2.NewCardActivityDocuments;
 import com.quicksilver.getmydrivercard.views.step2.NewCardPart3Activity;
 import com.quicksilver.getmydrivercard.views.step2.Step2Activity;
-import com.quicksilver.getmydrivercard.views.step3.DrivingLicensePhotoActivity;
-import com.quicksilver.getmydrivercard.views.step3.IdCardPhotoActivity;
-import com.quicksilver.getmydrivercard.views.step3.PreviousCardPhotoActivity;
 import com.quicksilver.getmydrivercard.views.step3.ProvidePhotoActivity;
 import com.quicksilver.getmydrivercard.views.step4.Step4Activity;
 import com.quicksilver.getmydrivercard.views.users.login.LoginActivity;
@@ -59,4 +58,12 @@ public abstract class ActivityBindingModule {
     @ActivityScoped
     @ContributesAndroidInjector(modules = ProvidePhotoModule.class)
     abstract ProvidePhotoActivity providePhotoActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = StartApplicationModule.class)
+    abstract StartApplicationActivity startApplicationActivity();
+
+    @ActivityScoped
+    @ContributesAndroidInjector(modules = HomeModule.class)
+    abstract HomeActivity homeActivity();
 }

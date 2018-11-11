@@ -2,6 +2,7 @@ package com.quicksilver.getmydrivercard.views.step3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
@@ -38,6 +39,16 @@ public class IdCardPhotoActivity extends DaggerAppCompatActivity implements Step
                 .beginTransaction()
                 .replace(R.id.content, mView)
                 .commit();
+
+//        if (!CameraUtils.isDeviceSupportCamera(getApplicationContext())) {
+//            Toast.makeText(getApplicationContext(),
+//                    "Sorry! Your device doesn't have camera",
+//                    Toast.LENGTH_LONG).show();
+//            // will close the app if the device doesn't have camera
+//            finish();
+//        }
+//            CameraUtils.isDeviceSupportCamera(getApplicationContext());
+
     }
 
 
