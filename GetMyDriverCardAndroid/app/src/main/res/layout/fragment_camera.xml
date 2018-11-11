@@ -46,8 +46,9 @@
             android:id="@+id/btn_capture_picture"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:layout_marginRight="@dimen/dimen_8"
+            android:background="@drawable/custom_button"
+            android:layout_marginStart="@dimen/dimen_8"
+            android:layout_marginEnd="@dimen/dimen_8"
             android:foreground="?attr/selectableItemBackground"
             android:text="@string/btn_take_picture"
             android:textColor="@android:color/white" />
@@ -56,20 +57,20 @@
             android:id="@+id/btn_upload_picture"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/dimen_8"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/custom_button"
+            android:layout_marginEnd="@dimen/dimen_8"
             android:foreground="?attr/selectableItemBackground"
-            android:text="Upload"
+            android:text="@string/upload"
             android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_next"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/custom_button"
             android:foreground="?attr/selectableItemBackground"
+            android:layout_marginEnd="@dimen/dimen_8"
             android:text="@string/next"
-            android:textAlignment="center"
             android:textColor="@android:color/white" />
 
     </LinearLayout>

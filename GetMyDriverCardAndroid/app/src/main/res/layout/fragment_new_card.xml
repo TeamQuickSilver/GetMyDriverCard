@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".views.step2.NewCardFragment">
 
     <TextView
@@ -110,7 +111,7 @@
 
     <Button
         android:id="@+id/btn_next"
-        android:layout_width="wrap_content"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_phone_number"
         android:layout_centerHorizontal="true"

@@ -9,7 +9,7 @@
         android:id="@+id/rl_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary">
+        android:background="@drawable/background">
 
         <ImageView
             android:id="@+id/iv_user_icon"
@@ -51,14 +51,15 @@
             android:textColor="@color/colorAccent"
             android:textColorHint="@color/colorAccent" />
 
-        <Button
+        <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
             android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_below="@id/et_password"
-            android:background="@drawable/custom_button"
-            android:layout_centerHorizontal="true"
-            android:text="@string/login" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color60percent"
+            android:text="@string/sign_in"
+            android:textColor="@color/md_white_1000"
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/tv_info"
