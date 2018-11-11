@@ -396,8 +396,8 @@
 
                         <ImageView
                             android:id="@+id/iv_identity_card_photo"
-                            android:layout_width="200dp"
-                            android:layout_height="100dp"
+                            android:layout_width="250dp"
+                            android:layout_height="150dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp"
@@ -424,8 +424,8 @@
 
                         <ImageView
                             android:id="@+id/iv_driving_license_photo"
-                            android:layout_width="200dp"
-                            android:layout_height="80dp"
+                            android:layout_width="250dp"
+                            android:layout_height="150dp"
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:layout_marginBottom="10dp" />

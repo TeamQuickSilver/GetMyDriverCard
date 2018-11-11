@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">GetMyDriverCard</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="sign_in">Sign-in</string>
     <string name="identity_number">Identity number</string>
     <string name="first_name">First name</string>
@@ -31,7 +31,7 @@
         <item>Photo change</item>
         <item>Driving license change</item>
     </array>
-    <string name="facebook_app_id">326463701266666</string>
+    <string name="facebook_app_id" translatable="false">326463701266666</string>
 
     <string name="agreement">I agree the terms and conditions.</string>
     <string name="clear_pad">Clear Pad</string>
@@ -63,4 +63,5 @@
     <string name="pick_date">Pick date</string>
     <string name="categories">Categories</string>
     <string name="submit">Submit</string>
+    <string name="sign_up">Sign-up</string>
 </resources>
