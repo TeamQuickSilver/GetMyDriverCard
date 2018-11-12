@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".views.step2.RenewCardFragment">
 
     <TextView
@@ -36,7 +37,7 @@
 
     <Button
         android:id="@+id/btn_pick_date"
-        android:layout_width="wrap_content"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10sp"
         android:text="@string/pick_date"
@@ -55,7 +56,7 @@
     <Button
         android:id="@+id/btn_next"
         android:layout_marginTop="30sp"
-        android:layout_width="wrap_content"
+        android:layout_width="175sp"
         android:layout_height="wrap_content"
         android:text="@string/next"
         android:background="@drawable/custom_button"

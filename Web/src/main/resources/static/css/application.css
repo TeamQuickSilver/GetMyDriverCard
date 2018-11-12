@@ -63,6 +63,16 @@ form {
     margin: 0;
 }
 
+#submit {
+    background: #E8B00C;
+    border: none;
+    border-radius: 15px;
+    color: aliceblue;
+    padding: 10px 15px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
 
 
 

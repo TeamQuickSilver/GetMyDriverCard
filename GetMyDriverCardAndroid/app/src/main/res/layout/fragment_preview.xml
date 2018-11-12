@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".views.preview.PreviewFragment">
 
     <ScrollView
@@ -434,18 +435,15 @@
                 </RelativeLayout>
             </RelativeLayout>
 
-            <Button
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
                 android:id="@+id/btn_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
-                android:paddingTop="13dp"
-                android:paddingBottom="10dp"
-                android:text="Submit"
-                android:textColor="@android:color/white"
-                android:textSize="15dp"
-                android:textStyle="bold" />
+                android:background="@color/color60percent"
+                android:text="@string/submit"
+                android:textColor="@color/md_white_1000"
+                android:textSize="16sp"/>
 
         </LinearLayout>
     </ScrollView>

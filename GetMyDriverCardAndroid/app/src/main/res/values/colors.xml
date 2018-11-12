@@ -3,6 +3,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorButton">#80A7A2</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="black60percent">#99000000</color>
+    <color name="colorAccent">#fcf9fb</color>
+    <color name="color60percent">#995b5959</color>
 </resources>
