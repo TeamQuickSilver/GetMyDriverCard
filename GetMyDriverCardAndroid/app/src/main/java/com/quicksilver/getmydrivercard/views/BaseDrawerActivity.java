@@ -57,10 +57,10 @@ public abstract class BaseDrawerActivity extends DaggerAppCompatActivity {
                 .withSliderBackgroundColor(Color.GRAY)
                 .withAccountHeader(headerResult)
                 .addDrawerItems(
-                        requestItem,
+                        userItem,
                         new DividerDrawerItem(),
                         ste1Item,
-                        userItem
+                        requestItem
                 ).withOnDrawerItemClickListener((view, position, drawerItem) -> {
                     mIdentifier = (int) drawerItem.getIdentifier();
 
