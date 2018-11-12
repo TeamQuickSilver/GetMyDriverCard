@@ -7,8 +7,8 @@ public class Application implements Serializable{
     public Long applicationId;
     public Person person;
     public ApplicationImages applicationImages;
-    public ApplicationStatus applicationStatus;
-    public ApplicationReason applicationReason;
+    public String applicationStatus;
+    public String applicationReason;
     public Date dateOfSubmission;
     public String placeLost;
     public Date dateLost;
@@ -52,14 +52,6 @@ public class Application implements Serializable{
         this.applicationImages = applicationImages;
     }
 
-    public ApplicationStatus getApplicationStatus() {
-        return applicationStatus;
-    }
-
-    public void setApplicationStatus(ApplicationStatus applicationStatus) {
-        this.applicationStatus = applicationStatus;
-    }
-
     public Long getApplicationId() {
         return applicationId;
     }
@@ -76,11 +68,19 @@ public class Application implements Serializable{
         this.dateOfSubmission = dateOfSubmission;
     }
 
-    public ApplicationReason getApplicationReason() {
+    public String getApplicationStatus() {
+        return applicationStatus;
+    }
+
+    public void setApplicationStatus(String applicationStatus) {
+        this.applicationStatus = applicationStatus;
+    }
+
+    public String getApplicationReason() {
         return applicationReason;
     }
 
-    public void setApplicationReason(ApplicationReason applicationReason) {
+    public void setApplicationReason(String applicationReason) {
         this.applicationReason = applicationReason;
     }
 

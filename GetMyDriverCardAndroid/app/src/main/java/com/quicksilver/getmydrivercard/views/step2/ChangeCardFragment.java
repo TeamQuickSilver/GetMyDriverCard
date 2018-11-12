@@ -16,7 +16,6 @@ import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Address;
 import com.quicksilver.getmydrivercard.models.Application;
-import com.quicksilver.getmydrivercard.models.ApplicationReason;
 
 import java.util.Objects;
 
@@ -229,7 +228,7 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
                 }
 
                 Address fullAddress = new Address(district, city, address);
-                mApplication.setApplicationReason(ApplicationReason.ADDRESS_CHANGE);
+                mApplication.setApplicationReason(Constants.ADDRESS_CHANGE);
                 mApplication.getPerson().getIdentityCard().setAddress(fullAddress);
                 break;
             case Constants.NAME_CHANGE:
@@ -257,16 +256,16 @@ public class ChangeCardFragment extends Fragment implements Step2Contracts.View 
                     return;
                 }
 
-                mApplication.setApplicationReason(ApplicationReason.NAME_CHANGE);
+                mApplication.setApplicationReason(Constants.NAME_CHANGE);
                 mApplication.getPerson().getIdentityCard().setFirstName(firstName);
                 mApplication.getPerson().getIdentityCard().setFathersName(fathersName);
                 mApplication.getPerson().getIdentityCard().setLastName(lastName);
                 break;
             case Constants.PHOTO_CHANGE:
-                mApplication.setApplicationReason(ApplicationReason.PHOTO_CHANGE);
+                mApplication.setApplicationReason(Constants.PHOTO_CHANGE);
                 break;
             case Constants.DRIVING_LICENSE_CHANGE:
-                mApplication.setApplicationReason(ApplicationReason.DRIVING_LICENSE_CHANGE);
+                mApplication.setApplicationReason(Constants.DRIVING_LICENSE_CHANGE);
                 break;
         }
 

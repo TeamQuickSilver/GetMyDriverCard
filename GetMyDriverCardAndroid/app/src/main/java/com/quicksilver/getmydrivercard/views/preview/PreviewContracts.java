@@ -7,6 +7,10 @@ public interface PreviewContracts {
         void setPresenter(Presenter presenter);
 
         void setNavigator(Navigator navigator);
+
+        void showSuccessfulToast();
+
+        void showError(Throwable error);
     }
 
     interface Presenter {

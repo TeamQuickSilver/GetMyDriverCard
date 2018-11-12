@@ -24,7 +24,7 @@ import com.quicksilver.getmydrivercard.async.base.SchedulerProvider;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.User;
 import com.quicksilver.getmydrivercard.services.ApplicationService;
-import com.quicksilver.getmydrivercard.views.requests.RequestsActivity;
+import com.quicksilver.getmydrivercard.views.preview.PreviewActivity;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -221,8 +221,8 @@ public class Step4Activity extends DaggerAppCompatActivity implements Step4Contr
     }
 
     @Override
-    public void navigateToRequests(Application application) {
-        Intent intent = new Intent(this, RequestsActivity.class);
+    public void navigateToPreview(Application application) {
+        Intent intent = new Intent(this, PreviewActivity.class);
         intent.putExtra(Constants.USER, mUser);
         intent.putExtra(Constants.APPLICATION, application);
         startActivity(intent);

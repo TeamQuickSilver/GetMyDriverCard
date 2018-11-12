@@ -48,7 +48,7 @@ public class PreviewActivity extends DaggerAppCompatActivity implements PreviewC
     @Override
     public void navigateTo(Application application) {
         Intent intent = new Intent(this, RequestsActivity.class);
-        intent.putExtra(Constants.CREATED_APPLICATION, application);
+        intent.putExtra(Constants.APPLICATION, application);
         intent.putExtra(Constants.USER, mUser);
         startActivity(intent);
         finish();

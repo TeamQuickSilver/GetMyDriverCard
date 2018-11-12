@@ -1,7 +1,7 @@
 package com.quicksilver.getmydrivercard;
 
 public class Constants {
-    public static final String BASE_SERVER_URL = "http://192.168.43.156:8181";
+    public static final String BASE_SERVER_URL = "http://192.168.43.103:8181";
     public static final String USER = "USER";
     public static final String ADMIN = "ADMIN";
     public static final String REASON = "REASON";
@@ -45,4 +45,9 @@ public class Constants {
     public static final String TACHOGRAPH_CARD_NUMBER_ERROR = "Invalid tachograph card number!";
     public static final String FIELDS_ERROR = "Please fill all fields!";
     public static final String CREATED_APPLICATION = "CREATED_APPLICATION";
+    public static final String SUCCESSFUL_SUBMIT = "Successful submit!";
+    public static final String NEW = "NEW";
+    public static final String LOST = "LOST";
+    public static final String RENEW = "RENEW";
+    public static final String EXCHANGE = "EXCHANGE";
 }

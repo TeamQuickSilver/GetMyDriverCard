@@ -170,7 +170,7 @@ public class LostStolenMalfunctionCardFragment extends Fragment implements Step2
             return;
         }
 
-        mApplication.setApplicationReason(ApplicationReason.LOST);
+        mApplication.setApplicationReason(Constants.LOST);
         mApplication.setPlaceLost(place);
         mApplication.setDateLost(date);
         mNavigator.navigateToNextStep(mApplication);

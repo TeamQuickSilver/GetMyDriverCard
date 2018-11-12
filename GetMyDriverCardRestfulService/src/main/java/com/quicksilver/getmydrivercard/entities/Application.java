@@ -1,5 +1,6 @@
 package com.quicksilver.getmydrivercard.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.quicksilver.getmydrivercard.utils.ApplicationReason;
 import com.quicksilver.getmydrivercard.utils.ApplicationStatus;
 
@@ -26,23 +27,24 @@ public class Application {
     @JoinColumn(name = "application_images_id")
     private ApplicationImages applicationImages;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "reason")
-    private ApplicationReason reason;
+    private String reason;
 
-    @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private ApplicationStatus status;
+    private String status;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Europe/Sofia")
     @Column(name = "date_of_submission")
     private Date dateOfSubmission;
 
     @Column(name = "lost_place")
     private String lostPlace;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Europe/Sofia")
     @Column(name = "lost_date")
     private Date lostDate;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Europe/Sofia")
     @Column(name = "date_of_expire")
     private Date dateOfExpire;
 
@@ -56,8 +58,6 @@ public class Application {
         this.user = user;
         this.applicationImages = applicationImages;
         this.dateOfSubmission = dateOfSubmission;
-        this.status = ApplicationStatus.NEW;
-        this.reason = ApplicationReason.NEW;
     }
 
     public Long getApplicationId() {
@@ -92,14 +92,6 @@ public class Application {
         this.applicationImages = applicationImages;
     }
 
-    public ApplicationStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ApplicationStatus status) {
-        this.status = status;
-    }
-
     public Date getDateOfSubmission() {
         return dateOfSubmission;
     }
@@ -108,12 +100,20 @@ public class Application {
         this.dateOfSubmission = dateOfSubmission;
     }
 
-    public ApplicationReason getReason() {
+    public String getReason() {
         return reason;
     }
 
-    public void setReason(ApplicationReason reason) {
+    public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getLostPlace() {

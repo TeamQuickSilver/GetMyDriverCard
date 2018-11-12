@@ -45,7 +45,7 @@ public class RequestsActivity extends BaseDrawerActivity implements RequestsCont
     @Override
     public void navigateToDetails(Application application) {
         Intent detailsIntent = new Intent(this, RequestDetailsActivity.class);
-        detailsIntent.putExtra(Constants.APPLICATION_TEXT, application);
+        detailsIntent.putExtra(Constants.APPLICATION, application);
 
         startActivity(detailsIntent);
     }

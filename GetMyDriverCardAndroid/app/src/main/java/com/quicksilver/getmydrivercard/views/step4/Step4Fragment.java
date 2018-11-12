@@ -70,8 +70,8 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
     }
 
     @Override
-    public void navigateToRequests() {
-        mNavigator.navigateToRequests(mApplication);
+    public void navigateToPreview() {
+        mNavigator.navigateToPreview(mApplication);
     }
 
     public void createImageBytesFromUri(Uri contentUri) {
@@ -83,7 +83,7 @@ public class Step4Fragment extends Fragment implements Step4Contracts.View {
             mApplication.setUser(mUser);
             mApplication.setDateOfSubmission(new Date());
 
-            mPresenter.saveApplication(mApplication);
+            navigateToPreview();
         } catch (IOException e) {
             e.printStackTrace();
         }

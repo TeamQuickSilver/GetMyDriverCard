@@ -128,7 +128,7 @@ public class ExchangeCardFragment extends Fragment implements Step2Contracts.Vie
 
         Long tachographCardNumber = Long.parseLong(tachographCardNumberStr);
 
-        mApplication.setApplicationReason(ApplicationReason.EXCHANGE);
+        mApplication.setApplicationReason(Constants.EXCHANGE);
         mApplication.setCountryPreviousCard(countryWhichIssuedPreviousCard);
         mApplication.setPreviousCardNumber(tachographCardNumber);
         mApplication.setCountryDrivingLicense(countryWhichIssuedDrivingLicense);

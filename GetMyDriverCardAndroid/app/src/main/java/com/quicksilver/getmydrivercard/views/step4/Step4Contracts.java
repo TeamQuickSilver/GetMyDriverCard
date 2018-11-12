@@ -14,7 +14,7 @@ public interface Step4Contracts {
 
         void showError(Throwable error);
 
-        void navigateToRequests();
+        void navigateToPreview();
     }
 
     interface Presenter {
@@ -22,11 +22,11 @@ public interface Step4Contracts {
 
         byte[] convertUriIntoByteArray(InputStream inputStream) throws IOException;
 
-        void saveApplication(Application applicationDetails);
+//        void saveApplication(Application applicationDetails);
     }
 
     interface Navigator {
 
-        void navigateToRequests(Application application);
+        void navigateToPreview(Application application);
     }
 }

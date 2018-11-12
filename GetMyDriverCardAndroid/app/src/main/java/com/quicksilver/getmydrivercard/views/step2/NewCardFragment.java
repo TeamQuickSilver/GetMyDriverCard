@@ -14,8 +14,6 @@ import com.quicksilver.getmydrivercard.Constants;
 import com.quicksilver.getmydrivercard.R;
 import com.quicksilver.getmydrivercard.models.Application;
 import com.quicksilver.getmydrivercard.models.ApplicationImages;
-import com.quicksilver.getmydrivercard.models.ApplicationReason;
-import com.quicksilver.getmydrivercard.models.ApplicationStatus;
 import com.quicksilver.getmydrivercard.models.DrivingLicense;
 import com.quicksilver.getmydrivercard.models.IdentityCard;
 import com.quicksilver.getmydrivercard.models.Person;
@@ -153,12 +151,12 @@ public class NewCardFragment extends Fragment implements Step2Contracts.View {
 //        application.getPerson().getIdentityCard().setDateOfBirth(date);
 
         if(mReason.equals(Constants.NEW_CARD)) {
-            application.setApplicationReason(ApplicationReason.NEW);
+            application.setApplicationReason(Constants.NEW);
         } else if(mReason.equals(Constants.WITHDRAWN_CARD)) {
-            application.setApplicationReason(ApplicationReason.WITHDRAWN);
+            application.setApplicationReason(Constants.NEW);
         }
 
-        application.setApplicationStatus(ApplicationStatus.NEW);
+        application.setApplicationStatus(Constants.NEW);
         mNavigator.navigateToNextStep(application);
     }
 

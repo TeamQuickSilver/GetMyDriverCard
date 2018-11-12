@@ -134,7 +134,7 @@ public class RenewCardFragment extends Fragment implements Step2Contracts.View {
             return;
         }
 
-        mApplication.setApplicationReason(ApplicationReason.RENEW);
+        mApplication.setApplicationReason(Constants.RENEW);
         mApplication.setDateOfExpire(date);
         mNavigator.navigateToNextStep(mApplication);
     }
