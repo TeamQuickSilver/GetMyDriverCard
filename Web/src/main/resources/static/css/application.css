@@ -23,7 +23,7 @@ body {
 
 h1 {
     text-align: center;
-    color: #E8B00C;
+    color: #a76e06;
 }
 
 select {
@@ -35,7 +35,7 @@ select {
 a {
     display: block;
     text-decoration: none;
-    color: #E8B00C;
+    color: #a76e06;
 }
 
 li {
@@ -64,13 +64,14 @@ form {
 }
 
 #submit {
-    background: #E8B00C;
+    background: #a76e06;
     border: none;
     border-radius: 15px;
     color: aliceblue;
-    padding: 10px 15px;
+    padding: 5px 10px;
     margin-right: 20px;
     font-size: 20px;
+    margin-left: 10px;
 }
 
 
