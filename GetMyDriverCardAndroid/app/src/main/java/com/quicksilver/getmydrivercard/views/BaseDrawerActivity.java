@@ -125,5 +125,16 @@ public abstract class BaseDrawerActivity extends DaggerAppCompatActivity {
                 .withOnAccountHeaderListener((view, profile, current) -> false)
                 .build();
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.main_menu, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    protected void attachBaseContext(Context newBase) {
+//        super.attachBaseContext(LocaleHelper.onAttach(newBase, "en"));
+//    }
 }
 
