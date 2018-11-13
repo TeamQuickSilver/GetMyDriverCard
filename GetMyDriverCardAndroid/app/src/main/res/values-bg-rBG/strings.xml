@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Издаване карта на водач</string>
+    <string name="sign_in" translatable="false">Вход</string>
+    <string name="identity_number">ЕГН</string>
+    <string name="first_name">Име</string>
+    <string name="fathers_name">Презиме</string>
+    <string name="last_name">Фамилия</string>
+    <string name="address">Адрес</string>
+    <string name="phone_number">Телефонен номер</string>
+    <string name="email">e-mail адрес</string>
+    <string name="password">Парола</string>
+    <string name="login">Вход</string>
+    <string name="no_account">Нямаш ли акаунт?</string>
+    <string name="make_account">Моля направи си сега</string>
+    <string name="title_request">Причина поради, която изисквате карта на водач</string>
+    <string name="new_card">Не притежавам карта на водач и желая да ми бъде издадена</string>
+    <string name="change_card">"Притежавам карта на водач и желая да я заменя поради това, че "</string>
+    <string name="lost_card">Изгубена</string>
+    <string name="exchange_card">Притежавам карта на водач издадена от друга страна и желая да я заменя с друга издадена от Република България</string>
+    <string name="reason">Изберете причина</string>
+    <string name="renew_card">Желая да подновя моята карта на водач, която изтича на</string>
+    <string name="withdrawn_card">Желая нова карта на водач, защото предишната беше отнета</string>
+    <array name="spinner_card_change_reason">
+        <item>Изгубена</item>
+        <item>Откраднат</item>
+        <item>Неизправна/Повредена</item>
+        <item>Промяна на адрес</item>
+        <item>Промяна на име</item>
+        <item>Промяна на снимка</item>
+        <item>Промяна на свидетелството за управление</item>
+    </array>
+    <string name="agreement">Съгласен съм с Общите условия.</string>
+    <string name="save_signature">Запазване</string>
+    <string name="next">Следващ</string>
+    <string name="date_of_submission">Дата</string>
+    <string name="application_status">Статус на заявлението</string>
+    <string name="date_of_birth">Дата на раждане</string>
+    <string name="action_settings">Настройки</string>
+    <string name="preview_description">Преглед на изображението ще се покаже тук</string>
+    <string name="btn_take_picture">Снимане</string>
+    <string name="malfunction_broken_card_message">В случай на неизправна или повредена карта предишната карта трябва да се върне</string>
+    <string name="lost_card_title">В случай на изгубване да се уточни датата и мястото</string>
+    <string name="date">Дата</string>
+    <string name="place">Място</string>
+    <string name="photo">Снимка</string>
+    <string name="upload">Качване</string>
+    <string name="driving_license">Свидетелство за управление</string>
+    <string name="country_which_issued_card">Страна издала картата</string>
+    <string name="tachograph_card_number">Номер на картата</string>
+    <string name="country_which_issued_driving_license">Страна издала картата</string>
+    <string name="driving_license_number">Свидетелство за управление №</string>
+    <string name="date_of_expire">Валидност на картата</string>
+    <string name="district">Област</string>
+    <string name="city">Град</string>
+    <string name="identity_card_number">л.к. №</string>
+    <string name="issued_by">издадена от</string>
+    <string name="issued_on">издадена на</string>
+    <string name="pick_date">Изберете дата</string>
+    <string name="categories">Категории</string>
+    <string name="submit">Изпращане</string>
+    <string name="clear_pad">Изчистване на екрана</string>
+    <string name="sign_up">Регистрация</string>
+</resources>
+
+
+
