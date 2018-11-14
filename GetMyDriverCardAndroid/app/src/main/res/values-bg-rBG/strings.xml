@@ -19,7 +19,7 @@
     <string name="lost_card">Изгубена</string>
     <string name="exchange_card">Притежавам карта на водач издадена от друга страна и желая да я заменя с друга издадена от Република България</string>
     <string name="reason">Изберете причина</string>
-    <string name="renew_card">Желая да подновя моята карта на водач, която изтича на</string>
+    <string name="renew_card">Желая да подновя моята карта на водач</string>
     <string name="withdrawn_card">Желая нова карта на водач, защото предишната беше отнета</string>
     <array name="spinner_card_change_reason">
         <item>Изгубена</item>
@@ -61,6 +61,7 @@
     <string name="submit">Изпращане</string>
     <string name="clear_pad">Изчистване на екрана</string>
     <string name="sign_up">Регистрация</string>
+    <string name="change_language">Change Language</string>
 </resources>
 
 
