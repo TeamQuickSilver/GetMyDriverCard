@@ -11,6 +11,8 @@ import com.quicksilver.getmydrivercard.views.step2.Step2Activity;
 
 import javax.inject.Inject;
 
+import butterknife.ButterKnife;
+
 public class Step1Activity extends BaseDrawerActivity implements Step1Contracts.Navigator {
     public static final int IDENTIFIER = 2;
 
@@ -34,6 +36,8 @@ public class Step1Activity extends BaseDrawerActivity implements Step1Contracts.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step1);
+
+        ButterKnife.bind(this);
 
         setSupportActionBar(getDrawerToolbar());
 

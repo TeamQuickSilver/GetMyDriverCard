@@ -35,19 +35,19 @@ public abstract class BaseDrawerActivity extends DaggerAppCompatActivity {
     public void setupDrawer() {
         PrimaryDrawerItem requestItem = new PrimaryDrawerItem()
                 .withIdentifier(RequestsActivity.IDENTIFIER)
-                .withIcon(GoogleMaterial.Icon.gmd_home)
+                .withIcon(GoogleMaterial.Icon.gmd_list)
                 .withSelectable(true)
-                .withName("Request");
+                .withName(R.string.requests);
         PrimaryDrawerItem ste1Item = new PrimaryDrawerItem()
                 .withIdentifier(Step1Activity.IDENTIFIER)
-                .withIcon(GoogleMaterial.Icon.gmd_ac_unit)
+                .withIcon(GoogleMaterial.Icon.gmd_create)
                 .withSelectable(true)
-                .withName("Step1");
+                .withName(R.string.start_applying);
         PrimaryDrawerItem userItem = new PrimaryDrawerItem()
                 .withIdentifier(LoginActivity.IDENTIFIER)
-                .withIcon(GoogleMaterial.Icon.gmd_verified_user)
+                .withIcon(GoogleMaterial.Icon.gmd_home)
                 .withSelectable(true)
-                .withName("User");
+                .withName(R.string.user);
 
         AccountHeader headerResult = getAccountHeader();
 

@@ -65,4 +65,7 @@
     <string name="submit">Submit</string>
     <string name="sign_up">Sign-up</string>
     <string name="change_language">Български</string>
+    <string name="requests">Requests</string>
+    <string name="user">User</string>
+    <string name="start_applying">Start applying</string>
 </resources>

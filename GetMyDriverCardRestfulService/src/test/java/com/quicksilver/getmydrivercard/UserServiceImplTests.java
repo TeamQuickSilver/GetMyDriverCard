@@ -32,7 +32,7 @@ public class UserServiceImplTests {
     UserServiceImpl userService;
 
 
-    User user = new User(TRUE_EMAIL, TRUE_PASSWORD, new HashSet<>());
+    User user = new User(TRUE_EMAIL, TRUE_PASSWORD);
 
     @Test
     public void getByEmail_ShouldReturnMatchingUser_WhenMatchingExist() {
